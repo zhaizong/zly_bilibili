@@ -40,6 +40,4 @@ iOS的主工程为MybilibiliDemo
 
 ##第三方库(FRAMEWORK)
 
-##License
-See `LICENSE` for details.
 ##FAQ
