@@ -1,13 +1,18 @@
 # ZLY_bilibiliDemo
 仿bilibili(iOS客户端), 刚开始还缺少很多功能。
+
 ##目前完成如下功能
 - 启动页逻辑
+
 ##正在制作的功能
 - 首页
+
 ##概述
 ZLY_bilibiliDemo的iOS工程
+
 ##Build
 iOS的主工程为MybilibiliDemo
+
 ##BiliBiliKit
 >项目中UI中的公用部分，作为一个Framework被主工程及Submodules引用
 
@@ -30,8 +35,8 @@ iOS的主工程为MybilibiliDemo
 - Resources : 国际化文件以及一些资源文件
 - Vendor : 第三方库
 - BiliBiliKit : 项目中公共的UI库
-- bilibilicore : 核心库
-- Modules : 功能模块
+- bilibilicore : 核心库(暂无)
+- Modules : 功能模块(暂无)
 
 ##第三方库(FRAMEWORK)
 
