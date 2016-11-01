@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="TMi-wr-q1M">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Bili Tab Bar Controller-->
+        <scene sceneID="chJ-pS-KN6">
+            <objects>
+                <tabBarController storyboardIdentifier="BiliTabBarController" id="TMi-wr-q1M" customClass="BiliTabBarController" customModule="MybilibiliDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="tkZ-BR-awQ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="y5H-IB-NxT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-444" y="-125"/>
+        </scene>
+        <!--Splash View Controller-->
+        <scene sceneID="Ynk-tm-u6G">
+            <objects>
+                <viewController storyboardIdentifier="SplashViewController" id="rj1-Mz-ETj" customClass="SplashViewController" customModule="MybilibiliDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="dEh-9c-Y2p"/>
+                        <viewControllerLayoutGuide type="bottom" id="SB7-hM-7AA"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="sGb-NX-Fnr">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launchBg" translatesAutoresizingMaskIntoConstraints="NO" id="rDz-du-TeE"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bilibili_splash_default_2" translatesAutoresizingMaskIntoConstraints="NO" id="5qI-Kw-V7a">
+                                <constraints>
+                                    <constraint firstAttribute="height" id="S55-nP-2WQ"/>
+                                    <constraint firstAttribute="width" id="Umt-OC-uHm"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="rDz-du-TeE" firstAttribute="top" secondItem="sGb-NX-Fnr" secondAttribute="top" id="GUa-zK-O1a"/>
+                            <constraint firstItem="rDz-du-TeE" firstAttribute="bottom" secondItem="SB7-hM-7AA" secondAttribute="top" id="Oez-CG-Z0t"/>
+                            <constraint firstItem="5qI-Kw-V7a" firstAttribute="centerX" secondItem="sGb-NX-Fnr" secondAttribute="centerX" id="fNn-2z-Uw2"/>
+                            <constraint firstItem="rDz-du-TeE" firstAttribute="leading" secondItem="sGb-NX-Fnr" secondAttribute="leading" id="lwv-IB-Bfz"/>
+                            <constraint firstItem="5qI-Kw-V7a" firstAttribute="centerY" secondItem="sGb-NX-Fnr" secondAttribute="centerY" id="o17-3w-IWg"/>
+                            <constraint firstAttribute="trailing" secondItem="rDz-du-TeE" secondAttribute="trailing" id="sGK-UM-Ozs"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="bgImageView" destination="rDz-du-TeE" id="d9I-mY-Lo1"/>
+                        <outlet property="splashImageView" destination="5qI-Kw-V7a" id="Hzg-RZ-Blq"/>
+                        <outlet property="splashImgHeightConstraint" destination="S55-nP-2WQ" id="g13-5O-u9z"/>
+                        <outlet property="splashImgWidthConstraint" destination="Umt-OC-uHm" id="Bom-kP-xyT"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0l9-7I-18X" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="300" y="-125.4872563718141"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="bilibili_splash_default_2" width="320" height="420"/>
+        <image name="launchBg" width="375" height="667"/>
+    </resources>
+</document>

@@ -1,0 +1,573 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2D3CDCE51DC18FFC00884948 /* LiveHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3CDCE41DC18FFC00884948 /* LiveHeaderView.swift */; };
+		2D5D48C61DBF664C004760AE /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5D48C51DBF664C004760AE /* HomeViewController.swift */; };
+		2D5D48CD1DBF9557004760AE /* LiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5D48CC1DBF9557004760AE /* LiveViewController.swift */; };
+		2D5D48CF1DBF957E004760AE /* RecommendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5D48CE1DBF957E004760AE /* RecommendViewController.swift */; };
+		2D5D48D11DBF959B004760AE /* BangumiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5D48D01DBF959B004760AE /* BangumiViewController.swift */; };
+		2D61D75D1DB7726000217426 /* BiliBiliKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D61D75C1DB76F7600217426 /* BiliBiliKit.framework */; };
+		2D61D75E1DB7726E00217426 /* BiliBiliKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2D61D75C1DB76F7600217426 /* BiliBiliKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		2D64195E1DB922E700E1714D /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D64195D1DB922E700E1714D /* Home.storyboard */; };
+		2D6419751DBA1A2800E1714D /* AppDelegate_BiliAddition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D6419741DBA1A2800E1714D /* AppDelegate_BiliAddition.swift */; };
+		2D8C9ED41DC7565A00FC6A8B /* LiveTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8C9ED31DC7565A00FC6A8B /* LiveTableViewCell.swift */; };
+		2DA430681DC86F61006FEFAC /* IJKMediaFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DA430671DC86F61006FEFAC /* IJKMediaFramework.framework */; };
+		2DA689161DB490DF00E87142 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2DA689151DB490DF00E87142 /* Main.storyboard */; };
+		2DA689E71DB491F500E87142 /* ThirdPartyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA689E61DB491F500E87142 /* ThirdPartyManager.swift */; };
+		2DA689EA1DB49DAE00E87142 /* SceneController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA689E81DB49DAE00E87142 /* SceneController.swift */; };
+		2DA689EB1DB49DAE00E87142 /* BiliStoryboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA689E91DB49DAE00E87142 /* BiliStoryboardViewController.swift */; };
+		2DA68A741DB4B70500E87142 /* BiliTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA68A731DB4B70500E87142 /* BiliTabBarController.swift */; };
+		2DA68A761DB4B71500E87142 /* BiliNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA68A751DB4B71500E87142 /* BiliNavigationController.swift */; };
+		2DA68A781DB4B72900E87142 /* BiliViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA68A771DB4B72900E87142 /* BiliViewController.swift */; };
+		2DA9D3D31DB63C6A005E977E /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA9D3D11DB63C6A005E977E /* SplashViewController.swift */; };
+		2DA9D3D41DB63C6A005E977E /* SplashViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA9D3D21DB63C6A005E977E /* SplashViewModel.swift */; };
+		2DA9D3D61DB63C88005E977E /* SplashModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA9D3D51DB63C88005E977E /* SplashModel.swift */; };
+		2DA9D3D91DB65134005E977E /* BiliPreference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA9D3D81DB65134005E977E /* BiliPreference.swift */; };
+		2DC1A05A1DB4875C006DD13D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC1A0591DB4875C006DD13D /* AppDelegate.swift */; };
+		2DC1A0611DB4875D006DD13D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2DC1A0601DB4875D006DD13D /* Assets.xcassets */; };
+		2DC1A0641DB4875D006DD13D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2DC1A0621DB4875D006DD13D /* LaunchScreen.storyboard */; };
+		2DC1A0751DB489AE006DD13D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2DC1A0741DB489AE006DD13D /* Images.xcassets */; };
+		2DC8FCE81DC474C400725C49 /* LiveEntranceIconsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC8FCE71DC474C400725C49 /* LiveEntranceIconsView.swift */; };
+		2DF51DAA1DC4ED4C0036FE97 /* LiveEntranceIconsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DF51DA91DC4ED4C0036FE97 /* LiveEntranceIconsCollectionViewCell.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		2D61D75B1DB76F7600217426 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2D61D7571DB76F7600217426 /* BiliBiliKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 2DA9D3F71DB6739A005E977E;
+			remoteInfo = BiliBiliKit;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		2DA9D4221DB6761B005E977E /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				2D61D75E1DB7726E00217426 /* BiliBiliKit.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		2D3CDCE41DC18FFC00884948 /* LiveHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiveHeaderView.swift; sourceTree = "<group>"; };
+		2D5D48C51DBF664C004760AE /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		2D5D48CC1DBF9557004760AE /* LiveViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiveViewController.swift; sourceTree = "<group>"; };
+		2D5D48CE1DBF957E004760AE /* RecommendViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecommendViewController.swift; sourceTree = "<group>"; };
+		2D5D48D01DBF959B004760AE /* BangumiViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BangumiViewController.swift; sourceTree = "<group>"; };
+		2D61D7571DB76F7600217426 /* BiliBiliKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = BiliBiliKit.xcodeproj; sourceTree = "<group>"; };
+		2D64195D1DB922E700E1714D /* Home.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
+		2D6419741DBA1A2800E1714D /* AppDelegate_BiliAddition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate_BiliAddition.swift; sourceTree = "<group>"; };
+		2D8C9ED31DC7565A00FC6A8B /* LiveTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiveTableViewCell.swift; sourceTree = "<group>"; };
+		2DA430671DC86F61006FEFAC /* IJKMediaFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IJKMediaFramework.framework; path = MybilibiliDemo/IJKMediaFramework.framework; sourceTree = "<group>"; };
+		2DA689151DB490DF00E87142 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		2DA689E61DB491F500E87142 /* ThirdPartyManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThirdPartyManager.swift; sourceTree = "<group>"; };
+		2DA689E81DB49DAE00E87142 /* SceneController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneController.swift; sourceTree = "<group>"; };
+		2DA689E91DB49DAE00E87142 /* BiliStoryboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BiliStoryboardViewController.swift; sourceTree = "<group>"; };
+		2DA68A261DB4A78100E87142 /* MyBiliBiliDemo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MyBiliBiliDemo-Bridging-Header.h"; sourceTree = "<group>"; };
+		2DA68A731DB4B70500E87142 /* BiliTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BiliTabBarController.swift; sourceTree = "<group>"; };
+		2DA68A751DB4B71500E87142 /* BiliNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BiliNavigationController.swift; sourceTree = "<group>"; };
+		2DA68A771DB4B72900E87142 /* BiliViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BiliViewController.swift; sourceTree = "<group>"; };
+		2DA9D3D11DB63C6A005E977E /* SplashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
+		2DA9D3D21DB63C6A005E977E /* SplashViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashViewModel.swift; sourceTree = "<group>"; };
+		2DA9D3D51DB63C88005E977E /* SplashModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashModel.swift; sourceTree = "<group>"; };
+		2DA9D3D81DB65134005E977E /* BiliPreference.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BiliPreference.swift; sourceTree = "<group>"; };
+		2DC1A0561DB4875C006DD13D /* MybilibiliDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MybilibiliDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2DC1A0591DB4875C006DD13D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		2DC1A0601DB4875D006DD13D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		2DC1A0631DB4875D006DD13D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		2DC1A0651DB4875D006DD13D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2DC1A0741DB489AE006DD13D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		2DC8FCE71DC474C400725C49 /* LiveEntranceIconsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiveEntranceIconsView.swift; sourceTree = "<group>"; };
+		2DF51DA91DC4ED4C0036FE97 /* LiveEntranceIconsCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiveEntranceIconsCollectionViewCell.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		2DC1A0531DB4875C006DD13D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2DA430681DC86F61006FEFAC /* IJKMediaFramework.framework in Frameworks */,
+				2D61D75D1DB7726000217426 /* BiliBiliKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2D3CDCE21DC18FB100884948 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2DF51DA71DC4ED220036FE97 /* Cell */,
+				2D3CDCE41DC18FFC00884948 /* LiveHeaderView.swift */,
+				2DC8FCE71DC474C400725C49 /* LiveEntranceIconsView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2D5D48C31DBF6606004760AE /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				2D5D48CB1DBF9500004760AE /* ChildViewController */,
+				2D5D48C51DBF664C004760AE /* HomeViewController.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		2D5D48CB1DBF9500004760AE /* ChildViewController */ = {
+			isa = PBXGroup;
+			children = (
+				2D3CDCE21DC18FB100884948 /* View */,
+				2D8C9ED11DC7560B00FC6A8B /* Cell */,
+				2D5D48CC1DBF9557004760AE /* LiveViewController.swift */,
+				2D5D48CE1DBF957E004760AE /* RecommendViewController.swift */,
+				2D5D48D01DBF959B004760AE /* BangumiViewController.swift */,
+			);
+			path = ChildViewController;
+			sourceTree = "<group>";
+		};
+		2D61D7561DB76F5D00217426 /* BiliBiliKit */ = {
+			isa = PBXGroup;
+			children = (
+				2D61D7571DB76F7600217426 /* BiliBiliKit.xcodeproj */,
+			);
+			path = BiliBiliKit;
+			sourceTree = "<group>";
+		};
+		2D61D7581DB76F7600217426 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2D61D75C1DB76F7600217426 /* BiliBiliKit.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2D6419731DBA1A2800E1714D /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				2D6419741DBA1A2800E1714D /* AppDelegate_BiliAddition.swift */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		2D8C9ED11DC7560B00FC6A8B /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				2D8C9ED31DC7565A00FC6A8B /* LiveTableViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		2DA689131DB4906000E87142 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				2DA9D3D01DB63C6A005E977E /* Launch */,
+				2D5D48C31DBF6606004760AE /* Home */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		2DA689141DB4908E00E87142 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2DA689151DB490DF00E87142 /* Main.storyboard */,
+				2D64195D1DB922E700E1714D /* Home.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2DA689E51DB4918600E87142 /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				2DA689E61DB491F500E87142 /* ThirdPartyManager.swift */,
+				2DA689E81DB49DAE00E87142 /* SceneController.swift */,
+				2DA689E91DB49DAE00E87142 /* BiliStoryboardViewController.swift */,
+			);
+			path = Tools;
+			sourceTree = "<group>";
+		};
+		2DA68A721DB4B6BF00E87142 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				2DA68A731DB4B70500E87142 /* BiliTabBarController.swift */,
+				2DA68A751DB4B71500E87142 /* BiliNavigationController.swift */,
+				2DA68A771DB4B72900E87142 /* BiliViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		2DA9D3D01DB63C6A005E977E /* Launch */ = {
+			isa = PBXGroup;
+			children = (
+				2DA9D3D11DB63C6A005E977E /* SplashViewController.swift */,
+				2DA9D3D21DB63C6A005E977E /* SplashViewModel.swift */,
+				2DA9D3D51DB63C88005E977E /* SplashModel.swift */,
+			);
+			path = Launch;
+			sourceTree = "<group>";
+		};
+		2DA9D3D71DB6510E005E977E /* Commons */ = {
+			isa = PBXGroup;
+			children = (
+				2DA9D3D81DB65134005E977E /* BiliPreference.swift */,
+			);
+			path = Commons;
+			sourceTree = "<group>";
+		};
+		2DC1A04D1DB4875C006DD13D = {
+			isa = PBXGroup;
+			children = (
+				2DC1A0581DB4875C006DD13D /* MybilibiliDemo */,
+				2DC1A0571DB4875C006DD13D /* Products */,
+				2DC1A06D1DB487EA006DD13D /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		2DC1A0571DB4875C006DD13D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2DC1A0561DB4875C006DD13D /* MybilibiliDemo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2DC1A0581DB4875C006DD13D /* MybilibiliDemo */ = {
+			isa = PBXGroup;
+			children = (
+				2DC1A0591DB4875C006DD13D /* AppDelegate.swift */,
+				2D61D7561DB76F5D00217426 /* BiliBiliKit */,
+				2D6419731DBA1A2800E1714D /* Category */,
+				2DA9D3D71DB6510E005E977E /* Commons */,
+				2DA689E51DB4918600E87142 /* Tools */,
+				2DA68A721DB4B6BF00E87142 /* ViewController */,
+				2DA689131DB4906000E87142 /* Classes */,
+				2DA689141DB4908E00E87142 /* View */,
+				2DC1A0731DB4896F006DD13D /* Resources */,
+				2DC1A06B1DB48786006DD13D /* Supporting Files */,
+			);
+			path = MybilibiliDemo;
+			sourceTree = "<group>";
+		};
+		2DC1A06B1DB48786006DD13D /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				2DC1A0601DB4875D006DD13D /* Assets.xcassets */,
+				2DC1A0621DB4875D006DD13D /* LaunchScreen.storyboard */,
+				2DC1A0651DB4875D006DD13D /* Info.plist */,
+				2DA68A261DB4A78100E87142 /* MyBiliBiliDemo-Bridging-Header.h */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		2DC1A06D1DB487EA006DD13D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2DA430671DC86F61006FEFAC /* IJKMediaFramework.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		2DC1A0731DB4896F006DD13D /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				2DC1A0741DB489AE006DD13D /* Images.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		2DF51DA71DC4ED220036FE97 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				2DF51DA91DC4ED4C0036FE97 /* LiveEntranceIconsCollectionViewCell.swift */,
+			);
+			name = Cell;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		2DC1A0551DB4875C006DD13D /* MybilibiliDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2DC1A0681DB4875D006DD13D /* Build configuration list for PBXNativeTarget "MybilibiliDemo" */;
+			buildPhases = (
+				2DC1A0521DB4875C006DD13D /* Sources */,
+				2DC1A0531DB4875C006DD13D /* Frameworks */,
+				2DC1A0541DB4875C006DD13D /* Resources */,
+				2DA9D4221DB6761B005E977E /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MybilibiliDemo;
+			productName = MybilibiliDemo;
+			productReference = 2DC1A0561DB4875C006DD13D /* MybilibiliDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		2DC1A04E1DB4875C006DD13D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0800;
+				LastUpgradeCheck = 0800;
+				ORGANIZATIONNAME = Zly;
+				TargetAttributes = {
+					2DC1A0551DB4875C006DD13D = {
+						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = GF3C8WCZ4C;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 2DC1A0511DB4875C006DD13D /* Build configuration list for PBXProject "MybilibiliDemo" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 2DC1A04D1DB4875C006DD13D;
+			productRefGroup = 2DC1A0571DB4875C006DD13D /* Products */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 2D61D7581DB76F7600217426 /* Products */;
+					ProjectRef = 2D61D7571DB76F7600217426 /* BiliBiliKit.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				2DC1A0551DB4875C006DD13D /* MybilibiliDemo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		2D61D75C1DB76F7600217426 /* BiliBiliKit.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = BiliBiliKit.framework;
+			remoteRef = 2D61D75B1DB76F7600217426 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXResourcesBuildPhase section */
+		2DC1A0541DB4875C006DD13D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2D64195E1DB922E700E1714D /* Home.storyboard in Resources */,
+				2DC1A0641DB4875D006DD13D /* LaunchScreen.storyboard in Resources */,
+				2DC1A0751DB489AE006DD13D /* Images.xcassets in Resources */,
+				2DC1A0611DB4875D006DD13D /* Assets.xcassets in Resources */,
+				2DA689161DB490DF00E87142 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2DC1A0521DB4875C006DD13D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2DA689EA1DB49DAE00E87142 /* SceneController.swift in Sources */,
+				2D8C9ED41DC7565A00FC6A8B /* LiveTableViewCell.swift in Sources */,
+				2DA689EB1DB49DAE00E87142 /* BiliStoryboardViewController.swift in Sources */,
+				2DA68A781DB4B72900E87142 /* BiliViewController.swift in Sources */,
+				2D6419751DBA1A2800E1714D /* AppDelegate_BiliAddition.swift in Sources */,
+				2DA9D3D91DB65134005E977E /* BiliPreference.swift in Sources */,
+				2D5D48C61DBF664C004760AE /* HomeViewController.swift in Sources */,
+				2D5D48D11DBF959B004760AE /* BangumiViewController.swift in Sources */,
+				2DA9D3D41DB63C6A005E977E /* SplashViewModel.swift in Sources */,
+				2D5D48CD1DBF9557004760AE /* LiveViewController.swift in Sources */,
+				2D3CDCE51DC18FFC00884948 /* LiveHeaderView.swift in Sources */,
+				2DA9D3D61DB63C88005E977E /* SplashModel.swift in Sources */,
+				2DC1A05A1DB4875C006DD13D /* AppDelegate.swift in Sources */,
+				2D5D48CF1DBF957E004760AE /* RecommendViewController.swift in Sources */,
+				2DA689E71DB491F500E87142 /* ThirdPartyManager.swift in Sources */,
+				2DF51DAA1DC4ED4C0036FE97 /* LiveEntranceIconsCollectionViewCell.swift in Sources */,
+				2DA9D3D31DB63C6A005E977E /* SplashViewController.swift in Sources */,
+				2DA68A741DB4B70500E87142 /* BiliTabBarController.swift in Sources */,
+				2DA68A761DB4B71500E87142 /* BiliNavigationController.swift in Sources */,
+				2DC8FCE81DC474C400725C49 /* LiveEntranceIconsView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		2DC1A0621DB4875D006DD13D /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2DC1A0631DB4875D006DD13D /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		2DC1A0661DB4875D006DD13D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		2DC1A0671DB4875D006DD13D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		2DC1A0691DB4875D006DD13D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = GF3C8WCZ4C;
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/MybilibiliDemo";
+				INFOPLIST_FILE = MybilibiliDemo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.Zly.MybilibiliDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "MybilibiliDemo/MyBiliBiliDemo-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		2DC1A06A1DB4875D006DD13D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = GF3C8WCZ4C;
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/MybilibiliDemo";
+				INFOPLIST_FILE = MybilibiliDemo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.Zly.MybilibiliDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "MybilibiliDemo/MyBiliBiliDemo-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2DC1A0511DB4875C006DD13D /* Build configuration list for PBXProject "MybilibiliDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2DC1A0661DB4875D006DD13D /* Debug */,
+				2DC1A0671DB4875D006DD13D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2DC1A0681DB4875D006DD13D /* Build configuration list for PBXNativeTarget "MybilibiliDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2DC1A0691DB4875D006DD13D /* Debug */,
+				2DC1A06A1DB4875D006DD13D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 2DC1A04E1DB4875C006DD13D /* Project object */;
+}

@@ -1,0 +1,44 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "0DDC1EF8BEB5FF1CA33881D47DFA4CCA5DCA323A",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "0DDC1EF8BEB5FF1CA33881D47DFA4CCA5DCA323A" : 9223372036854775807,
+    "E28E36D423EC87798E52E2BF482E9F7A1E6479D6" : 9223372036854775807,
+    "3AF18F9C6F5D633BAA0B3F935459E0C777C82047" : 9223372036854775807,
+    "2B63CCF71525A271478FBA0FCECF929E60AF80A6" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "00A83442-6310-40AE-893C-3174064A0400",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "0DDC1EF8BEB5FF1CA33881D47DFA4CCA5DCA323A" : "MybilibiliDemo\/",
+    "E28E36D423EC87798E52E2BF482E9F7A1E6479D6" : "MybilibiliDemo\/MybilibiliDemo\/BiliBiliKit\/BiliBiliKit\/Vendor\/SDWebImage\/",
+    "3AF18F9C6F5D633BAA0B3F935459E0C777C82047" : "MybilibiliDemo\/MybilibiliDemo\/BiliBiliKit\/BiliBiliKit\/Vendor\/SnapKit\/",
+    "2B63CCF71525A271478FBA0FCECF929E60AF80A6" : "MybilibiliDemo\/MybilibiliDemo\/BiliBiliKit\/BiliBiliKit\/Vendor\/YYWebImage\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "MybilibiliDemo",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "MybilibiliDemo.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/zhaizong\/ZLY_bilibiliDemo.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "0DDC1EF8BEB5FF1CA33881D47DFA4CCA5DCA323A"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/PrideChung\/YYWebImage.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "2B63CCF71525A271478FBA0FCECF929E60AF80A6"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/SnapKit\/SnapKit.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "3AF18F9C6F5D633BAA0B3F935459E0C777C82047"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/rs\/SDWebImage.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "E28E36D423EC87798E52E2BF482E9F7A1E6479D6"
+    }
+  ]
+}
