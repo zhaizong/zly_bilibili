@@ -27,13 +27,25 @@ fileprivate struct Commons {
   static let DisplayViewRepeatClickTitleNote = "displayview_repeatclick_titlenote"
 }
 
-//字体放大效果和角标不能同时使用。
-//网易效果：颜色渐变 + 字体缩放
-//进入头条效果：颜色填充渐变
-//展示tableView的时候，如果有UITabBarController,UINavgationController,需要自己给tableView添加额外滚动区域。
+// 字体放大效果和角标不能同时使用。
+// 网易效果：颜色渐变 + 字体缩放
+// 进入头条效果：颜色填充渐变
+// 展示tableView的时候，如果有UITabBarController,UINavgationController,需要自己给tableView添加额外滚动区域。
 class BiliViewController: UIViewController {
 
   // MARK: - Property
+  
+  /**
+   如果_isfullScreen = true，这个方法就不好使。
+   
+   设置整体内容的frame,包含（标题滚动视图和内容滚动视图）
+   */
+  var setupContentViewFrame: CGRect? {
+    didSet {
+      guard let setupContentViewFrame = setupContentViewFrame, setupContentViewFrame != .zero else { return }
+      _contentView.frame = setupContentViewFrame
+    }
+  }
   
   // MARK: - 内容
   
@@ -42,7 +54,7 @@ class BiliViewController: UIViewController {
    true :  全屏：内容占据整个屏幕，会有穿透导航栏效果，需要手动设置tableView额外滚动区域
    false  :  内容从标题下展示
    */
-  var isfullScreen: Bool! {
+  var isfullScreen: Bool = false {
     didSet {
       _contentView.frame = CGRect(origin: .zero, size: CGSize(width: Commons.ScreenWidth, height: Commons.ScreenHeight))
     }
@@ -111,6 +123,7 @@ class BiliViewController: UIViewController {
    */
   var isShowUnderLine: Bool! {
     willSet {
+      guard let isShowTitleScale = isShowTitleScale else { return }
       if isShowTitleScale == true {
 //        抛异常
         let excp = NSException(name: NSExceptionName(rawValue: "bili_vc_exception"), reason: "字体放大效果和角标不能同时使用.", userInfo: nil)
@@ -138,6 +151,7 @@ class BiliViewController: UIViewController {
    */
   var isShowTitleScale: Bool! {
     willSet {
+      guard let isShowUnderLine = isShowUnderLine else { return }
       if isShowUnderLine == true {
 //        抛异常
         let excp = NSException(name: NSExceptionName(rawValue: "bili_vc_exception"), reason: "字体放大效果和角标不能同时使用.", userInfo: nil)
@@ -291,7 +305,7 @@ class BiliViewController: UIViewController {
 //  记录是否在动画
   fileprivate var _isAniming: Bool!
 //  是否初始化
-  fileprivate var _isInitial: Bool!
+  fileprivate var _isInitial: Bool = false
 //  标题间距
   fileprivate var _titleMargin: CGFloat!
 //  计算上一次选中角标
@@ -810,15 +824,6 @@ extension BiliViewController {
   
   // MARK: - Public Method
   
-  /**
-   如果_isfullScreen = true，这个方法就不好使。
-   
-   设置整体内容的frame,包含（标题滚动视图和内容滚动视图）
-   */
-  func setupContentViewFrame(_ frame: CGRect) {
-    
-  }
-  
 //  一次性设置所有标题属性
   func setupTitleEffect(_ titleScrollViewColor: UIColor, _ normalColor: UIColor, _ selectedColor: UIColor, _ titleFont: UIFont, _ titleHeight: CGFloat) {
     
@@ -835,8 +840,10 @@ extension BiliViewController {
   }
   
 //  一次性设置所有字体缩放属性
-  func setupTitleScale(_ isShowTitleScale: Bool, _ titleScale: CGFloat) {
+  func setupTitleScale(_ _isShowTitleScale: Bool, _ _titleScale: CGFloat) {
     
+    isShowTitleScale = _isShowTitleScale
+    titleScale = _titleScale
   }
   
 //  一次性设置所有颜色渐变属性

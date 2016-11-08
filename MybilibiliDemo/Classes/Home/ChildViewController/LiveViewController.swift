@@ -29,7 +29,7 @@ class LiveViewController: UIViewController, BiliStoryboardViewController {
   fileprivate var _partitions: [[String: Any]] = [] // 分区数据数组
   
   fileprivate var _lastSelectedTabBarIndex: Int! // 记录上次选中的tabbar索引
-  fileprivate weak var _contentTableView: UITableView! // 内容视图
+  fileprivate weak var _liveContentTableView: UITableView! // 内容视图
   fileprivate weak var _tableHeaderView: LiveHeaderView! // 头部视图
   
   // MARK: - Lifecycle
@@ -71,7 +71,7 @@ class LiveViewController: UIViewController, BiliStoryboardViewController {
       _tableHeaderView.snp.updateConstraints({ (make) in
         make.height.equalTo(newValue)
       })
-      _contentTableView.tableHeaderView = _tableHeaderView
+      _liveContentTableView.tableHeaderView = _tableHeaderView
     }
   }
 
@@ -91,7 +91,33 @@ extension LiveViewController: UITableViewDataSource, UITableViewDelegate {
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     
-    return UITableViewCell()
+    let cell = tableView.dequeueReusableCell(withIdentifier: Commons.LiveContentTableViewCellID, for: indexPath) as! LiveContentTableViewCell
+    
+    let temp1 = _partitions[indexPath.section]
+    cell.lives = temp1["lives"] as? [[String: Any]]
+    
+    return cell
+  }
+  
+  func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    
+    return 44
+  }
+  
+  func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+    
+    return 60
+  }
+  
+  func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    
+//    let temp1 = _partitions[section]
+    return UIView()
+  }
+  
+  func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+    
+    return UIView()
   }
 }
 
@@ -99,10 +125,12 @@ extension LiveViewController: LiveHeaderViewDelegate {
   
   func liveHeaderView(_ liveHeaderView: LiveHeaderView, didSelectedBannerIndex index: Int) {
     
+    debugPrint("点击了轮播索引: \(index)")
   }
   
   func liveHeaderView(_ liveHeaderView: LiveHeaderView, selectedAreaID areaID: LiveEntranceIconsViewAreaType) {
     
+    debugPrint("点击了入口图标索引: \(areaID)")
   }
 }
 
@@ -110,24 +138,24 @@ extension LiveViewController {
   
   @objc fileprivate func _scrollDidFinshNotebeginRefreshing() {
     
-    _contentTableView.header.beganRefreshing()
+    _liveContentTableView.header.beganRefreshing()
   }
   
   @objc fileprivate func _bannerViewWillBeginDraggingNotification() {
     
-    _contentTableView.isScrollEnabled = false
+    _liveContentTableView.isScrollEnabled = false
   }
   
   @objc fileprivate func _bannerViewDidEndDeceleratingNotification() {
     
-    _contentTableView.isScrollEnabled = true
+    _liveContentTableView.isScrollEnabled = true
   }
   
   @objc fileprivate func _tabBarDidSelectNotification() {
     
 //    如果是连续选中两次，直接返回.
     if _lastSelectedTabBarIndex == tabBarController?.selectedIndex && view.isShowingOnKeyWindow() {
-      _contentTableView.header.beganRefreshing()
+      _liveContentTableView.header.beganRefreshing()
     }
 //    记录这次选中的索引
     _lastSelectedTabBarIndex = tabBarController?.selectedIndex
@@ -142,20 +170,20 @@ extension LiveViewController {
     automaticallyAdjustsScrollViewInsets = false
     view.autoresizingMask = .init(rawValue: 0)
     
-    _contentTableView = UITableView(frame: .zero, style: .grouped)
-    _contentTableView.register(LiveEntranceIconsCollectionViewCell.self, forCellReuseIdentifier: Commons.LiveContentTableViewCellID)
-    _contentTableView.backgroundColor = BBK_Main_Background_Color
-    _contentTableView.separatorStyle = .none
-    _contentTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 49, right: 0)
-    _contentTableView.scrollIndicatorInsets = _contentTableView.contentInset
-    _contentTableView.estimatedRowHeight = 306
-    _contentTableView.rowHeight = 306
-    _contentTableView.dataSource = self
-    _contentTableView.delegate = self
-    view.addSubview(_contentTableView)
+    _liveContentTableView = UITableView(frame: .zero, style: .grouped)
+    _liveContentTableView.register(LiveEntranceIconsCollectionViewCell.self, forCellReuseIdentifier: Commons.LiveContentTableViewCellID)
+    _liveContentTableView.backgroundColor = BBK_Main_Background_Color
+    _liveContentTableView.separatorStyle = .none
+    _liveContentTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 49, right: 0)
+    _liveContentTableView.scrollIndicatorInsets = _liveContentTableView.contentInset
+    _liveContentTableView.estimatedRowHeight = 306
+    _liveContentTableView.rowHeight = 306
+    _liveContentTableView.dataSource = self
+    _liveContentTableView.delegate = self
+    view.addSubview(_liveContentTableView)
     
 //    添加下拉刷新控件
-    _contentTableView.header = BBKRefreshHeader() { (header: BBKRefreshHeader?) in
+    _liveContentTableView.header = BBKRefreshHeader() { (header: BBKRefreshHeader?) in
       self._loadDataArrFromNetwork()
     }
     
@@ -174,7 +202,7 @@ extension LiveViewController {
     _tableHeaderView = LiveHeaderView.liveHeaderView()
     _tableHeaderView.frame = .zero
     _tableHeaderView.myDelegate = self
-    _contentTableView.tableHeaderView = _tableHeaderView
+    _liveContentTableView.tableHeaderView = _tableHeaderView
     
     _tableHeaderView.addObserver(self, forKeyPath: "viewHeight", options: .new, context: nil)
     
@@ -215,12 +243,12 @@ extension LiveViewController {
         weakSelf._partitions = dataDict["partitions"] as! [[String: Any]]
         
       }
-      weakSelf._contentTableView.reloadData()
-      weakSelf._contentTableView.header.endRefreshing()
+      weakSelf._liveContentTableView.reloadData()
+      weakSelf._liveContentTableView.header.endRefreshing()
     }) { [weak self] (task: URLSessionDataTask?, error: Error) in
       guard let weakSelf = self else { return }
       debugPrint("error: \(error)")
-      weakSelf._contentTableView.header.endRefreshing()
+      weakSelf._liveContentTableView.header.endRefreshing()
     }
   }
 }

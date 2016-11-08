@@ -80,7 +80,8 @@ extension HomeViewController {
   
   fileprivate func _setupApperance() {
     
-    view.backgroundColor = BBK_Main_White_Color
+//    view.backgroundColor = BBK_Main_White_Color
+    view.backgroundColor = UIColor.red
     automaticallyAdjustsScrollViewInsets = false
     view.autoresizingMask = UIViewAutoresizing(rawValue: UInt(0))
     
@@ -101,7 +102,7 @@ extension HomeViewController {
      如果_isfullScreen = Yes，这个方法就不好使。
      设置整体内容的frame,包含（标题滚动视图和内容滚动视图）
      */
-    setupContentViewFrame(CGRect(origin: CGPoint(x: 0, y: 20), size: CGSize(width: BBK_Screen_Width, height: BBK_Screen_Height)))
+    setupContentViewFrame = CGRect(origin: CGPoint(x: 0, y: 20), size: CGSize(width: BBK_Screen_Width, height: BBK_Screen_Height))
     
     isBisectedWidthUnderLineAndTitle = true
     
@@ -112,17 +113,17 @@ extension HomeViewController {
   
   fileprivate func _setupAllViewController() {
     
-    let liveVC: LiveViewController = LiveViewController.instanceFromStoryboard()
-    liveVC.title = "直播"
-    addChildViewController(liveVC)
+//    let liveVC: LiveViewController = LiveViewController.instanceFromStoryboard()
+//    liveVC.title = "直播"
+//    addChildViewController(liveVC)
     
     let recommendVC: RecommendViewController = RecommendViewController.instanceFromStoryboard()
     recommendVC.title = "推荐"
     addChildViewController(recommendVC)
     
-    let bangumiVC: BangumiViewController = BangumiViewController.instanceFromStoryboard()
-    bangumiVC.title = "番剧"
-    addChildViewController(bangumiVC)
+//    let bangumiVC: BangumiViewController = BangumiViewController.instanceFromStoryboard()
+//    bangumiVC.title = "番剧"
+//    addChildViewController(bangumiVC)
   }
   
 }

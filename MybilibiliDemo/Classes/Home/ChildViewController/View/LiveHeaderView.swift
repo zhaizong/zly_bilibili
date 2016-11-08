@@ -82,14 +82,15 @@ extension LiveHeaderView {
     
     backgroundColor = BBK_Main_Background_Color
     
-    _bannerView = BBKCycleBannerView.initBannerViewWithFrame(.zero, placeholderImage: nil) { [weak self] (didselectIndex: Int) in
+    _bannerView = BBKCycleBannerView.initBannerViewWithFrame(.zero, placeholderImage: nil)
+    addSubview(_bannerView)
+    _bannerView.bannerViewClosureDidClick = { [weak self] (didSelectIndex: Int) in
       guard let weakSelf = self else { return }
       guard let myDelegate = weakSelf.myDelegate else { return }
       if myDelegate.responds(to: #selector(LiveHeaderViewDelegate.liveHeaderView(_:didSelectedBannerIndex:))) {
-        myDelegate.liveHeaderView(weakSelf, didSelectedBannerIndex: didselectIndex)
+        myDelegate.liveHeaderView(weakSelf, didSelectedBannerIndex: didSelectIndex)
       }
     }
-    addSubview(_bannerView)
     
     _bottomView = LiveEntranceIconsView.liveEntranceIconsView() { [weak self] (selectedAreaID: LiveEntranceIconsViewAreaType) in
       guard let weakSelf = self else { return }

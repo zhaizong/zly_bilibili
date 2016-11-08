@@ -143,7 +143,9 @@
 		2D64196D1DBA17E300E1714D /* UIColor+DYKAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D6419681DBA17E300E1714D /* UIColor+DYKAddition.m */; };
 		2D64196E1DBA17E300E1714D /* UIColor_DYKAddition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D6419691DBA17E300E1714D /* UIColor_DYKAddition.swift */; };
 		2D64196F1DBA17E300E1714D /* UIStoryboard+BiliAddition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D64196A1DBA17E300E1714D /* UIStoryboard+BiliAddition.swift */; };
+		2DA430701DC87CE6006FEFAC /* BBKCommonStyleCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA4306F1DC87CE6006FEFAC /* BBKCommonStyleCollectionViewLayout.swift */; };
 		2DA9D3FC1DB6739A005E977E /* BiliBiliKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 2DA9D3FA1DB6739A005E977E /* BiliBiliKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2DBC00711DC8F77F00C93ACC /* UIView+BBKAddition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBC00701DC8F77F00C93ACC /* UIView+BBKAddition.swift */; };
 		2DC5DAF91DBC757000C002DF /* UIView+HSFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC5DAF81DBC757000C002DF /* UIView+HSFrame.swift */; };
 		2DC5DAFB1DBCCB1200C002DF /* BBKDisplayTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC5DAFA1DBCCB1200C002DF /* BBKDisplayTitleLabel.swift */; };
 		2DF51DC11DC599940036FE97 /* _YYWebImageSetter.h in Headers */ = {isa = PBXBuildFile; fileRef = 2DF51DAE1DC599940036FE97 /* _YYWebImageSetter.h */; };
@@ -339,9 +341,11 @@
 		2D6419681DBA17E300E1714D /* UIColor+DYKAddition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+DYKAddition.m"; sourceTree = "<group>"; };
 		2D6419691DBA17E300E1714D /* UIColor_DYKAddition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColor_DYKAddition.swift; sourceTree = "<group>"; };
 		2D64196A1DBA17E300E1714D /* UIStoryboard+BiliAddition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIStoryboard+BiliAddition.swift"; sourceTree = "<group>"; };
+		2DA4306F1DC87CE6006FEFAC /* BBKCommonStyleCollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BBKCommonStyleCollectionViewLayout.swift; sourceTree = "<group>"; };
 		2DA9D3F71DB6739A005E977E /* BiliBiliKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BiliBiliKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DA9D3FA1DB6739A005E977E /* BiliBiliKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = BiliBiliKit.h; path = BiliBiliKit/BiliBiliKit.h; sourceTree = "<group>"; };
 		2DA9D3FB1DB6739A005E977E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2DBC00701DC8F77F00C93ACC /* UIView+BBKAddition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+BBKAddition.swift"; sourceTree = "<group>"; };
 		2DC5DAF81DBC757000C002DF /* UIView+HSFrame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+HSFrame.swift"; sourceTree = "<group>"; };
 		2DC5DAFA1DBCCB1200C002DF /* BBKDisplayTitleLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BBKDisplayTitleLabel.swift; sourceTree = "<group>"; };
 		2DF51DAE1DC599940036FE97 /* _YYWebImageSetter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _YYWebImageSetter.h; sourceTree = "<group>"; };
@@ -638,9 +642,18 @@
 				2D6419691DBA17E300E1714D /* UIColor_DYKAddition.swift */,
 				2D64196A1DBA17E300E1714D /* UIStoryboard+BiliAddition.swift */,
 				2D3CDCEC1DC1AAF100884948 /* UIImage+BBKAddition.swift */,
+				2DBC00701DC8F77F00C93ACC /* UIView+BBKAddition.swift */,
 			);
 			name = Category;
 			path = BiliBiliKit/Category;
+			sourceTree = "<group>";
+		};
+		2DA4306E1DC87C1A006FEFAC /* Layout */ = {
+			isa = PBXGroup;
+			children = (
+				2DA4306F1DC87CE6006FEFAC /* BBKCommonStyleCollectionViewLayout.swift */,
+			);
+			path = Layout;
 			sourceTree = "<group>";
 		};
 		2DA9D3ED1DB6739A005E977E = {
@@ -679,6 +692,7 @@
 		2DA9D4021DB67488005E977E /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				2DA4306E1DC87C1A006FEFAC /* Layout */,
 				2DF51E101DC60D3C0036FE97 /* BBKRefreshHeader */,
 				2D3CDCF11DC1AE6B00884948 /* BBKGradientView.swift */,
 				2D61D7491DB76D8A00217426 /* BBKAlertView.h */,
@@ -979,6 +993,7 @@
 				2D1B3F481DC0DA9B00AF4BCF /* ConstraintPriorityTarget.swift in Sources */,
 				2D64196F1DBA17E300E1714D /* UIStoryboard+BiliAddition.swift in Sources */,
 				2D1B3E851DC0DA5F00AF4BCF /* AFNetworkReachabilityManager.m in Sources */,
+				2DBC00711DC8F77F00C93ACC /* UIView+BBKAddition.swift in Sources */,
 				2D3CDD391DC213A100884948 /* SDWebImageDownloaderOperation.m in Sources */,
 				2D1B3E8D1DC0DA5F00AF4BCF /* AFURLSessionManager.m in Sources */,
 				2D1B3E891DC0DA5F00AF4BCF /* AFURLRequestSerialization.m in Sources */,
@@ -991,6 +1006,7 @@
 				2D3CDD291DC213A100884948 /* MKAnnotationView+WebCache.m in Sources */,
 				2D1B3F341DC0DA9B00AF4BCF /* ConstraintAttributes.swift in Sources */,
 				2D1B3F501DC0DA9B00AF4BCF /* LayoutConstraint.swift in Sources */,
+				2DA430701DC87CE6006FEFAC /* BBKCommonStyleCollectionViewLayout.swift in Sources */,
 				2D1B3F471DC0DA9B00AF4BCF /* ConstraintOffsetTarget.swift in Sources */,
 				2D1B3EB11DC0DA5F00AF4BCF /* UIScrollView+MJRefresh.m in Sources */,
 				2D1B3F3A1DC0DA9B00AF4BCF /* ConstraintInsetTarget.swift in Sources */,

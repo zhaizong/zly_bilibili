@@ -86,12 +86,13 @@ public class BBKCycleBannerView: UIView {
   
   public var autoScrollTimeInterval: TimeInterval // 自动滚动间隔时间, 默认5s
   
-  fileprivate weak var _mainView: UICollectionView! // 轮播图View
-  fileprivate weak var _flowLayout: UICollectionViewFlowLayout! // 轮播图布局
+  public var bannerViewClosureDidClick: ((_ didselectIndex: Int) -> Void)?
+  
+  fileprivate var _mainView: UICollectionView! // 轮播图View
+  fileprivate var _flowLayout: UICollectionViewFlowLayout! // 轮播图布局
   fileprivate weak var _timer: Timer! // 轮播定时器
-  fileprivate weak var _mainPageControl: UIPageControl! // 页码控件
+  fileprivate var _mainPageControl: UIPageControl! // 页码控件
   fileprivate weak var _placeholderImage: UIImage! // 占位图
-  fileprivate var _block: ((_ didselectIndex: Int) -> Void)?
   
   fileprivate var _totalItemsCount: Int // 总item的数量
   
@@ -107,10 +108,9 @@ public class BBKCycleBannerView: UIView {
    *  @return 轮播图实例
    */
   
-  public class func initBannerViewWithFrame(_ frame: CGRect, placeholderImage: UIImage?, block: @escaping ((_ didselectIndex: Int) -> Void)) -> BBKCycleBannerView {
+  public class func initBannerViewWithFrame(_ frame: CGRect, placeholderImage: UIImage?) -> BBKCycleBannerView {
     
     let bannerView = BBKCycleBannerView(frame: frame)
-    bannerView._block = block
     bannerView._placeholderImage = placeholderImage
     return bannerView
   }
@@ -243,8 +243,7 @@ extension BBKCycleBannerView: UICollectionViewDataSource, UICollectionViewDelega
   
   public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     
-    guard let block = _block else { return }
-    block(indexPath.item % models.count)
+    bannerViewClosureDidClick?(indexPath.item % models.count)
   }
   
   public func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {

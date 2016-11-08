@@ -25,6 +25,13 @@ import UIKit
   case searchLive // 搜索直播 id = 10090
 }
 
+// Connect
+
+internal let ServerApp = "http://app.bilibili.com"
+// 轮播图
+public let BBK_Banner_URL = ServerApp + "/x/banner"
+
+
 // APP
 
 //  标题被点击或者内容滚动完成，会发出这个通知，监听这个通知，可以做自己想要做的事情，比如加载数据
@@ -58,3 +65,6 @@ public let BBK_Main_White_Color = UIColor.white
 
 // placeholder背景色
 public let BBK_Main_Placeholder_Background_Color = UIColor(red: 0.94, green: 0.94, blue: 0.94, alpha: 1.0)
+
+//较浅的线颜色
+public let BBK_Light_Line_Color = UIColor(hexString: "#DCDCDC")
