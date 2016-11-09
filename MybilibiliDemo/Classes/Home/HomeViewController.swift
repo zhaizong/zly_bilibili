@@ -80,8 +80,8 @@ extension HomeViewController {
   
   fileprivate func _setupApperance() {
     
-//    view.backgroundColor = BBK_Main_White_Color
-    view.backgroundColor = UIColor.red
+    view.backgroundColor = BBK_Main_White_Color
+//    view.backgroundColor = UIColor.red
     automaticallyAdjustsScrollViewInsets = false
     view.autoresizingMask = UIViewAutoresizing(rawValue: UInt(0))
     
@@ -113,9 +113,9 @@ extension HomeViewController {
   
   fileprivate func _setupAllViewController() {
     
-//    let liveVC: LiveViewController = LiveViewController.instanceFromStoryboard()
-//    liveVC.title = "直播"
-//    addChildViewController(liveVC)
+    let liveVC: LiveViewController = LiveViewController.instanceFromStoryboard()
+    liveVC.title = "直播"
+    addChildViewController(liveVC)
     
     let recommendVC: RecommendViewController = RecommendViewController.instanceFromStoryboard()
     recommendVC.title = "推荐"

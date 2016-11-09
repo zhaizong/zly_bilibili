@@ -91,20 +91,22 @@ class BiliViewController: UIViewController {
   /**
    正常标题颜色
    */
-  lazy var normalColor: UIColor = {
+  lazy var normalColor: UIColor = { [weak self] in
+    guard let weakSelf = self else { return UIColor.black }
     var lazilyCreatedColor = UIColor.black
-    if self.isShowTitleGradient == true && self.titleColorGradientStyle == .rgb {
-      lazilyCreatedColor = UIColor(red: self.startR, green: self.startG, blue: self.startB, alpha: 1)
+    if weakSelf.isShowTitleGradient == true && weakSelf.titleColorGradientStyle == .rgb {
+      lazilyCreatedColor = UIColor(red: weakSelf.startR, green: weakSelf.startG, blue: weakSelf.startB, alpha: 1)
     }
     return lazilyCreatedColor
   }()
   /**
    选中标题颜色
    */
-  lazy var selectColor: UIColor = {
+  lazy var selectColor: UIColor = { [weak self] in
+    guard let weakSelf = self else { return UIColor.red }
     var lazilyCreatedColor = UIColor.red
-    if self.isShowTitleGradient == true && self.titleColorGradientStyle == .rgb {
-      lazilyCreatedColor = UIColor(red: self.endR, green: self.endG, blue: self.endB, alpha: 1)
+    if weakSelf.isShowTitleGradient == true && weakSelf.titleColorGradientStyle == .rgb {
+      lazilyCreatedColor = UIColor(red: weakSelf.endR, green: weakSelf.endG, blue: weakSelf.endB, alpha: 1)
     }
     return lazilyCreatedColor
   }()
@@ -121,7 +123,7 @@ class BiliViewController: UIViewController {
   /**
    是否需要下标
    */
-  var isShowUnderLine: Bool! {
+  var isShowUnderLine: Bool? {
     willSet {
       guard let isShowTitleScale = isShowTitleScale else { return }
       if isShowTitleScale == true {
@@ -149,7 +151,7 @@ class BiliViewController: UIViewController {
   /**
    字体放大
    */
-  var isShowTitleScale: Bool! {
+  var isShowTitleScale: Bool? {
     willSet {
       guard let isShowUnderLine = isShowUnderLine else { return }
       if isShowUnderLine == true {
@@ -243,6 +245,7 @@ class BiliViewController: UIViewController {
 //  内容滚动视图
   fileprivate lazy var _contentScrollView: UICollectionView = { [weak self] in
     guard let weakSelf = self else { return UICollectionView() }
+//    创建布局
     let layout = BiliFlowLayout()
     let lazilyCreatedContentScrollView = UICollectionView(frame: .zero, collectionViewLayout: layout)
     lazilyCreatedContentScrollView.isPagingEnabled = true
@@ -290,13 +293,11 @@ class BiliViewController: UIViewController {
     } else {
       lazilyCreatedCoverView.backgroundColor = UIColor.lightGray
     }
-    lazilyCreatedCoverView.layer.cornerRadius = weakSelf.coverCornerRadius
+//    lazilyCreatedCoverView.layer.cornerRadius = weakSelf.coverCornerRadius
+    lazilyCreatedCoverView.layer.cornerRadius = 5
     weakSelf._titleScrollView.insertSubview(lazilyCreatedCoverView, at: 0)
-    if weakSelf.isShowTitleCover == true {
-      return lazilyCreatedCoverView
-    } else {
-      return nil
-    }
+    guard let _ = weakSelf.isShowTitleCover, weakSelf.isShowTitleCover == true else { return nil }
+    return lazilyCreatedCoverView
   }()
 //  记录上一次内容滚动视图偏移量
   fileprivate var _lastOffsetX: CGFloat!
@@ -365,6 +366,7 @@ class BiliViewController: UIViewController {
   
   override func viewDidLayoutSubviews() {
     super.viewDidLayoutSubviews()
+    
     let contentY: CGFloat = (navigationController != nil) ? Commons.NavBarHeight : UIApplication.shared.statusBarFrame.size.height
     let contentW = Commons.ScreenWidth
     let contentH = Commons.ScreenHeight - contentY
@@ -372,26 +374,32 @@ class BiliViewController: UIViewController {
     if _contentView.frame.size.height == 0 {
 //      没有设置内容尺寸，才需要设置内容尺寸
       _contentView.frame = CGRect(origin: CGPoint(x: 0, y: contentY), size: CGSize(width: contentW, height: contentH))
-      _contentView.snp.makeConstraints({ (make) in
+      /*_contentView.snp.makeConstraints({ (make) in
         make.centerX.equalTo(0)
         make.centerY.equalTo(contentY)
         make.width.equalTo(contentW)
         make.height.equalTo(contentH)
-      })
+      })*/
     }
 //    设置标题滚动视图frame
 //    计算尺寸
     let titleH = titleHeight != nil ? titleHeight! : Commons.TitleScrollViewHeight
     let titleY = isfullScreen == true ? contentY : 0
-    _titleScrollView.snp.makeConstraints { (make) in
+    _titleScrollView.frame = CGRect(origin: CGPoint(x: 0, y: titleY), size: CGSize(width: contentW, height: titleH))
+    /*_titleScrollView.snp.makeConstraints { (make) in
       make.centerX.equalTo(0)
       make.centerY.equalTo(titleY)
       make.width.equalTo(contentW)
       make.height.equalTo(titleH)
-    }
+    }*/
 //    设置内容滚动视图frame
     let contentScrollY = _titleScrollView.frame.maxY
-    _contentScrollView.snp.makeConstraints { (make) in
+    if isfullScreen == true {
+      _contentScrollView.frame = CGRect(origin: .zero, size: CGSize(width: contentW, height: Commons.ScreenHeight))
+    } else {
+      _contentScrollView.frame = CGRect(origin: CGPoint(x: 0, y: contentScrollY), size: CGSize(width: contentW, height: _contentView.st_height - contentScrollY))
+    }
+    /*_contentScrollView.snp.makeConstraints { (make) in
       if isfullScreen == true {
         make.center.equalTo(0)
         make.width.equalTo(contentW)
@@ -402,12 +410,16 @@ class BiliViewController: UIViewController {
         make.width.equalTo(contentW)
         make.height.equalTo(_contentView.snp.height).offset(-contentScrollY)
       }
-    }
+    }*/
 //    设置底部的线
-    _bottomLine.snp.makeConstraints { (make) in
-      make.centerX.equalTo(0)
-      make.centerY.equalTo((_underLine?.snp.bottom)!).offset(-0.5)
+    if let _underLine = _underLine {
+      _bottomLine.frame = CGRect(origin: CGPoint(x: 0, y: _underLine.st_bottom - 0.5), size: CGSize(width: _titleScrollView.st_width, height: 0.5))
+      /*_bottomLine.snp.makeConstraints { (make) in
+       make.centerX.equalTo(0)
+       make.centerY.equalTo((_underLine?.snp.bottom)!).offset(-0.5)
+       }*/
     }
+    
   }
   
   /*override func viewWillDisappear(_ animated: Bool) {
@@ -558,7 +570,7 @@ extension BiliViewController {
           NotificationCenter.default.post(name: .init(rawValue: Commons.DisplayViewRepeatClickTitleNote), object: vc)
         }
       }
-      selectedIndex = i
+      _selIndex = i
 //      点击事件处理完成
       _isClickTitle = false
     }
@@ -580,9 +592,11 @@ extension BiliViewController {
       }
     }
 //    标题缩放
-    if isShowTitleScale && titleColorGradientStyle == .rgb {
-      let scaleTransform = titleScale != nil ? titleScale : Commons.TitleTransformScale
-      label.transform = CGAffineTransform(scaleX: scaleTransform!, y: scaleTransform!)
+    if let isShowTitleScale = isShowTitleScale {
+      if isShowTitleScale && titleColorGradientStyle == .rgb {
+        let scaleTransform = titleScale != nil ? titleScale : Commons.TitleTransformScale
+        label.transform = CGAffineTransform(scaleX: scaleTransform!, y: scaleTransform!)
+      }
     }
 //    修改标题选中颜色
     label.textColor = selectColor
@@ -619,34 +633,41 @@ extension BiliViewController {
 //  设置下标的位置
   fileprivate func _setupUnderLine(_ label: UILabel) {
     
+    guard let text = label.text else { return }
 //    获取文字尺寸
-    let titleBounds = label.text!.boundingRect(with: CGSize(width: CGFloat(MAXFLOAT), height: 0), options: NSStringDrawingOptions.usesLineFragmentOrigin, attributes: [NSFontAttributeName: titleFont], context: nil)
+    let titleBounds = text.boundingRect(with: CGSize(width: CGFloat(MAXFLOAT), height: 0), options: .usesLineFragmentOrigin, attributes: [NSFontAttributeName: titleFont], context: nil)
     var underLineH: CGFloat = 0
     if let _underLineH = self.underLineH {
       underLineH = _underLineH
     } else {
       underLineH = Commons.UnderLineH
     }
-    if _underLine != nil {
+    _underLine?.st_top = label.st_height - underLineH
+    _underLine?.st_height = underLineH
+    /*if _underLine != nil {
       _underLine!.snp.remakeConstraints({ (make) in
         make.top.equalTo(label.snp.height).offset(-underLineH)
         make.height.equalTo(underLineH)
       })
-    }
+    }*/
 //    点击时候需要动画
-    if let _underLine = _underLine {
+    if let _ = _underLine {
       UIView.animate(withDuration: 0.25) {
         if self.isBisectedWidthUnderLineAndTitle == true {
           let count = self.childViewControllers.count
-          _underLine.snp.remakeConstraints({ (make) in
+          self._underLine?.st_width = Commons.ScreenWidth / CGFloat(count)
+          self._underLine?.st_left = label.st_left
+          /*_underLine.snp.remakeConstraints({ (make) in
             make.width.equalTo(Commons.ScreenWidth / CGFloat(count))
             make.left.equalTo(label.snp.left)
-          })
+          })*/
         } else {
-          _underLine.snp.remakeConstraints({ (make) in
+          self._underLine?.st_width = titleBounds.size.width
+          self._underLine?.st_left = label.st_left
+          /*_underLine.snp.remakeConstraints({ (make) in
             make.width.equalTo(titleBounds.size.width)
             make.left.equalTo(label.snp.left)
-          })
+          })*/
         }
       }
     }
@@ -659,25 +680,32 @@ extension BiliViewController {
     let border: CGFloat = 5
     let coverH = titleBounds.size.height + 2 * border
     let coverW = titleBounds.size.width + 2 * border
-    debugPrint("测试Label是否有高：\(label.frame.size.height)")
-    if let _coverView = _coverView {
-      _coverView.snp.remakeConstraints({ (make) in
+    
+    if let _ = _coverView {
+      self._coverView?.st_top = (label.st_height - coverH) * 5
+      self._coverView?.st_height = coverH
+      /*_coverView.snp.remakeConstraints({ (make) in
         make.top.equalTo((label.frame.size.height - coverH) * 5)
         make.height.equalTo(coverH)
-      })
+      })*/
 //      最开始不需要动画
-      if _coverView.st_left == 0 {
-        _coverView.snp.remakeConstraints({ (make) in
+      if self._coverView?.st_left == 0 {
+        self._coverView?.st_width = coverW
+        self._coverView?.st_left = label.st_left - border
+        /*_coverView.snp.remakeConstraints({ (make) in
           make.width.equalTo(coverW)
           make.left.equalTo(label.st_left - border)
-        })
+        })*/
+        return
       }
 //      点击时候需要动画
-      UIView.animate(withDuration: 0.25, animations: { 
-        _coverView.snp.remakeConstraints({ (make) in
+      UIView.animate(withDuration: 0.25, animations: {
+        self._coverView?.st_width = coverW
+        self._coverView?.st_left = label.st_left - border
+        /*_coverView.snp.remakeConstraints({ (make) in
           make.width.equalTo(coverW)
           make.left.equalTo(label.st_left - border)
-        })
+        })*/
       })
     }
   }
@@ -783,15 +811,19 @@ extension BiliViewController {
     if let _ = _underLine {
       if isBisectedWidthUnderLineAndTitle == true {
         let count = childViewControllers.count
-        _underLine!.snp.remakeConstraints({ (make) in
+        _underLine?.st_width = Commons.ScreenWidth / CGFloat(count)
+        _underLine?.st_left = _underLine!.st_left + underLineTransformX
+        /*_underLine!.snp.remakeConstraints({ (make) in
           make.width.equalTo(Commons.ScreenWidth / CGFloat(count))
           make.left.equalTo(_underLine!.st_left + underLineTransformX)
-        })
+        })*/
       } else {
-        _underLine!.snp.remakeConstraints({ (make) in
+        _underLine?.st_width = _underLine!.st_width / underLineWidth
+        _underLine?.st_left = _underLine!.st_left + underLineTransformX
+        /*_underLine!.snp.remakeConstraints({ (make) in
           make.width.equalTo(_underLine!.st_width + underLineWidth)
           make.left.equalTo(_underLine!.st_left + underLineTransformX)
-        })
+        })*/
       }
     }
   }
@@ -811,10 +843,12 @@ extension BiliViewController {
 //    宽度递增偏移量
     let coverWidth = offsetDelta * widthDelta / Commons.ScreenWidth
     if let _ = _coverView {
-      _coverView!.snp.remakeConstraints({ (make) in
+      _coverView?.st_width += coverWidth
+      _coverView?.st_left += coverTransformX
+      /*_coverView!.snp.remakeConstraints({ (make) in
         make.width.equalTo(_coverView!.st_width + coverWidth)
         make.left.equalTo(_coverView!.st_left + coverTransformX)
-      })
+      })*/
     }
   }
   
@@ -862,7 +896,7 @@ extension BiliViewController {
 //  一次性设置所有遮盖属性
   func setupCoverEffect(_ _isShowTitleCover: Bool, _ _coverColor: UIColor, _ _coverCornerRadius: CGFloat) {
     
-    
+    // ignore
   }
   
 //  刷新标题和整个界面，在调用之前，必须先确定所有的子控制器。
@@ -957,7 +991,7 @@ extension BiliViewController: UICollectionViewDataSource, UICollectionViewDelega
   func scrollViewDidScroll(_ scrollView: UIScrollView) {
     
 //    点击和动画的时候不需要设置
-    guard _isAniming == false || _titleLabels.count != 0 else {
+    guard let _ = _isAniming, _isAniming == false || _titleLabels.count != 0 else {
       return
     }
 //    获取偏移量
