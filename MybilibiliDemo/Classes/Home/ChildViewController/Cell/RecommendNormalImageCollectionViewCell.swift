@@ -9,6 +9,7 @@
 import UIKit
 
 // 普通四图 普通类型 collectionView cell
+// @use RecommendNormalImageTableViewCell.swift
 // 普通 - 170高度  直播 - 167高度  番剧 - 166高度
 // @since 1.0.0
 // @author 赵林洋

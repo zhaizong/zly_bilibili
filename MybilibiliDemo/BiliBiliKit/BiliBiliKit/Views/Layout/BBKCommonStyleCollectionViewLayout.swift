@@ -9,6 +9,7 @@
 import UIKit
 
 // 普通类型 layout
+// RecommendNormalImageTableViewCell.swift
 // @since 1.0.0
 // @author 赵林洋
 public class BBKCommonStyleCollectionViewLayout: UICollectionViewLayout {

@@ -121,9 +121,9 @@ extension HomeViewController {
     recommendVC.title = "推荐"
     addChildViewController(recommendVC)
     
-//    let bangumiVC: BangumiViewController = BangumiViewController.instanceFromStoryboard()
-//    bangumiVC.title = "番剧"
-//    addChildViewController(bangumiVC)
+    let bangumiVC: BangumiViewController = BangumiViewController.instanceFromStoryboard()
+    bangumiVC.title = "番剧"
+    addChildViewController(bangumiVC)
   }
   
 }

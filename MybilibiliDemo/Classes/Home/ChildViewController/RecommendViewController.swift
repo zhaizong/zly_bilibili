@@ -30,16 +30,16 @@ class RecommendViewController: UIViewController, BiliStoryboardViewController {
 
   // MARK: - Property
   
-  fileprivate lazy var _bannerViews: [Any] = {
-    let lazilyCreatedBannerViews = [Any]()
+  fileprivate lazy var _bannerViews: [[String: Any]] = {
+    let lazilyCreatedBannerViews = [[String: Any]]()
     return lazilyCreatedBannerViews
   }()// 轮播数据源数组
-  fileprivate lazy var _recommendContentViews: [Any] = {
-    let lazilyCreatedViews = [Any]()
+  fileprivate lazy var _recommendContentViews: [[String: Any]] = {
+    let lazilyCreatedViews = [[String: Any]]()
     return lazilyCreatedViews
   }()// 推荐内容数据源数组
   
-  fileprivate weak var _bannerView: BBKCycleBannerView! // 轮播控件
+  fileprivate var _bannerView: BBKCycleBannerView! // 轮播控件
   
   fileprivate var _contentTableView: UITableView! // 内容视图(TableView)
   
@@ -52,7 +52,12 @@ class RecommendViewController: UIViewController, BiliStoryboardViewController {
     
     // Do any additional setup after loading the view.
     _setupApperance()
-//    _setupDataSource()
+    _setupDataSource()
+  }
+  
+  override func viewDidLayoutSubviews() {
+    super.viewDidLayoutSubviews()
+    _contentTableView.frame = CGRect(origin: .zero, size: CGSize(width: view.frame.size.width, height: view.frame.size.height))
   }
   
   override func didReceiveMemoryWarning() {
@@ -61,7 +66,8 @@ class RecommendViewController: UIViewController, BiliStoryboardViewController {
   }
   
   deinit {
-    
+    debugPrint("deinit")
+    NotificationCenter.default.removeObserver(self)
   }
   
   /*
@@ -82,19 +88,198 @@ class RecommendViewController: UIViewController, BiliStoryboardViewController {
 
 }
 
+extension RecommendViewController: UITableViewDataSource, UITableViewDelegate {
+  
+  // MARK: - UITableViewDataSource
+  
+  func numberOfSections(in tableView: UITableView) -> Int {
+    
+    return _recommendContentViews.count
+  }
+  
+  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    
+    return 1
+  }
+  
+  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    
+    let model = _recommendContentViews[indexPath.section]
+    let style = model["style"] as! String
+    if style == "medium" {
+      let cell = tableView.dequeueReusableCell(withIdentifier: Commons.RecommendNormalImageTableViewCellID) as! RecommendNormalImageTableViewCell
+      cell.model = model
+      return cell
+    } else if style == "large" {
+      let cell = tableView.dequeueReusableCell(withIdentifier: Commons.RecommendLargeImageTableViewCellID) as! RecommendLargeImageTableViewCell
+      cell.model = model
+      return cell
+    } else if style == "small" {
+      let cell = tableView.dequeueReusableCell(withIdentifier: Commons.RecommendSmallImageTableViewCellID) as! RecommendSmallImageTableViewCell
+      cell.model = model
+      return cell
+    }
+    
+    return UITableViewCell()
+  }
+  
+  // MARK: - UITableViewDelegate
+  
+  func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    
+    let model = _recommendContentViews[indexPath.section]
+    let style = model["style"] as! String
+    if style == "medium" {
+      return 348
+    } else if style == "large" {
+      return 120
+    } else if style == "small" {
+      return 250
+    }
+    return 0
+  }
+  
+  func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    
+    let model = _recommendContentViews[section]
+    let type = model["type"] as! String
+    if type == "recommend" {
+      let view = RecommendHotHeaderView(frame: .zero)
+//      view.snp.makeConstraints() { (make) in
+//        make.top.equalTo(0)
+//        make.bottom.equalTo(0)
+//        make.leading.equalTo(0)
+//        make.trailing.equalTo(0)
+//      }
+      return view
+    } else if type == "live" {
+      let view = RecommendLiveHeaderView(frame: .zero)
+//      view.snp.makeConstraints() { (make) in
+//        make.top.equalTo(0)
+//        make.bottom.equalTo(0)
+//        make.leading.equalTo(0)
+//        make.trailing.equalTo(0)
+//      }
+      return view
+    } else if type == "topic" {
+      let view = RecommendTopicHeaderView(frame: .zero)
+//      view.snp.makeConstraints() { (make) in
+//        make.top.equalTo(0)
+//        make.bottom.equalTo(0)
+//        make.leading.equalTo(0)
+//        make.trailing.equalTo(0)
+//      }
+      return view
+    } else if type == "av" {
+      let view = RecommendAVHeaderView(frame: .zero)
+//      view.snp.makeConstraints() { (make) in
+//        make.top.equalTo(0)
+//        make.bottom.equalTo(0)
+//        make.leading.equalTo(0)
+//        make.trailing.equalTo(0)
+//      }
+      return view
+    } else if type == "bangumi" {
+      let view = RecommendRegionHeaderView(frame: .zero)
+      view.imageString = "home_subregion_bangumi"
+      view.titleString = "番剧推荐"
+      view.detailString = "查看所有番剧"
+//      view.snp.makeConstraints() { (make) in
+//        make.top.equalTo(0)
+//        make.bottom.equalTo(0)
+//        make.leading.equalTo(0)
+//        make.trailing.equalTo(0)
+//      }
+      return view
+    } else if type == "region" || type == "sp" {
+      let view = RecommendRegionHeaderView(frame: .zero)
+      view.imageString = "home_region_icon_\(model["param"])"
+      view.titleString = model["title"] as? String
+//      view.snp.makeConstraints() { (make) in
+//        make.top.equalTo(0)
+//        make.bottom.equalTo(0)
+//        make.leading.equalTo(0)
+//        make.trailing.equalTo(0)
+//      }
+      return view
+    }
+    return UIView()
+  }
+  
+  func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+    
+    let model = _recommendContentViews[section]
+    let type = model["type"] as! String
+    if type == "recommend" {
+      let view = RecommendHotFooterView(frame: .zero)
+//      view.snp.makeConstraints() { (make) in
+//        make.top.equalTo(0)
+//        make.bottom.equalTo(0)
+//        make.leading.equalTo(0)
+//        make.trailing.equalTo(0)
+//      }
+      return view
+    } else if type == "bangumi" {
+      let view = RecommendBangumiFooterView(frame: .zero)
+//      view.snp.makeConstraints() { (make) in
+//        make.top.equalTo(0)
+//        make.bottom.equalTo(0)
+//        make.leading.equalTo(0)
+//        make.trailing.equalTo(0)
+//      }
+      return view
+    } else if type == "region" || type == "live" {
+      let view = RecommendRegionFooterView(frame: .zero)
+//      view.snp.makeConstraints() { (make) in
+//        make.top.equalTo(0)
+//        make.bottom.equalTo(0)
+//        make.leading.equalTo(0)
+//        make.trailing.equalTo(0)
+//      }
+      return view
+    }
+    return UIView()
+  }
+  
+  func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    
+    let model = _recommendContentViews[section]
+    let type = model["type"] as! String
+    if type == "av" {
+      return 10
+    }
+    return 53
+  }
+  
+  func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+    
+    let model = _recommendContentViews[section]
+    let type = model["type"] as! String
+    if type == "topic" {
+      return 20
+    } else if type == "av" {
+      return 10
+    }
+    return 64
+  }
+  
+}
+
 extension RecommendViewController {
   
   fileprivate func _setupApperance() {
     
     view.backgroundColor = BBK_Main_Background_Color
     automaticallyAdjustsScrollViewInsets = false
-    view.autoresizingMask = .init(rawValue: 0)
+//    view.autoresizingMask = .init(rawValue: 0)
     
     _contentTableView = UITableView(frame: .zero, style: .grouped)
     _contentTableView.backgroundColor = BBK_Main_Background_Color
     _contentTableView.separatorStyle = .none
     _contentTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 49, right: 0)
     _contentTableView.scrollIndicatorInsets = _contentTableView.contentInset
+    _contentTableView.dataSource = self
+    _contentTableView.delegate = self
     view.addSubview(_contentTableView)
     
 //    订阅轮播图开始滑动以及结束滑动的通知改变首页内容视图是否可以滑动
@@ -110,7 +295,7 @@ extension RecommendViewController {
     _contentTableView.register(RecommendSmallImageTableViewCell.self, forCellReuseIdentifier: Commons.RecommendSmallImageTableViewCellID)
     
     _bannerView = BBKCycleBannerView.initBannerViewWithFrame(CGRect(origin: .zero, size: CGSize(width: BBK_Screen_Width, height: 120)), placeholderImage: nil)
-//    _contentTableView.tableHeaderView = _bannerView
+    _contentTableView.tableHeaderView = _bannerView
     _bannerView.bannerViewClosureDidClick =  { [weak self] (didselectIndex: Int) in
       guard let _ = self else { return }
       // TODO: - 轮播图的点击跳转, 以后再做.
@@ -120,27 +305,63 @@ extension RecommendViewController {
     _contentTableView.header = BBKRefreshHeader() { (header: BBKRefreshHeader?) in
       self._setupDataSource()
     }
+    
   }
   
   fileprivate func _setupDataSource() {
     
-    _setupBannerDataSource()
-  }
-  
-  fileprivate func _setupBannerDataSource() {
-    
-    let parameters = ["build": "3360", "channel": "appstore", "plat": "2"]
-    
-//    加载轮播图数据
-    BBKHTTPSessionManager.sharedManager().get(BBK_Banner_URL, parameters: parameters, progress: nil, success: { [weak self] (task: URLSessionDataTask, responseObject: Any?) in
-      guard let _ = self else { return }
-      if let responseObject = responseObject {
-        debugPrint("responseObject: \(responseObject)")
+    UIApplication.shared.isNetworkActivityIndicatorVisible = true
+    let setupBannerAndRecommend: () -> Void = {
+      if self._bannerViews.count != 0 && self._recommendContentViews.count != 0 {
+        UIApplication.shared.isNetworkActivityIndicatorVisible = false
+        
+        self._bannerView.models = self._bannerViews
+        
+        self._contentTableView.reloadData()
+        self._contentTableView.header.endRefreshing()
       }
-    }) { (task: URLSessionDataTask?, error: Error) in
-      debugPrint("加载轮播图数据: \(error)")
     }
     
+    _bannerViews.removeAll(keepingCapacity: false)
+//    加载轮播图数据
+    let parametersBanner = ["build": "3360", "channel": "appstore", "plat": "2"]
+    BBKHTTPSessionManager.sharedManager().get(BBK_Banner_URL, parameters: parametersBanner, progress: nil, success: { [weak self] (task: URLSessionDataTask, responseObject: Any?) in
+      guard let weakSelf = self else { return }
+      if let responseObject = responseObject {
+        let dict = responseObject as! [String: Any]
+        let datas = dict["data"] as! [[String: Any]]
+        weakSelf._bannerViews = datas
+//        debugPrint("加载轮播图数据开始")
+//        debugPrint(responseObject)
+//        debugPrint("加载轮播图数据结束")
+        setupBannerAndRecommend()
+      }
+    }) { (task: URLSessionDataTask?, error: Error) in
+      UIApplication.shared.isNetworkActivityIndicatorVisible = false
+      self._contentTableView.header.endRefreshing()
+      debugPrint("加载轮播图数据错误: \(error)")
+      debugPrint("debugPrint")
+    }
+    
+    _recommendContentViews.removeAll(keepingCapacity: false)
+//    加载推荐内容数据
+    let parametersContnet = ["build": "3390", "channel": "appstore", "plat": "1", "actionKey": "appkey", "appkey": "27eb53fc9058f8c3", "device": "phone", "platform": "ios", "sign": "dc5d0dd8e3ff190042473a332f435a03", "ts": "1465476506"]
+    BBKHTTPSessionManager.sharedManager().get(BBK_RecommendContent_URL, parameters: parametersContnet, progress: nil, success: { [weak self] (task: URLSessionDataTask, responseObject: Any?) in
+      guard let weakSelf = self else { return }
+      if let responseObject = responseObject {
+        let dict = responseObject as! [String: Any]
+        let datas = dict["data"] as! [[String: Any]]
+        weakSelf._recommendContentViews = datas
+//        debugPrint("加载推荐内容数据开始")
+//        debugPrint(responseObject)
+//        debugPrint("加载推荐内容数据结束")
+        setupBannerAndRecommend()
+      }
+    }) { (task: URLSessionDataTask?, error: Error) in
+      UIApplication.shared.isNetworkActivityIndicatorVisible = false
+      debugPrint("加载推荐内容数据错误: \(error)")
+      debugPrint("debugPrint")
+    }
   }
   
 }

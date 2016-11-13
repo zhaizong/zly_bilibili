@@ -19,7 +19,7 @@ class LiveHeaderView: UIView {
 
   // MARK: - Property
   
-  var bannerModels: [String]? {
+  var bannerModels: [[String : Any]]? {
     didSet {
       guard let bannerModels = bannerModels, bannerModels.count != 0 else { return }
       _bannerView.models = bannerModels

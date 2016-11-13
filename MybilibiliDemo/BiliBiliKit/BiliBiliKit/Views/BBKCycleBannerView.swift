@@ -30,7 +30,7 @@ internal class BBKCycleBannerViewCell: UICollectionViewCell {
     }
   }
   
-  fileprivate weak var _imageView: UIImageView!
+  fileprivate var _imageView: UIImageView!
   
   fileprivate lazy var _placeholderImage: UIImage = { // 占位图
     if let lazilyCreatedPlaceholderImage = UIImage.generateCenterImageWithBgColor(BBK_Main_Placeholder_Background_Color, bgImageSize: CGSize(width: BBK_Screen_Width, height: 120), centerImage: UIImage(named: "default_img")!) {
@@ -41,13 +41,14 @@ internal class BBKCycleBannerViewCell: UICollectionViewCell {
   
   override init(frame: CGRect) {
     super.init(frame: frame)
+    _setupApperance()
   }
   
   required init?(coder aDecoder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
   
-  internal override func layoutSubviews() {
+  override func layoutSubviews() {
     
     _imageView.frame = contentView.bounds
   }
@@ -55,7 +56,7 @@ internal class BBKCycleBannerViewCell: UICollectionViewCell {
   fileprivate func _setupApperance() {
     
     backgroundColor = BBK_Main_Background_Color
-    _imageView = UIImageView()
+    _imageView = UIImageView(frame: .zero)
     contentView.addSubview(_imageView)
   }
   
@@ -64,8 +65,10 @@ internal class BBKCycleBannerViewCell: UICollectionViewCell {
 public class BBKCycleBannerView: UIView {
   
   // 图片url数组
-  public var models: [String] {
+  public var models: [[String: Any]]? {
     didSet {
+      guard let models = models else { return }
+      _models = models
 //      停止计时器器
       _invalidateTimer()
 //      重新计算数据源
@@ -90,13 +93,16 @@ public class BBKCycleBannerView: UIView {
   
   fileprivate var _mainView: UICollectionView! // 轮播图View
   fileprivate var _flowLayout: UICollectionViewFlowLayout! // 轮播图布局
-  fileprivate weak var _timer: Timer! // 轮播定时器
   fileprivate var _mainPageControl: UIPageControl! // 页码控件
-  fileprivate weak var _placeholderImage: UIImage! // 占位图
+  fileprivate var _placeholderImage: UIImage! // 占位图
   
   fileprivate var _totalItemsCount: Int // 总item的数量
   
   fileprivate var _itemIndex: Int!
+  
+  fileprivate var _timer: Timer! // 轮播定时器
+  
+  fileprivate var _models: [[String: Any]]
   
   /**
    *  初始化方法
@@ -116,7 +122,7 @@ public class BBKCycleBannerView: UIView {
   }
   
   override fileprivate init(frame: CGRect) {
-    models = []
+    _models = []
     autoScrollTimeInterval = 5
     _totalItemsCount = 0
     super.init(frame: frame)
@@ -134,10 +140,13 @@ public class BBKCycleBannerView: UIView {
                                           left: -((CGFloat(_totalItemsCount) * 0.5 - 1) * BBK_Screen_Width),
                                           bottom: 0,
                                           right: -((CGFloat(_totalItemsCount) * 0.5 - 2) * BBK_Screen_Width))
-    let targetIndex = CGFloat(_totalItemsCount) * 0.5
-    _mainView.scrollToItem(at: IndexPath(item: Int(targetIndex), section: 0), at: .init(rawValue: 0), animated: false)
-    _mainView.setContentOffset(CGPoint(x: _mainView.contentOffset.x - BBK_Screen_Width, y: 0), animated: true)
-    _itemIndex = Int(targetIndex)
+    if _totalItemsCount > 0 {
+      let targetIndex = CGFloat(_totalItemsCount) * 0.5
+      _mainView.scrollToItem(at: IndexPath(item: Int(targetIndex), section: 0), at: .init(rawValue: 0), animated: false)
+      _mainView.setContentOffset(CGPoint(x: _mainView.contentOffset.x - BBK_Screen_Width, y: 0), animated: true)
+      _itemIndex = Int(targetIndex)
+    }
+    
   }
   
 }
@@ -153,7 +162,7 @@ extension BBKCycleBannerView {
     _flowLayout.scrollDirection = .horizontal
     
     _mainView = UICollectionView(frame: .zero, collectionViewLayout: _flowLayout)
-    _mainView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: Commons.CycleBannerCollectionViewCellReuseIdentifier)
+    _mainView.register(BBKCycleBannerViewCell.self, forCellWithReuseIdentifier: Commons.CycleBannerCollectionViewCellReuseIdentifier)
     _mainView.backgroundColor = BBK_Main_Background_Color
     _mainView.isPagingEnabled = true
     _mainView.showsHorizontalScrollIndicator = false
@@ -185,8 +194,8 @@ extension BBKCycleBannerView {
   
   fileprivate func _invalidateTimer() {
     
+    guard _timer != nil else { return }
     _timer.invalidate()
-    _timer = nil
   }
   
   fileprivate func _currentIndex() -> Int {
@@ -230,20 +239,23 @@ extension BBKCycleBannerView: UICollectionViewDataSource, UICollectionViewDelega
   
   public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     
+    debugPrint("_totalItemsCount: \(_totalItemsCount)")
     return _totalItemsCount
   }
   
   public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Commons.CycleBannerCollectionViewCellReuseIdentifier, for: indexPath) as! BBKCycleBannerViewCell
-    let itemIndex = indexPath.item % models.count
+    let itemIndex = indexPath.item % _models.count
+    
+    cell.imageURL = _models[itemIndex]["image"] as? String
     
     return cell
   }
   
   public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     
-    bannerViewClosureDidClick?(indexPath.item % models.count)
+    bannerViewClosureDidClick?(indexPath.item % _models.count)
   }
   
   public func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
@@ -257,7 +269,7 @@ extension BBKCycleBannerView: UICollectionViewDataSource, UICollectionViewDelega
   public func scrollViewDidScroll(_ scrollView: UIScrollView) {
     
     _itemIndex = _currentIndex()
-    _mainPageControl.currentPage = _currentIndex() % models.count
+    _mainPageControl.currentPage = _currentIndex() % _models.count
   }
   
   public func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
@@ -275,7 +287,7 @@ extension BBKCycleBannerView: UICollectionViewDataSource, UICollectionViewDelega
 //    发送结束滚动的通知
     NotificationCenter.default.post(name: NSNotification.Name(rawValue: Commons.CycleBannerDidEndDeceleratingNotification), object: nil)
 //    设置定时器
-    
+    _setupTimerWithTimeInterval(autoScrollTimeInterval)
   }
   
 }

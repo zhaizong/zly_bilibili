@@ -9,6 +9,7 @@
 import UIKit
 
 // 普通四图 直播类型 collectionView cell
+// @use RecommendNormalImageTableViewCell.swift
 // @since 1.0.0
 // @author 赵林洋
 class RecommendNormalImageLiveStyleCollectionViewCell: UICollectionViewCell {

@@ -93,6 +93,8 @@
 		2D1B3F531DC0DA9B00AF4BCF /* UILayoutSupport+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1B3F321DC0DA9B00AF4BCF /* UILayoutSupport+Extensions.swift */; };
 		2D1B3F5B1DC0ECE500AF4BCF /* BBKUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1B3F5A1DC0ECE500AF4BCF /* BBKUtils.swift */; };
 		2D1B3F641DC105E700AF4BCF /* BBKHTTPSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1B3F631DC105E700AF4BCF /* BBKHTTPSessionManager.swift */; };
+		2D361AB41DD4BF5D001E1836 /* BBKRecommendLargeImageCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D361AB31DD4BF5D001E1836 /* BBKRecommendLargeImageCollectionViewLayout.swift */; };
+		2D361AB81DD5E483001E1836 /* BBKRecommendSmallImageCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D361AB71DD5E483001E1836 /* BBKRecommendSmallImageCollectionViewLayout.swift */; };
 		2D3CDCEB1DC19AE000884948 /* BBKCycleBannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3CDCEA1DC19AE000884948 /* BBKCycleBannerView.swift */; };
 		2D3CDCED1DC1AAF100884948 /* UIImage+BBKAddition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3CDCEC1DC1AAF100884948 /* UIImage+BBKAddition.swift */; };
 		2D3CDCF21DC1AE6B00884948 /* BBKGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3CDCF11DC1AE6B00884948 /* BBKGradientView.swift */; };
@@ -291,6 +293,8 @@
 		2D1B3F321DC0DA9B00AF4BCF /* UILayoutSupport+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UILayoutSupport+Extensions.swift"; path = "Source/UILayoutSupport+Extensions.swift"; sourceTree = "<group>"; };
 		2D1B3F5A1DC0ECE500AF4BCF /* BBKUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BBKUtils.swift; sourceTree = "<group>"; };
 		2D1B3F631DC105E700AF4BCF /* BBKHTTPSessionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BBKHTTPSessionManager.swift; sourceTree = "<group>"; };
+		2D361AB31DD4BF5D001E1836 /* BBKRecommendLargeImageCollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BBKRecommendLargeImageCollectionViewLayout.swift; sourceTree = "<group>"; };
+		2D361AB71DD5E483001E1836 /* BBKRecommendSmallImageCollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BBKRecommendSmallImageCollectionViewLayout.swift; sourceTree = "<group>"; };
 		2D3CDCEA1DC19AE000884948 /* BBKCycleBannerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BBKCycleBannerView.swift; sourceTree = "<group>"; };
 		2D3CDCEC1DC1AAF100884948 /* UIImage+BBKAddition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+BBKAddition.swift"; sourceTree = "<group>"; };
 		2D3CDCF11DC1AE6B00884948 /* BBKGradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BBKGradientView.swift; sourceTree = "<group>"; };
@@ -652,6 +656,8 @@
 			isa = PBXGroup;
 			children = (
 				2DA4306F1DC87CE6006FEFAC /* BBKCommonStyleCollectionViewLayout.swift */,
+				2D361AB31DD4BF5D001E1836 /* BBKRecommendLargeImageCollectionViewLayout.swift */,
+				2D361AB71DD5E483001E1836 /* BBKRecommendSmallImageCollectionViewLayout.swift */,
 			);
 			path = Layout;
 			sourceTree = "<group>";
@@ -1003,6 +1009,7 @@
 				2DF51DCA1DC599940036FE97 /* UIImage+YYWebImage.m in Sources */,
 				2D1B3F4A1DC0DA9B00AF4BCF /* ConstraintRelation.swift in Sources */,
 				2D1B3F351DC0DA9B00AF4BCF /* ConstraintConfig.swift in Sources */,
+				2D361AB81DD5E483001E1836 /* BBKRecommendSmallImageCollectionViewLayout.swift in Sources */,
 				2D3CDD291DC213A100884948 /* MKAnnotationView+WebCache.m in Sources */,
 				2D1B3F341DC0DA9B00AF4BCF /* ConstraintAttributes.swift in Sources */,
 				2D1B3F501DC0DA9B00AF4BCF /* LayoutConstraint.swift in Sources */,
@@ -1029,6 +1036,7 @@
 				2D3CDD351DC213A100884948 /* SDWebImageDecoder.m in Sources */,
 				2D3CDCF21DC1AE6B00884948 /* BBKGradientView.swift in Sources */,
 				2D1B3E971DC0DA5F00AF4BCF /* UIButton+AFNetworking.m in Sources */,
+				2D361AB41DD4BF5D001E1836 /* BBKRecommendLargeImageCollectionViewLayout.swift in Sources */,
 				2D1B3F3B1DC0DA9B00AF4BCF /* ConstraintItem.swift in Sources */,
 				2D1B3F381DC0DA9B00AF4BCF /* ConstraintDSL.swift in Sources */,
 				2D1B3F361DC0DA9B00AF4BCF /* ConstraintConstantTarget.swift in Sources */,

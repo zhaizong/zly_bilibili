@@ -1,47 +1,53 @@
 //
-//  RecommendNormalImageBangumiStyleCollectionViewCell.swift
+//  RecommendSmallImageTableViewCollectionViewCell.swift
 //  MybilibiliDemo
 //
-//  Created by 宅总 on 16/11/7.
+//  Created by 宅总 on 16/11/11.
 //  Copyright © 2016年 Zly. All rights reserved.
 //
 
 import UIKit
 
-// 普通四图 番剧类型 collectionView Cell
-// @use RecommendNormalImageTableViewCell.swift
+// 电视剧small collectionView cell
+// @use RecommendSmallImageTableViewCell.swift
 // @since 1.0.0
 // @author 赵林洋
-class RecommendNormalImageBangumiStyleCollectionViewCell: UICollectionViewCell {
+class RecommendSmallImageTableViewCollectionViewCell: UICollectionViewCell {
   
-  // MARK: - Property
+  // MARK: Property
   
-  var imageViewString: String? {
+  var imageString: String? {
     didSet {
-      guard let imageViewString = imageViewString, imageViewString != "" else { return }
-      if let url = URL(string: imageViewString) {
+      guard let imageString = imageString, imageString != "" else { return }
+      if let url = URL(string: imageString) {
         _imageView.yy_setImage(with: url, placeholder: _placeholderImage, options: [.progressiveBlur, .setImageWithFadeAnimation], completion: nil)
       }
     }
   }
-  
   var titleString: String? {
     didSet {
       guard let titleString = titleString, titleString != "" else { return }
       _titleLabel.text = titleString
     }
   }
+  var detailInt: Int? {
+    didSet {
+      guard let detailInt = detailInt else { return }
+      _detailLabel.text = "更新到第\(detailInt)话"
+    }
+  }
   
-  fileprivate var _imageView: UIImageView // 图像
-  fileprivate var _titleLabel: UILabel // 标题标签
-  fileprivate var _detailLabel: UILabel // 详情标签 更新时间 · 第xx话
+  fileprivate var _imageView: UIImageView // 封面
+  fileprivate var _titleLabel: UILabel // 电视剧名字
+  fileprivate var _detailLabel: UILabel // 详情标签 (更新到第xx话)
+  
   fileprivate lazy var _placeholderImage: UIImage = {
-    let margin = 8
-    let width = (BBK_Screen_Width - 3 * CGFloat(margin)) * 0.5
-    let height: CGFloat = 120.0
+    let margin: CGFloat = 8
+    let width: CGFloat = BBK_Screen_Width - 2 * margin
+    let height: CGFloat = 120
     let lazilyCreatedPlaceholderImage = UIImage.generateCenterImageWithBgColor(BBK_Main_Placeholder_Background_Color, bgImageSize: CGSize(width: width, height: height), centerImage: UIImage(named: "default_img")!)
     return lazilyCreatedPlaceholderImage!
-  }()// 占位图
+  }()
   
   override init(frame: CGRect) {
     _imageView = UIImageView(frame: .zero)
@@ -56,22 +62,27 @@ class RecommendNormalImageBangumiStyleCollectionViewCell: UICollectionViewCell {
   required init?(coder aDecoder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
+  
 }
 
-extension RecommendNormalImageBangumiStyleCollectionViewCell {
+extension RecommendSmallImageTableViewCollectionViewCell {
   
   fileprivate func _setupApperance() {
     
-    _imageView.layer.cornerRadius = 5
-    _imageView.contentMode = .scaleAspectFill
-    _imageView.clipsToBounds = true
+    _imageView.layerCornerRadius = 8
     
     _titleLabel.textColor = UIColor.black
     _titleLabel.font = UIFont.systemFont(ofSize: 14)
+    _titleLabel.textAlignment = .center
+    _titleLabel.contentMode = .left
     
-    _detailLabel.text = "业务逻辑 []~(￣▽￣)~*"
     _detailLabel.textColor = UIColor.lightGray
-    _detailLabel.font = UIFont.systemFont(ofSize: 14)
+    _detailLabel.font = UIFont.systemFont(ofSize: 15)
+    _detailLabel.contentMode = .left
+    
+    contentView.addSubview(_imageView)
+    contentView.addSubview(_titleLabel)
+    contentView.addSubview(_detailLabel)
   }
   
   fileprivate func _layoutSubviews() {
@@ -84,31 +95,18 @@ extension RecommendNormalImageBangumiStyleCollectionViewCell {
     }
     
     _titleLabel.snp.makeConstraints { (make) in
-      make.top.equalTo(_imageView.snp.bottom).offset(4)
-      make.trailing.equalTo(_imageView.snp.trailing).offset(-4)
-      make.leading.equalTo(_imageView.snp.leading).offset(4)
+      make.centerX.equalTo(contentView.snp.centerX)
+      make.top.equalTo(_imageView.snp.bottom).offset(8)
+      make.leading.greaterThanOrEqualTo(0)
+      make.trailing.greaterThanOrEqualTo(0)
     }
     
     _detailLabel.snp.makeConstraints { (make) in
+      make.centerX.equalTo(contentView.snp.centerX)
       make.top.equalTo(_titleLabel.snp.bottom).offset(8)
-      make.leading.equalTo(_titleLabel.snp.leading)
-      make.trailing.equalTo(_titleLabel.snp.trailing)
+      make.leading.greaterThanOrEqualTo(0)
+      make.trailing.greaterThanOrEqualTo(0)
     }
+    
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
