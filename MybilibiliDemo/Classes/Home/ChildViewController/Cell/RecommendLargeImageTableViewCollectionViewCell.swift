@@ -44,8 +44,8 @@ class RecommendLargeImageTableViewCollectionViewCell: UICollectionViewCell {
     _imageView.layer.cornerRadius = 5
     _imageView.contentMode = .scaleAspectFill
     _imageView.clipsToBounds = true
-    contentView.addSubview(_imageView)
     
+    contentView.addSubview(_imageView)
     _imageView.snp.makeConstraints { (make) in
       make.top.equalTo(contentView.snp.top)
       make.bottom.equalTo(contentView.snp.bottom)

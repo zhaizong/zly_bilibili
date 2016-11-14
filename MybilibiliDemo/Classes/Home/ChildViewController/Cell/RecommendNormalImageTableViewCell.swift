@@ -109,6 +109,8 @@ extension RecommendNormalImageTableViewCell {
     _collectionView.showsHorizontalScrollIndicator = true
     _collectionView.isScrollEnabled = true
     _collectionView.bounces = true
+    _collectionView.dataSource = self
+    _collectionView.delegate = self
     
     _collectionView.register(RecommendNormalImageCollectionViewCell.self, forCellWithReuseIdentifier: NormalImageCommons.CommonStyleCollectionViewCellID)
     

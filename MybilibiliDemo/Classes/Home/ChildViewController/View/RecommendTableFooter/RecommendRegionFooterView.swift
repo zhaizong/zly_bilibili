@@ -35,7 +35,7 @@ class RecommendRegionFooterView: UIView {
     _refreshButton.frame = .zero
     _refreshButton.setTitle("15条动态，点击刷新！", for: .normal)
     _refreshButton.setTitleColor(UIColor.black, for: .normal)
-    _refreshButton.setImage(UIImage(named: "home_refresh"), for: .normal)
+    _refreshButton.setImage(UIImage(named: "home_refresh_new"), for: .normal)
     _refreshButton.titleLabel?.font = UIFont.systemFont(ofSize: 12)
     
     addSubview(_moreLiveButton)

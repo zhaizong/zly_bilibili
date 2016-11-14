@@ -72,6 +72,10 @@ extension RecommendNormalImageBangumiStyleCollectionViewCell {
     _detailLabel.text = "业务逻辑 []~(￣▽￣)~*"
     _detailLabel.textColor = UIColor.lightGray
     _detailLabel.font = UIFont.systemFont(ofSize: 14)
+    
+    contentView.addSubview(_imageView)
+    contentView.addSubview(_titleLabel)
+    contentView.addSubview(_detailLabel)
   }
   
   fileprivate func _layoutSubviews() {

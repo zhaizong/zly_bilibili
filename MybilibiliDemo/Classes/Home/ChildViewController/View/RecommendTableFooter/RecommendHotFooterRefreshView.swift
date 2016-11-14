@@ -36,8 +36,15 @@ class RecommendHotFooterRefreshView: UIView {
     
     _titleLabel.text = "换一波推荐"
     _titleLabel.textColor = UIColor.black
+    _titleLabel.isHidden = true
     
-    _refreshIconImageView.image = UIImage(named: "home_refresh")
+    _refreshIconImageView.image = UIImage(named: "home_refresh_new")
+    
+    addSubview(_backgroundImageView)
+    addSubview(_titleLabel)
+    addSubview(_refreshIconImageView)
+    
+    _layoutSubviews()
   }
   
   required init?(coder aDecoder: NSCoder) {
@@ -60,7 +67,7 @@ class RecommendHotFooterRefreshView: UIView {
     _refreshIconImageView.snp.makeConstraints { (make) in
       make.centerY.equalTo(0)
       make.trailing.equalTo(-8)
-      make.size.equalTo(20)
+      make.size.equalTo(60)
     }
   }
 

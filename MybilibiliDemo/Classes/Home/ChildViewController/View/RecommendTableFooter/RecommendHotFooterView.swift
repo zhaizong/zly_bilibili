@@ -30,7 +30,7 @@ class RecommendHotFooterView: UIView {
     
     addSubview(_refreshButton)
     _refreshButton.snp.makeConstraints { (make) in
-      make.centerY.equalTo(0)
+      make.centerY.equalTo(20)
       make.height.equalTo(36)
       make.leading.equalTo(64)
       make.trailing.equalTo(-64)

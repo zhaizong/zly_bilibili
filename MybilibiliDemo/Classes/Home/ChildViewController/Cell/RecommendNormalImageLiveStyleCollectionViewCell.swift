@@ -119,6 +119,12 @@ extension RecommendNormalImageLiveStyleCollectionViewCell {
     _titleLabel.text = "hahaha"
     _titleLabel.textColor = UIColor.lightGray
     _titleLabel.font = UIFont.systemFont(ofSize: 14)
+    
+    contentView.addSubview(_contentImageView)
+    contentView.addSubview(_iconImageView)
+    contentView.addSubview(_authorNameLabel)
+    contentView.addSubview(_onlineCountLabel)
+    contentView.addSubview(_titleLabel)
   }
   
   fileprivate func _layoutSubviews() {

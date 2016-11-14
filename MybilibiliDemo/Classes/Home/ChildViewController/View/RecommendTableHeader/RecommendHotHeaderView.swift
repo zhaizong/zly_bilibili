@@ -84,30 +84,30 @@ extension RecommendHotHeaderView {
     
     _recommendImageView.snp.makeConstraints { (make) in
       make.size.equalTo(20)
-      make.centerY.equalTo(4)
+      make.centerY.equalTo(20)
       make.leading.equalTo(8)
     }
     
     _recommendLabel.snp.makeConstraints { (make) in
-      make.centerY.equalTo(4)
+      make.centerY.equalTo(20)
       make.leading.equalTo(_recommendImageView.snp.trailing).offset(8)
     }
     
     _arrowImageView.snp.makeConstraints { (make) in
-      make.centerY.equalTo(4)
+      make.centerY.equalTo(20)
       make.size.equalTo(20)
-      make.trailing.equalTo(8)
+      make.trailing.equalTo(-8)
     }
     
     _rankingLabel.snp.makeConstraints { (make) in
-      make.centerY.equalTo(4)
-      make.trailing.equalTo(_arrowImageView.snp.leading).offset(8)
+      make.centerY.equalTo(20)
+      make.trailing.equalTo(_arrowImageView.snp.leading).offset(-8)
     }
     
     _rankingImageView.snp.makeConstraints { (make) in
-      make.centerY.equalTo(4)
+      make.centerY.equalTo(20)
       make.size.equalTo(20)
-      make.trailing.equalTo(_rankingLabel.snp.leading).offset(8)
+      make.trailing.equalTo(_rankingLabel.snp.leading).offset(-8)
     }
     
     _topView.snp.makeConstraints { (make) in

@@ -239,7 +239,6 @@ extension BBKCycleBannerView: UICollectionViewDataSource, UICollectionViewDelega
   
   public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     
-    debugPrint("_totalItemsCount: \(_totalItemsCount)")
     return _totalItemsCount
   }
   

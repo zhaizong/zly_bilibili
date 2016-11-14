@@ -106,25 +106,25 @@ extension RecommendRegionHeaderView {
   fileprivate func _layoutSubviews() {
     
     _regionImageView.snp.makeConstraints { (make) in
-      make.centerY.equalTo(4)
+      make.centerY.equalTo(20)
       make.size.equalTo(20)
       make.leading.equalTo(8)
     }
     
     _regionLabel.snp.makeConstraints { (make) in
-      make.centerY.equalTo(4)
+      make.centerY.equalTo(20)
       make.leading.equalTo(_regionImageView.snp.trailing).offset(8)
     }
     
     _arrowImageView.snp.makeConstraints { (make) in
-      make.centerY.equalTo(4)
-      make.trailing.equalTo(8)
+      make.centerY.equalTo(20)
+      make.trailing.equalTo(-8)
       make.size.equalTo(20)
     }
     
     _currentLabel.snp.makeConstraints { (make) in
-      make.centerY.equalTo(4)
-      make.trailing.equalTo(_arrowImageView.snp.leading).offset(8)
+      make.centerY.equalTo(20)
+      make.trailing.equalTo(_arrowImageView.snp.leading).offset(-8)
     }
     
     _topLineUp.snp.makeConstraints { (make) in

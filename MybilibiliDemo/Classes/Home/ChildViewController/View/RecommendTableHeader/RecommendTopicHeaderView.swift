@@ -69,13 +69,13 @@ extension RecommendTopicHeaderView {
   fileprivate func _layoutSubviews() {
     
     _topicImageView.snp.makeConstraints { (make) in
-      make.centerY.equalTo(4)
+      make.centerY.equalTo(20)
       make.size.equalTo(20)
       make.leading.equalTo(8)
     }
     
     _topicLabel.snp.makeConstraints { (make) in
-      make.centerY.equalTo(4)
+      make.centerY.equalTo(20)
       make.leading.equalTo(_topicImageView.snp.trailing).offset(8)
     }
     

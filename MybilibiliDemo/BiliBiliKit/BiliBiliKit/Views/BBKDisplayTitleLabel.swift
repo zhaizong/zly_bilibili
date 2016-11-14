@@ -34,6 +34,7 @@ public class BBKDisplayTitleLabel: UILabel {
     progress = 0
     fillColor = UIColor.clear
     super.init(frame: frame)
+    textAlignment = .center
   }
   
   required public init?(coder aDecoder: NSCoder) {

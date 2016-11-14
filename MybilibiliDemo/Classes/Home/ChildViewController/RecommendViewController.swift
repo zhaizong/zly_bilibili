@@ -57,7 +57,7 @@ class RecommendViewController: UIViewController, BiliStoryboardViewController {
   
   override func viewDidLayoutSubviews() {
     super.viewDidLayoutSubviews()
-    _contentTableView.frame = CGRect(origin: .zero, size: CGSize(width: view.frame.size.width, height: view.frame.size.height))
+//    _contentTableView.frame = CGRect(origin: .zero, size: CGSize(width: view.frame.size.width, height: view.frame.size.height))
   }
   
   override func didReceiveMemoryWarning() {
@@ -281,6 +281,12 @@ extension RecommendViewController {
     _contentTableView.dataSource = self
     _contentTableView.delegate = self
     view.addSubview(_contentTableView)
+    _contentTableView.snp.makeConstraints { (make) in
+      make.top.equalTo(view.snp.top)
+      make.bottom.equalTo(view.snp.bottom)
+      make.leading.equalTo(view.snp.leading)
+      make.trailing.equalTo(view.snp.trailing)
+    }
     
 //    订阅轮播图开始滑动以及结束滑动的通知改变首页内容视图是否可以滑动
     NotificationCenter.default.addObserver(self, selector: #selector(RecommendViewController._bannerViewWillBeginDraggingNotification), name: NSNotification.Name(rawValue: Commons.CycleBannerWillBeginDraggingNotification), object: nil)

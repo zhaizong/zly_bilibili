@@ -84,28 +84,8 @@ class LiveContentCollectionViewCell: UICollectionViewCell {
     _titleLabel = UILabel(frame: .zero)
     super.init(frame: frame)
     
-    _nameLabel.text = "up主"
-    _nameLabel.textColor = UIColor.black
-    _nameLabel.font = UIFont.systemFont(ofSize: 15)
-    
-    _titleLabel.text = "哈哈哈"
-    _titleLabel.textColor = UIColor.lightGray
-    _titleLabel.font = UIFont.systemFont(ofSize: 14)
-    
-    _viewerCountLabel.text = "2333"
-    _viewerCountLabel.textColor = UIColor.black
-    _viewerCountLabel.font = UIFont.systemFont(ofSize: 14)
-    _viewerCountLabel.textAlignment = .center
-    _viewerCountLabel.backgroundColor = UIColor(hexString: "#C8C8C8")
-    
-    contentView.addSubview(_coverImageView)
-    contentView.addSubview(_avatarImageView)
-    contentView.addSubview(_nameLabel)
-    contentView.addSubview(_viewerCountLabel)
-    contentView.addSubview(_titleLabel)
-    
-    _layoutSubviews()
     _setupApperance()
+    _layoutSubviews()
   }
   
   required init?(coder aDecoder: NSCoder) {
@@ -157,6 +137,26 @@ extension LiveContentCollectionViewCell {
     _viewerCountLabel.layerCornerRadius = 4
     _viewerCountLabel.layerBorderWidth = 1
     _viewerCountLabel.layerBorderColor = BBK_Light_Line_Color
+    
+    _nameLabel.text = "up主"
+    _nameLabel.textColor = UIColor.black
+    _nameLabel.font = UIFont.systemFont(ofSize: 15)
+    
+    _titleLabel.text = "哈哈哈"
+    _titleLabel.textColor = UIColor.lightGray
+    _titleLabel.font = UIFont.systemFont(ofSize: 14)
+    
+    _viewerCountLabel.text = "2333"
+    _viewerCountLabel.textColor = UIColor.black
+    _viewerCountLabel.font = UIFont.systemFont(ofSize: 14)
+    _viewerCountLabel.textAlignment = .center
+    _viewerCountLabel.backgroundColor = UIColor(hexString: "#C8C8C8")
+    
+    contentView.addSubview(_coverImageView)
+    contentView.addSubview(_avatarImageView)
+    contentView.addSubview(_nameLabel)
+    contentView.addSubview(_viewerCountLabel)
+    contentView.addSubview(_titleLabel)
   }
   
   
