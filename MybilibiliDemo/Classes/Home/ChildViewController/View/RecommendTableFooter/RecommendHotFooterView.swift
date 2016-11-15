@@ -8,6 +8,7 @@
 
 import UIKit
 
+// 暂时不用
 // 首页推荐 -> 热门 footer view
 // @use RecommendViewController.swift
 // @since 1.0.0
@@ -26,14 +27,14 @@ class RecommendHotFooterView: UIView {
     
     isUserInteractionEnabled = true
     
-    _refreshButton.backgroundColor = UIColor.white
+//    _refreshButton.backgroundColor = UIColor.white
     
     addSubview(_refreshButton)
     _refreshButton.snp.makeConstraints { (make) in
-      make.centerY.equalTo(20)
+      make.centerY.equalTo(0)
       make.height.equalTo(36)
       make.leading.equalTo(64)
-      make.trailing.equalTo(-64)
+      make.trailing.equalTo(0)
     }
   }
   

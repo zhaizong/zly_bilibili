@@ -65,8 +65,10 @@ class RecommendNormalImageLiveStyleCollectionViewCell: UICollectionViewCell {
   fileprivate var _contentImageView: UIImageView // 内容图片
   fileprivate var _iconImageView: UIImageView // 头像图片
   fileprivate var _authorNameLabel: UILabel // up主名字标签
+  fileprivate var _onlineEyeImageView: UIImageView // 在线人数图标
   fileprivate var _onlineCountLabel: UILabel // 观看人数标签
   fileprivate var _titleLabel: UILabel // 标题标签
+  fileprivate var _shadowImageView: BBKGradientView
   fileprivate lazy var _contentPlaceholderImage: UIImage = {
     let margin = 8
     let width = (BBK_Screen_Width - 3 * CGFloat(margin)) * 0.5
@@ -83,8 +85,10 @@ class RecommendNormalImageLiveStyleCollectionViewCell: UICollectionViewCell {
     _contentImageView = UIImageView(frame: .zero)
     _iconImageView = UIImageView(frame: .zero)
     _authorNameLabel = UILabel(frame: .zero)
+    _onlineEyeImageView = UIImageView(frame: .zero)
     _onlineCountLabel = UILabel(frame: .zero)
     _titleLabel = UILabel(frame: .zero)
+    _shadowImageView = BBKGradientView(frame: .zero)
     super.init(frame: frame)
     
     _setupApperance()
@@ -107,23 +111,34 @@ extension RecommendNormalImageLiveStyleCollectionViewCell {
     
     _iconImageView.contentMode = .scaleAspectFill
     _iconImageView.clipsToBounds = true
+    _iconImageView.isHidden = true
     
     _authorNameLabel.text = "up主"
-    _authorNameLabel.textColor = UIColor.black
-    _authorNameLabel.font = UIFont.systemFont(ofSize: 15)
+    _authorNameLabel.textColor = UIColor.white
+    _authorNameLabel.font = UIFont.systemFont(ofSize: 12)
     
-    _onlineCountLabel.text = "2333"
-    _onlineCountLabel.textColor = UIColor.black
-    _onlineCountLabel.font = UIFont.systemFont(ofSize: 14)
+    _onlineEyeImageView.image = UIImage(named: "live_eye_ico")
     
-    _titleLabel.text = "hahaha"
-    _titleLabel.textColor = UIColor.lightGray
+    _onlineCountLabel.text = "5000"
+    _onlineCountLabel.textColor = UIColor.white
+    _onlineCountLabel.font = UIFont.systemFont(ofSize: 12)
+    
+    _titleLabel.text = ""
+    _titleLabel.textColor = UIColor.black
     _titleLabel.font = UIFont.systemFont(ofSize: 14)
+    _titleLabel.numberOfLines = 2
+    
+    _shadowImageView.contentMode = .scaleAspectFill
+    _shadowImageView.clipsToBounds = true
+    _shadowImageView.alpha = 0.2
+    _shadowImageView.setNeedsDisplay()
     
     contentView.addSubview(_contentImageView)
+    _contentImageView.addSubview(_shadowImageView)
+    _contentImageView.addSubview(_authorNameLabel)
+    _contentImageView.addSubview(_onlineEyeImageView)
+    _contentImageView.addSubview(_onlineCountLabel)
     contentView.addSubview(_iconImageView)
-    contentView.addSubview(_authorNameLabel)
-    contentView.addSubview(_onlineCountLabel)
     contentView.addSubview(_titleLabel)
   }
   
@@ -144,20 +159,34 @@ extension RecommendNormalImageLiveStyleCollectionViewCell {
     }
     
     _authorNameLabel.snp.makeConstraints { (make) in
-      make.top.equalTo(_contentImageView.snp.bottom).offset(8)
-      make.leading.equalTo(_iconImageView.snp.trailing).offset(4)
-      make.trailing.greaterThanOrEqualTo(contentView.snp.trailing).offset(8)
+      make.leading.equalTo(_contentImageView.snp.leading).offset(5)
+      make.bottom.equalTo(_contentImageView.snp.bottom).offset(-8)
+      make.width.equalTo(70)
     }
     
     _onlineCountLabel.snp.makeConstraints { (make) in
-      make.top.equalTo(_authorNameLabel.snp.bottom).offset(4)
-      make.leading.equalTo(_contentImageView.snp.leading)
+      make.trailing.equalTo(-5)
+      make.centerY.equalTo(_authorNameLabel.snp.centerY)
+    }
+    
+    _onlineEyeImageView.snp.makeConstraints { (make) in
+      make.trailing.equalTo(_onlineCountLabel.snp.leading).offset(-5)
+      make.width.equalTo(15)
+      make.height.equalTo(10)
+      make.centerY.equalTo(_authorNameLabel.snp.centerY)
     }
     
     _titleLabel.snp.makeConstraints { (make) in
-      make.centerY.equalTo(_onlineCountLabel.snp.centerY)
-      make.leading.equalTo(_onlineCountLabel.snp.trailing).offset(4)
-      make.trailing.greaterThanOrEqualTo(contentView.snp.trailing)
+      make.top.equalTo(_contentImageView.snp.bottom).offset(4)
+      make.leading.equalTo(_contentImageView.snp.leading).offset(1)
+      make.trailing.equalTo(contentView.snp.trailing).offset(-4)
+    }
+    
+    _shadowImageView.snp.makeConstraints { (make) in
+      make.leading.equalTo(_contentImageView.snp.leading)
+      make.bottom.equalTo(_contentImageView.snp.bottom)
+      make.trailing.equalTo(_contentImageView.snp.trailing)
+      make.height.equalTo(120)
     }
   }
 }

@@ -35,6 +35,7 @@ class RecommendNormalImageBangumiStyleCollectionViewCell: UICollectionViewCell {
   fileprivate var _imageView: UIImageView // 图像
   fileprivate var _titleLabel: UILabel // 标题标签
   fileprivate var _detailLabel: UILabel // 详情标签 更新时间 · 第xx话
+  fileprivate var _shadowImageView: BBKGradientView
   fileprivate lazy var _placeholderImage: UIImage = {
     let margin = 8
     let width = (BBK_Screen_Width - 3 * CGFloat(margin)) * 0.5
@@ -47,6 +48,7 @@ class RecommendNormalImageBangumiStyleCollectionViewCell: UICollectionViewCell {
     _imageView = UIImageView(frame: .zero)
     _titleLabel = UILabel(frame: .zero)
     _detailLabel = UILabel(frame: .zero)
+    _shadowImageView = BBKGradientView(frame: .zero)
     super.init(frame: frame)
     
     _setupApperance()
@@ -73,7 +75,13 @@ extension RecommendNormalImageBangumiStyleCollectionViewCell {
     _detailLabel.textColor = UIColor.lightGray
     _detailLabel.font = UIFont.systemFont(ofSize: 14)
     
+    _shadowImageView.contentMode = .scaleAspectFill
+    _shadowImageView.clipsToBounds = true
+    _shadowImageView.alpha = 0.2
+    _shadowImageView.setNeedsDisplay()
+    
     contentView.addSubview(_imageView)
+    _imageView.addSubview(_shadowImageView)
     contentView.addSubview(_titleLabel)
     contentView.addSubview(_detailLabel)
   }
@@ -97,6 +105,13 @@ extension RecommendNormalImageBangumiStyleCollectionViewCell {
       make.top.equalTo(_titleLabel.snp.bottom).offset(8)
       make.leading.equalTo(_titleLabel.snp.leading)
       make.trailing.equalTo(_titleLabel.snp.trailing)
+    }
+    
+    _shadowImageView.snp.makeConstraints { (make) in
+      make.leading.equalTo(_imageView.snp.leading)
+      make.bottom.equalTo(_imageView.snp.bottom)
+      make.trailing.equalTo(_imageView.snp.trailing)
+      make.height.equalTo(120)
     }
   }
 }

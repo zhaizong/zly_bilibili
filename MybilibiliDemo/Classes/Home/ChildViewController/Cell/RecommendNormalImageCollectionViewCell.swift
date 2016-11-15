@@ -51,6 +51,9 @@ class RecommendNormalImageCollectionViewCell: UICollectionViewCell {
   fileprivate var _titleLabel: UILabel // 标题
   fileprivate var _playCountLabel: UILabel // 播放数
   fileprivate var _danmukuCountLabel: UILabel // 弹幕数
+  fileprivate var _playIconImageView: UIImageView
+  fileprivate var _danmukuIconImageView: UIImageView
+  fileprivate var _shadowImageView: BBKGradientView
   fileprivate lazy var _placeholderImage: UIImage = {
     let margin = 8
     let width = (BBK_Screen_Width - 3 * CGFloat(margin)) * 0.5
@@ -64,6 +67,9 @@ class RecommendNormalImageCollectionViewCell: UICollectionViewCell {
     _titleLabel = UILabel(frame: .zero)
     _playCountLabel = UILabel(frame: .zero)
     _danmukuCountLabel = UILabel(frame: .zero)
+    _playIconImageView = UIImageView(frame: .zero)
+    _danmukuIconImageView = UIImageView(frame: .zero)
+    _shadowImageView = BBKGradientView(frame: .zero)
     super.init(frame: frame)
     
     _setupApperance()
@@ -88,7 +94,29 @@ extension RecommendNormalImageCollectionViewCell {
     _titleLabel.font = UIFont.systemFont(ofSize: 14)
     _titleLabel.numberOfLines = 2
     
+    _playCountLabel.text = "110"
+    _playCountLabel.textColor = UIColor.white
+    _playCountLabel.font = UIFont.systemFont(ofSize: 12)
+    
+//    _danmukuCountLabel.text = "110"
+//    _danmukuCountLabel.textColor = UIColor.white
+//    _danmukuCountLabel.font = UIFont.systemFont(ofSize: 12)
+    
+    _playIconImageView.image = UIImage(named: "mine_favourite_playCount_hd")
+    
+//    _danmukuIconImageView.image = UIImage(named: "recommed_danmuCount")
+    
+    _shadowImageView.contentMode = .scaleAspectFill
+    _shadowImageView.clipsToBounds = true
+    _shadowImageView.alpha = 0.2
+    _shadowImageView.setNeedsDisplay()
+    
     contentView.addSubview(_imageView)
+    _imageView.addSubview(_shadowImageView)
+    _imageView.addSubview(_playCountLabel)
+//    _imageView.addSubview(_danmukuCountLabel)
+    _imageView.addSubview(_playIconImageView)
+//    _imageView.addSubview(_danmukuIconImageView)
     contentView.addSubview(_titleLabel)
   }
   
@@ -101,10 +129,37 @@ extension RecommendNormalImageCollectionViewCell {
       make.trailing.equalTo(contentView.snp.trailing)
     }
     
+    _playIconImageView.snp.makeConstraints { (make) in
+      make.leading.equalTo(_imageView.snp.leading).offset(4)
+      make.bottom.equalTo(-6)
+    }
+    
+    _playCountLabel.snp.makeConstraints { (make) in
+      make.centerY.equalTo(_playIconImageView.snp.centerY)
+      make.leading.equalTo(_playIconImageView.snp.trailing).offset(4)
+    }
+    
+//    _danmukuIconImageView.snp.makeConstraints { (make) in
+//      make.leading.equalTo(_imageView.snp.centerX)
+//      make.bottom.equalTo(_playIconImageView.snp.centerY)
+//    }
+//    
+//    _danmukuCountLabel.snp.makeConstraints { (make) in
+//      make.centerY.equalTo(_danmukuIconImageView.snp.centerY)
+//      make.leading.equalTo(_danmukuIconImageView.snp.trailing).offset(4)
+//    }
+    
     _titleLabel.snp.makeConstraints { (make) in
       make.top.equalTo(_imageView.snp.bottom).offset(4)
       make.leading.equalTo(_imageView.snp.leading).offset(4)
       make.trailing.equalTo(_imageView.snp.trailing).offset(-4)
+    }
+    
+    _shadowImageView.snp.makeConstraints { (make) in
+      make.leading.equalTo(_imageView.snp.leading)
+      make.bottom.equalTo(_imageView.snp.bottom)
+      make.trailing.equalTo(_imageView.snp.trailing)
+      make.height.equalTo(120)
     }
   }
 }

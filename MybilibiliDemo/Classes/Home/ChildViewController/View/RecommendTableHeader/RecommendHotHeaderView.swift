@@ -24,9 +24,6 @@ class RecommendHotHeaderView: UIView {
   
   fileprivate var _arrowImageView: UIImageView
   
-  fileprivate var _topView: UIView
-  fileprivate var _topLine: UIView
-  
   // MARK: - Lifecycle
   
   override init(frame: CGRect) {
@@ -37,9 +34,6 @@ class RecommendHotHeaderView: UIView {
     _rankingLabel = UILabel(frame: .zero)
     
     _arrowImageView = UIImageView(frame: .zero)
-    
-    _topView = UIView(frame: .zero)
-    _topLine = UIView(frame: .zero)
     super.init(frame: frame)
     
     _setupApperance()
@@ -68,60 +62,41 @@ extension RecommendHotHeaderView {
     
     _arrowImageView.image = UIImage(named: "common_rightArrowShadow")
     
-    _topView.backgroundColor = UIColor(hexString: "#F6F6F6")
-    _topLine.backgroundColor = BBK_Light_Line_Color
-    
     addSubview(_recommendImageView)
     addSubview(_recommendLabel)
     addSubview(_rankingImageView)
     addSubview(_rankingLabel)
     addSubview(_arrowImageView)
-    addSubview(_topView)
-    addSubview(_topLine)
   }
   
   fileprivate func _layoutSubviews() {
     
     _recommendImageView.snp.makeConstraints { (make) in
       make.size.equalTo(20)
-      make.centerY.equalTo(20)
+      make.centerY.equalTo(28)
       make.leading.equalTo(8)
     }
     
     _recommendLabel.snp.makeConstraints { (make) in
-      make.centerY.equalTo(20)
+      make.centerY.equalTo(_recommendImageView.snp.centerY)
       make.leading.equalTo(_recommendImageView.snp.trailing).offset(8)
     }
     
     _arrowImageView.snp.makeConstraints { (make) in
-      make.centerY.equalTo(20)
+      make.centerY.equalTo(_recommendImageView.snp.centerY)
       make.size.equalTo(20)
       make.trailing.equalTo(-8)
     }
     
     _rankingLabel.snp.makeConstraints { (make) in
-      make.centerY.equalTo(20)
+      make.centerY.equalTo(_recommendImageView.snp.centerY)
       make.trailing.equalTo(_arrowImageView.snp.leading).offset(-8)
     }
     
     _rankingImageView.snp.makeConstraints { (make) in
-      make.centerY.equalTo(20)
+      make.centerY.equalTo(_recommendImageView.snp.centerY)
       make.size.equalTo(20)
       make.trailing.equalTo(_rankingLabel.snp.leading).offset(-8)
-    }
-    
-    _topView.snp.makeConstraints { (make) in
-      make.top.equalTo(0)
-      make.leading.equalTo(0)
-      make.trailing.equalTo(0)
-      make.height.equalTo(8)
-    }
-    
-    _topLine.snp.makeConstraints { (make) in
-      make.top.equalTo(_topView.snp.bottom)
-      make.leading.equalTo(0)
-      make.trailing.equalTo(0)
-      make.height.equalTo(0.5)
     }
     
   }

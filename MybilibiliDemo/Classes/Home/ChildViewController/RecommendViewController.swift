@@ -145,62 +145,26 @@ extension RecommendViewController: UITableViewDataSource, UITableViewDelegate {
     let type = model["type"] as! String
     if type == "recommend" {
       let view = RecommendHotHeaderView(frame: .zero)
-//      view.snp.makeConstraints() { (make) in
-//        make.top.equalTo(0)
-//        make.bottom.equalTo(0)
-//        make.leading.equalTo(0)
-//        make.trailing.equalTo(0)
-//      }
       return view
     } else if type == "live" {
       let view = RecommendLiveHeaderView(frame: .zero)
-//      view.snp.makeConstraints() { (make) in
-//        make.top.equalTo(0)
-//        make.bottom.equalTo(0)
-//        make.leading.equalTo(0)
-//        make.trailing.equalTo(0)
-//      }
       return view
     } else if type == "topic" {
       let view = RecommendTopicHeaderView(frame: .zero)
-//      view.snp.makeConstraints() { (make) in
-//        make.top.equalTo(0)
-//        make.bottom.equalTo(0)
-//        make.leading.equalTo(0)
-//        make.trailing.equalTo(0)
-//      }
       return view
     } else if type == "av" {
       let view = RecommendAVHeaderView(frame: .zero)
-//      view.snp.makeConstraints() { (make) in
-//        make.top.equalTo(0)
-//        make.bottom.equalTo(0)
-//        make.leading.equalTo(0)
-//        make.trailing.equalTo(0)
-//      }
       return view
     } else if type == "bangumi" {
       let view = RecommendRegionHeaderView(frame: .zero)
       view.imageString = "home_subregion_bangumi"
       view.titleString = "番剧推荐"
       view.detailString = "查看所有番剧"
-//      view.snp.makeConstraints() { (make) in
-//        make.top.equalTo(0)
-//        make.bottom.equalTo(0)
-//        make.leading.equalTo(0)
-//        make.trailing.equalTo(0)
-//      }
       return view
     } else if type == "region" || type == "sp" {
       let view = RecommendRegionHeaderView(frame: .zero)
       view.imageString = "home_region_icon_\(model["param"])"
       view.titleString = model["title"] as? String
-//      view.snp.makeConstraints() { (make) in
-//        make.top.equalTo(0)
-//        make.bottom.equalTo(0)
-//        make.leading.equalTo(0)
-//        make.trailing.equalTo(0)
-//      }
       return view
     }
     return UIView()
@@ -211,31 +175,13 @@ extension RecommendViewController: UITableViewDataSource, UITableViewDelegate {
     let model = _recommendContentViews[section]
     let type = model["type"] as! String
     if type == "recommend" {
-      let view = RecommendHotFooterView(frame: .zero)
-//      view.snp.makeConstraints() { (make) in
-//        make.top.equalTo(0)
-//        make.bottom.equalTo(0)
-//        make.leading.equalTo(0)
-//        make.trailing.equalTo(0)
-//      }
+      let view = RecommendRegionFooterView(frame: .zero)
       return view
     } else if type == "bangumi" {
       let view = RecommendBangumiFooterView(frame: .zero)
-//      view.snp.makeConstraints() { (make) in
-//        make.top.equalTo(0)
-//        make.bottom.equalTo(0)
-//        make.leading.equalTo(0)
-//        make.trailing.equalTo(0)
-//      }
       return view
     } else if type == "region" || type == "live" {
       let view = RecommendRegionFooterView(frame: .zero)
-//      view.snp.makeConstraints() { (make) in
-//        make.top.equalTo(0)
-//        make.bottom.equalTo(0)
-//        make.leading.equalTo(0)
-//        make.trailing.equalTo(0)
-//      }
       return view
     }
     return UIView()

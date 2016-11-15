@@ -73,6 +73,7 @@ class LiveContentCollectionViewCell: UICollectionViewCell {
   fileprivate var _coverImageView: UIImageView // 封面imageView
   fileprivate var _avatarImageView: UIImageView // 头像imageView
   fileprivate var _nameLabel: UILabel // up主名字标签
+  fileprivate var _viewerEyeImageView: UIImageView // 在线人数图标
   fileprivate var _viewerCountLabel: UILabel // 观众在线人数标签
   fileprivate var _titleLabel: UILabel // 标题标签
   
@@ -80,6 +81,7 @@ class LiveContentCollectionViewCell: UICollectionViewCell {
     _coverImageView = UIImageView(frame: .zero)
     _avatarImageView = UIImageView(frame: .zero)
     _nameLabel = UILabel(frame: .zero)
+    _viewerEyeImageView = UIImageView(frame: .zero)
     _viewerCountLabel = UILabel(frame: .zero)
     _titleLabel = UILabel(frame: .zero)
     super.init(frame: frame)
@@ -104,24 +106,34 @@ extension LiveContentCollectionViewCell {
       make.trailing.equalTo(contentView.snp.trailing)
       make.height.equalTo(120)
     }
+    
     _avatarImageView.snp.makeConstraints { (make) in
       make.size.equalTo(44)
       make.leading.equalTo(_coverImageView.snp.leading).offset(4)
       make.bottom.equalTo(_coverImageView.snp.bottom).offset(22)
     }
+    
     _nameLabel.snp.makeConstraints { (make) in
-      make.leading.equalTo(_avatarImageView.snp.trailing).offset(4)
-      make.top.equalTo(_coverImageView.snp.bottom).offset(8)
+      make.leading.equalTo(_coverImageView.snp.leading).offset(1)
+      make.bottom.equalTo(_coverImageView.snp.bottom).offset(-3)
     }
-    _titleLabel.snp.makeConstraints { (make) in
-      make.leading.equalTo(_viewerCountLabel.snp.trailing)
-      make.trailing.greaterThanOrEqualTo(0)
-      make.centerY.equalTo(_viewerCountLabel.snp.centerY)
+    
+    _viewerEyeImageView.snp.makeConstraints { (make) in
+      make.leading.equalTo(_nameLabel.snp.trailing).offset(1)
+      make.size.equalTo(10)
+      make.centerY.equalTo(_nameLabel.snp.centerY)
     }
+    
     _viewerCountLabel.snp.makeConstraints { (make) in
-      make.top.equalTo(_nameLabel.snp.bottom).offset(4)
-      make.leading.equalTo(contentView.snp.leading).offset(4)
-      make.width.equalTo(44)
+      make.leading.equalTo(_viewerEyeImageView.snp.trailing).offset(1)
+      make.trailing.equalTo(-1)
+      make.centerY.equalTo(_nameLabel.snp.centerY)
+    }
+    
+    _titleLabel.snp.makeConstraints { (make) in
+      make.top.equalTo(_coverImageView.snp.bottom).offset(4)
+      make.leading.equalTo(_coverImageView.snp.leading).offset(1)
+      make.trailing.equalTo(contentView.snp.trailing).offset(-4)
     }
   }
   
@@ -138,24 +150,28 @@ extension LiveContentCollectionViewCell {
     _viewerCountLabel.layerBorderWidth = 1
     _viewerCountLabel.layerBorderColor = BBK_Light_Line_Color
     
-    _nameLabel.text = "up主"
-    _nameLabel.textColor = UIColor.black
-    _nameLabel.font = UIFont.systemFont(ofSize: 15)
+    _nameLabel.text = "up主123123123123123"
+    _nameLabel.textColor = UIColor.white
+    _nameLabel.font = UIFont.systemFont(ofSize: 12)
     
     _titleLabel.text = "哈哈哈"
-    _titleLabel.textColor = UIColor.lightGray
+    _titleLabel.textColor = UIColor.black
     _titleLabel.font = UIFont.systemFont(ofSize: 14)
+    _titleLabel.numberOfLines = 2
     
-    _viewerCountLabel.text = "2333"
-    _viewerCountLabel.textColor = UIColor.black
-    _viewerCountLabel.font = UIFont.systemFont(ofSize: 14)
+    _viewerEyeImageView.image = UIImage(named: "live_eye_ico")
+    
+    _viewerCountLabel.text = "2333123123123"
+    _viewerCountLabel.textColor = UIColor.white
+    _viewerCountLabel.font = UIFont.systemFont(ofSize: 10)
     _viewerCountLabel.textAlignment = .center
     _viewerCountLabel.backgroundColor = UIColor(hexString: "#C8C8C8")
     
     contentView.addSubview(_coverImageView)
+    _coverImageView.addSubview(_nameLabel)
+    _coverImageView.addSubview(_viewerEyeImageView)
+    _coverImageView.addSubview(_viewerCountLabel)
     contentView.addSubview(_avatarImageView)
-    contentView.addSubview(_nameLabel)
-    contentView.addSubview(_viewerCountLabel)
     contentView.addSubview(_titleLabel)
   }
   
