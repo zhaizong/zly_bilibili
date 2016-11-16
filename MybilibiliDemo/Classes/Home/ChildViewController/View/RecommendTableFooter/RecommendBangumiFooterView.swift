@@ -35,15 +35,15 @@ class RecommendBangumiFooterView: UIView {
     addSubview(_indexImageView)
     
     _everyDayImageView.snp.makeConstraints { (make) in
-      make.centerY.equalTo(0)
-      make.leading.equalTo(12)
-      make.height.equalTo(49)
+      make.top.equalTo(20)
+      make.leading.equalTo(10)
+      make.height.equalTo(54)
     }
     
     _indexImageView.snp.makeConstraints { (make) in
-      make.centerY.equalTo(0)
+      make.top.equalTo(_everyDayImageView.snp.top)
       make.leading.equalTo(_everyDayImageView.snp.trailing).offset(12)
-      make.trailing.equalTo(-12)
+      make.trailing.equalTo(-10)
       make.size.equalTo(_everyDayImageView.snp.size)
     }
   }

@@ -44,10 +44,6 @@ class RecommendRegionHeaderView: UIView {
   
   fileprivate var _arrowImageView: UIImageView
   
-  fileprivate var _topView: UIView
-  fileprivate var _topLineUp: UIView
-  fileprivate var _topLineDown: UIView
-  
   // MARK: - Lifecycle
   
   override init(frame: CGRect) {
@@ -58,9 +54,6 @@ class RecommendRegionHeaderView: UIView {
     
     _arrowImageView = UIImageView(frame: .zero)
     
-    _topView = UIView(frame: .zero)
-    _topLineUp = UIView(frame: .zero)
-    _topLineDown = UIView(frame: .zero)
     super.init(frame: frame)
     
     _setupApperance()
@@ -89,18 +82,10 @@ extension RecommendRegionHeaderView {
     _currentLabel.textColor = UIColor(hexString: "#AAAAAA")
     _currentLabel.font = UIFont.systemFont(ofSize: 14)
     
-    _topView.backgroundColor = UIColor(hexString: "#F6F6F6")
-    
-    _topLineUp.backgroundColor = BBK_Light_Line_Color
-    _topLineDown.backgroundColor = BBK_Light_Line_Color
-    
     addSubview(_regionImageView)
     addSubview(_regionLabel)
     addSubview(_arrowImageView)
     addSubview(_currentLabel)
-    addSubview(_topView)
-    addSubview(_topLineUp)
-    addSubview(_topLineDown)
   }
   
   fileprivate func _layoutSubviews() {
@@ -127,26 +112,6 @@ extension RecommendRegionHeaderView {
       make.trailing.equalTo(_arrowImageView.snp.leading).offset(-8)
     }
     
-    _topLineUp.snp.makeConstraints { (make) in
-      make.top.equalTo(0)
-      make.leading.equalTo(0)
-      make.trailing.equalTo(0)
-      make.height.equalTo(0.5)
-    }
-    
-    _topView.snp.makeConstraints { (make) in
-      make.top.equalTo(_topLineUp.snp.bottom)
-      make.leading.equalTo(0)
-      make.trailing.equalTo(0)
-      make.height.equalTo(8)
-    }
-    
-    _topLineDown.snp.makeConstraints { (make) in
-      make.top.equalTo(_topView.snp.bottom)
-      make.leading.equalTo(0)
-      make.trailing.equalTo(0)
-      make.height.equalTo(0.5)
-    }
   }
   
 }

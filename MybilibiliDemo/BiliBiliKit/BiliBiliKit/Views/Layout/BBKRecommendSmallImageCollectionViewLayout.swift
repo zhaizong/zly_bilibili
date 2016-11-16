@@ -18,7 +18,10 @@ public class BBKRecommendSmallImageCollectionViewLayout: UICollectionViewFlowLay
     super.prepare()
     guard let collectionView = collectionView else { return }
     
-    itemSize = CGSize(width: 140, height: collectionView.st_height)
+    let margin = BBK_App_Padding_8
+    let width = (collectionView.st_width - 3 * margin) * 0.5
+    
+    itemSize = CGSize(width: width, height: collectionView.st_height)
     scrollDirection = .horizontal
     minimumInteritemSpacing = 0
     sectionInset = UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 8)

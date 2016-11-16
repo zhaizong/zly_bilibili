@@ -123,7 +123,7 @@ extension RecommendNormalImageCollectionViewCell {
   fileprivate func _layoutSubviews() {
     
     _imageView.snp.makeConstraints { (make) in
-      make.height.equalTo(120)
+      make.height.equalTo(100)
       make.top.equalTo(contentView.snp.top)
       make.leading.equalTo(contentView.snp.leading)
       make.trailing.equalTo(contentView.snp.trailing)

@@ -89,7 +89,7 @@ extension RecommendNormalImageBangumiStyleCollectionViewCell {
   fileprivate func _layoutSubviews() {
     
     _imageView.snp.makeConstraints { (make) in
-      make.height.equalTo(120)
+      make.height.equalTo(100)
       make.top.equalTo(contentView.snp.top)
       make.leading.equalTo(contentView.snp.leading)
       make.trailing.equalTo(contentView.snp.trailing)
@@ -102,7 +102,7 @@ extension RecommendNormalImageBangumiStyleCollectionViewCell {
     }
     
     _detailLabel.snp.makeConstraints { (make) in
-      make.top.equalTo(_titleLabel.snp.bottom).offset(8)
+      make.top.equalTo(_titleLabel.snp.bottom).offset(6)
       make.leading.equalTo(_titleLabel.snp.leading)
       make.trailing.equalTo(_titleLabel.snp.trailing)
     }

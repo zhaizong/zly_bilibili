@@ -196,6 +196,7 @@ extension BBKCycleBannerView {
     
     guard _timer != nil else { return }
     _timer.invalidate()
+    _timer = nil
   }
   
   fileprivate func _currentIndex() -> Int {

@@ -75,6 +75,7 @@ extension RecommendSmallImageTableViewCell {
     _collectionView.register(RecommendSmallImageTableViewCollectionViewCell.self, forCellWithReuseIdentifier: Commons.SmallCollectionViewCellIdentifier)
     _collectionView.showsHorizontalScrollIndicator = false
     _collectionView.showsVerticalScrollIndicator = false
+    _collectionView.backgroundColor = BBK_Main_Background_Color
     _collectionView.scrollsToTop = false
     _collectionView.isScrollEnabled = true
     _collectionView.bounces = true

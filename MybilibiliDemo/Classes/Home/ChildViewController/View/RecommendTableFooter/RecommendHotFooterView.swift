@@ -27,8 +27,6 @@ class RecommendHotFooterView: UIView {
     
     isUserInteractionEnabled = true
     
-//    _refreshButton.backgroundColor = UIColor.white
-    
     addSubview(_refreshButton)
     _refreshButton.snp.makeConstraints { (make) in
       make.centerY.equalTo(0)

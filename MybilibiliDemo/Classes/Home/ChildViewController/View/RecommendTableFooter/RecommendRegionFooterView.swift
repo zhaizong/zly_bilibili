@@ -16,9 +16,13 @@ class RecommendRegionFooterView: UIView {
 
   // MARK: - Property
   
-  var regionFooterViewClosureDidClick: (() -> Void)?
+  var regionFooterViewRefreshDataSourceClosure: (() -> Void)?
+  
+  var timer: Timer!
   
   fileprivate var _refreshButton: UIButton
+  
+  fileprivate var _angle: CGFloat = 0.0
   
   // MARK: - Lifecycle
   
@@ -34,7 +38,7 @@ class RecommendRegionFooterView: UIView {
     addSubview(_refreshButton)
     
     _refreshButton.snp.makeConstraints { (make) in
-      make.centerY.equalTo(0)
+      make.centerY.equalTo(-22)
       make.trailing.equalTo(0)
     }
   }
@@ -42,14 +46,36 @@ class RecommendRegionFooterView: UIView {
   required init?(coder aDecoder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
-
+  
+  deinit {
+    if timer != nil {
+      timer.invalidate()
+      timer = nil
+    }
+  }
 }
 
 extension RecommendRegionFooterView {
   
   @objc fileprivate func _refreshButtonDidClick() {
     
+    if timer != nil {
+      timer.invalidate()
+      timer = nil
+    }
+//    timer = Timer(timeInterval: 0.01, target: self, selector: #selector(RecommendRegionFooterView._refreshTransform), userInfo: nil, repeats: true)
+//    RunLoop.current.add(timer, forMode: .defaultRunLoopMode)
+//    
+//    regionFooterViewRefreshDataSourceClosure?()
+  }
+  
+  @objc fileprivate func _refreshTransform() {
     
+    _angle += 0.11
+    if _angle > 6.28 {
+      _angle = 0
+    }
+    _refreshButton.transform = CGAffineTransform(rotationAngle: _angle)
   }
   
 }

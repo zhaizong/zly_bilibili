@@ -9,7 +9,7 @@
 import UIKit
 
 // 普通四图tableView cell
-// 普通 - 170高度  直播 - 167高度  番剧 - 166高度
+//
 // @since 1.0.0
 // @author 赵林洋
 fileprivate struct NormalImageCommons {
@@ -62,7 +62,7 @@ extension RecommendNormalImageTableViewCell: UICollectionViewDataSource, UIColle
   }
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    
+
     if _type == "region" || _type == "recommend" {
       
       let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NormalImageCommons.CommonStyleCollectionViewCellID, for: indexPath) as! RecommendNormalImageCollectionViewCell
@@ -101,9 +101,9 @@ extension RecommendNormalImageTableViewCell {
     
     let layout = BBKCommonStyleCollectionViewLayout()
     layout.itemCount = 4
-    layout.itemHeight = 170
+    layout.itemHeight = 150
     _collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-    _collectionView.backgroundColor = UIColor.clear
+    _collectionView.backgroundColor = BBK_Main_Background_Color
     _collectionView.scrollsToTop = false
     _collectionView.showsVerticalScrollIndicator = true
     _collectionView.showsHorizontalScrollIndicator = true
@@ -127,17 +127,5 @@ extension RecommendNormalImageTableViewCell {
     }
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
 

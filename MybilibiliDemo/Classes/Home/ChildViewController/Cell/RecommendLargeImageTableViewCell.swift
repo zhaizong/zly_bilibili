@@ -72,7 +72,7 @@ extension RecommendLargeImageTableViewCell {
     let layout = BBKRecommendLargeImageCollectionViewLayout()
     
     _collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-    _collectionView.backgroundColor = UIColor.clear
+    _collectionView.backgroundColor = BBK_Main_Background_Color
     _collectionView.showsHorizontalScrollIndicator = true
     _collectionView.showsVerticalScrollIndicator = true
     _collectionView.isScrollEnabled = true

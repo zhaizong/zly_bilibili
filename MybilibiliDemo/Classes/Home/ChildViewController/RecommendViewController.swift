@@ -24,6 +24,8 @@ fileprivate struct Commons {
   static let RecommendLargeImageTableViewCellID = "recommend_large_image_cell_identifier"
 //  电视剧small tableView Cell
   static let RecommendSmallImageTableViewCellID = "recommend_small_image_cell_identifier"
+//  番剧
+  static let BangumiContentURL = "http://bangumi.bilibili.com/api/bangumi_recommend?actionKey=appkey&appkey=27eb53fc9058f8c3&build=3440&cursor=0&device=phone&mobi_app=iphone&pagesize=10&platform=ios&sign=51fb8d793fa26c9b12e2b73311bcf95a&ts=1468980621"
 }
 
 class RecommendViewController: UIViewController, BiliStoryboardViewController {
@@ -38,6 +40,10 @@ class RecommendViewController: UIViewController, BiliStoryboardViewController {
     let lazilyCreatedViews = [[String: Any]]()
     return lazilyCreatedViews
   }()// 推荐内容数据源数组
+  fileprivate lazy var _movieDataSources: [[String: Any]] = {
+    let lazilyCreatedLinks = [[String: Any]]()
+    return lazilyCreatedLinks
+  }()// 视频数组
   
   fileprivate var _bannerView: BBKCycleBannerView! // 轮播控件
   
@@ -53,16 +59,6 @@ class RecommendViewController: UIViewController, BiliStoryboardViewController {
     // Do any additional setup after loading the view.
     _setupApperance()
     _setupDataSource()
-  }
-  
-  override func viewDidLayoutSubviews() {
-    super.viewDidLayoutSubviews()
-//    _contentTableView.frame = CGRect(origin: .zero, size: CGSize(width: view.frame.size.width, height: view.frame.size.height))
-  }
-  
-  override func didReceiveMemoryWarning() {
-    super.didReceiveMemoryWarning()
-    // Dispose of any resources that can be recreated.
   }
   
   deinit {
@@ -130,11 +126,11 @@ extension RecommendViewController: UITableViewDataSource, UITableViewDelegate {
     let model = _recommendContentViews[indexPath.section]
     let style = model["style"] as! String
     if style == "medium" {
-      return 348
+      return 300
     } else if style == "large" {
-      return 120
+      return 100
     } else if style == "small" {
-      return 250
+      return 110
     }
     return 0
   }
@@ -176,6 +172,15 @@ extension RecommendViewController: UITableViewDataSource, UITableViewDelegate {
     let type = model["type"] as! String
     if type == "recommend" {
       let view = RecommendRegionFooterView(frame: .zero)
+      view.regionFooterViewRefreshDataSourceClosure = { [weak self] in
+        if let _ = self {
+          // TODO: - 换一波
+//          UIView.animate(withDuration: 1) {
+//            view.timer.invalidate()
+//            view.timer = nil
+//          }
+        }
+      }
       return view
     } else if type == "bangumi" {
       let view = RecommendBangumiFooterView(frame: .zero)
@@ -194,19 +199,19 @@ extension RecommendViewController: UITableViewDataSource, UITableViewDelegate {
     if type == "av" {
       return 10
     }
-    return 53
+    return 45
   }
   
   func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
     
     let model = _recommendContentViews[section]
     let type = model["type"] as! String
-    if type == "topic" {
-      return 20
-    } else if type == "av" {
+    if type == "av" {
       return 10
+    } else if type == "bangumi" {
+      return 80
     }
-    return 64
+    return 20
   }
   
 }
@@ -217,7 +222,6 @@ extension RecommendViewController {
     
     view.backgroundColor = BBK_Main_Background_Color
     automaticallyAdjustsScrollViewInsets = false
-//    view.autoresizingMask = .init(rawValue: 0)
     
     _contentTableView = UITableView(frame: .zero, style: .grouped)
     _contentTableView.backgroundColor = BBK_Main_Background_Color
@@ -264,7 +268,7 @@ extension RecommendViewController {
     
     UIApplication.shared.isNetworkActivityIndicatorVisible = true
     let setupBannerAndRecommend: () -> Void = {
-      if self._bannerViews.count != 0 && self._recommendContentViews.count != 0 {
+      if self._bannerViews.count != 0 && self._recommendContentViews.count != 0 && self._movieDataSources.count != 0 {
         UIApplication.shared.isNetworkActivityIndicatorVisible = false
         
         self._bannerView.models = self._bannerViews
@@ -282,17 +286,12 @@ extension RecommendViewController {
       if let responseObject = responseObject {
         let dict = responseObject as! [String: Any]
         let datas = dict["data"] as! [[String: Any]]
+        
         weakSelf._bannerViews = datas
-//        debugPrint("加载轮播图数据开始")
-//        debugPrint(responseObject)
-//        debugPrint("加载轮播图数据结束")
         setupBannerAndRecommend()
       }
     }) { (task: URLSessionDataTask?, error: Error) in
       UIApplication.shared.isNetworkActivityIndicatorVisible = false
-      self._contentTableView.header.endRefreshing()
-      debugPrint("加载轮播图数据错误: \(error)")
-      debugPrint("debugPrint")
     }
     
     _recommendContentViews.removeAll(keepingCapacity: false)
@@ -304,16 +303,25 @@ extension RecommendViewController {
         let dict = responseObject as! [String: Any]
         let datas = dict["data"] as! [[String: Any]]
         weakSelf._recommendContentViews = datas
-//        debugPrint("加载推荐内容数据开始")
-//        debugPrint(responseObject)
-//        debugPrint("加载推荐内容数据结束")
         setupBannerAndRecommend()
       }
     }) { (task: URLSessionDataTask?, error: Error) in
       UIApplication.shared.isNetworkActivityIndicatorVisible = false
-      debugPrint("加载推荐内容数据错误: \(error)")
-      debugPrint("debugPrint")
     }
+//    视频链接
+    _movieDataSources.removeAll(keepingCapacity: false)
+    BBKHTTPSessionManager.sharedManager().get(Commons.BangumiContentURL, parameters: nil, progress: nil, success: { [weak self] (task: URLSessionDataTask, responseObject: Any?) in
+      guard let weakSelf = self else { return }
+      if let responseObject = responseObject {
+        let dict = responseObject as! [String: Any]
+        let datas = dict["result"] as! [[String: Any]]
+        weakSelf._movieDataSources = datas
+        setupBannerAndRecommend()
+      }
+    }) { (task: URLSessionDataTask?, error: Error) in
+      UIApplication.shared.isNetworkActivityIndicatorVisible = false
+    }
+    
   }
   
 }
