@@ -11,10 +11,10 @@
   },
   "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "00A83442-6310-40AE-893C-3174064A0400",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
-    "0DDC1EF8BEB5FF1CA33881D47DFA4CCA5DCA323A" : "MybilibiliDemo\/",
-    "E28E36D423EC87798E52E2BF482E9F7A1E6479D6" : "MybilibiliDemo\/MybilibiliDemo\/BiliBiliKit\/BiliBiliKit\/Vendor\/SDWebImage\/",
-    "3AF18F9C6F5D633BAA0B3F935459E0C777C82047" : "MybilibiliDemo\/MybilibiliDemo\/BiliBiliKit\/BiliBiliKit\/Vendor\/SnapKit\/",
-    "2B63CCF71525A271478FBA0FCECF929E60AF80A6" : "MybilibiliDemo\/MybilibiliDemo\/BiliBiliKit\/BiliBiliKit\/Vendor\/YYWebImage\/"
+    "0DDC1EF8BEB5FF1CA33881D47DFA4CCA5DCA323A" : "zly_bilibili\/",
+    "E28E36D423EC87798E52E2BF482E9F7A1E6479D6" : "zly_bilibili\/MybilibiliDemo\/BiliBiliKit\/BiliBiliKit\/Vendor\/SDWebImage\/",
+    "3AF18F9C6F5D633BAA0B3F935459E0C777C82047" : "zly_bilibili\/MybilibiliDemo\/BiliBiliKit\/BiliBiliKit\/Vendor\/SnapKit\/",
+    "2B63CCF71525A271478FBA0FCECF929E60AF80A6" : "zly_bilibili\/MybilibiliDemo\/BiliBiliKit\/BiliBiliKit\/Vendor\/YYWebImage\/"
   },
   "DVTSourceControlWorkspaceBlueprintNameKey" : "MybilibiliDemo",
   "DVTSourceControlWorkspaceBlueprintVersion" : 204,

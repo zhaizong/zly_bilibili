@@ -21,7 +21,7 @@
 		2D64195E1DB922E700E1714D /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D64195D1DB922E700E1714D /* Home.storyboard */; };
 		2D6419751DBA1A2800E1714D /* AppDelegate_BiliAddition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D6419741DBA1A2800E1714D /* AppDelegate_BiliAddition.swift */; };
 		2D8C9ED41DC7565A00FC6A8B /* LiveContentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8C9ED31DC7565A00FC6A8B /* LiveContentTableViewCell.swift */; };
-		2DA430681DC86F61006FEFAC /* IJKMediaFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DA430671DC86F61006FEFAC /* IJKMediaFramework.framework */; };
+		2D9F10BF1DE80F6300783ACD /* IJKMediaFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D9F10BE1DE80F6300783ACD /* IJKMediaFramework.framework */; };
 		2DA4306C1DC87BF8006FEFAC /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 2DA4306B1DC87BF8006FEFAC /* README.md */; };
 		2DA689161DB490DF00E87142 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2DA689151DB490DF00E87142 /* Main.storyboard */; };
 		2DA689E71DB491F500E87142 /* ThirdPartyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA689E61DB491F500E87142 /* ThirdPartyManager.swift */; };
@@ -94,7 +94,7 @@
 		2D64195D1DB922E700E1714D /* Home.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		2D6419741DBA1A2800E1714D /* AppDelegate_BiliAddition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate_BiliAddition.swift; sourceTree = "<group>"; };
 		2D8C9ED31DC7565A00FC6A8B /* LiveContentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiveContentTableViewCell.swift; sourceTree = "<group>"; };
-		2DA430671DC86F61006FEFAC /* IJKMediaFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IJKMediaFramework.framework; path = MybilibiliDemo/IJKMediaFramework.framework; sourceTree = "<group>"; };
+		2D9F10BE1DE80F6300783ACD /* IJKMediaFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IJKMediaFramework.framework; path = MybilibiliDemo/IJKMediaFramework.framework; sourceTree = "<group>"; };
 		2DA4306B1DC87BF8006FEFAC /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		2DA689151DB490DF00E87142 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		2DA689E61DB491F500E87142 /* ThirdPartyManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThirdPartyManager.swift; sourceTree = "<group>"; };
@@ -138,7 +138,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2DA430681DC86F61006FEFAC /* IJKMediaFramework.framework in Frameworks */,
+				2D9F10BF1DE80F6300783ACD /* IJKMediaFramework.framework in Frameworks */,
 				2D61D75D1DB7726000217426 /* BiliBiliKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -361,7 +361,7 @@
 		2DC1A06D1DB487EA006DD13D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				2DA430671DC86F61006FEFAC /* IJKMediaFramework.framework */,
+				2D9F10BE1DE80F6300783ACD /* IJKMediaFramework.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

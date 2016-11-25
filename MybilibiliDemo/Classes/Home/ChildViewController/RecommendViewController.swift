@@ -66,16 +66,6 @@ class RecommendViewController: UIViewController, BiliStoryboardViewController {
     NotificationCenter.default.removeObserver(self)
   }
   
-  /*
-   // MARK: - Navigation
-   
-   // In a storyboard-based application, you will often want to do a little preparation before navigation
-   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-   // Get the new view controller using segue.destinationViewController.
-   // Pass the selected object to the new view controller.
-   }
-   */
-  
   static func instanceFromStoryboard<T>() -> T {
     
     let vc = UIStoryboard.homeStoryboard().instantiateViewController(withIdentifier: "RecommendViewController") as! RecommendViewController
@@ -239,12 +229,12 @@ extension RecommendViewController {
     }
     
 //    订阅轮播图开始滑动以及结束滑动的通知改变首页内容视图是否可以滑动
-    NotificationCenter.default.addObserver(self, selector: #selector(RecommendViewController._bannerViewWillBeginDraggingNotification), name: NSNotification.Name(rawValue: Commons.CycleBannerWillBeginDraggingNotification), object: nil)
-    NotificationCenter.default.addObserver(self, selector: #selector(RecommendViewController._bannerViewDidEndDeceleratingNotification), name: NSNotification.Name(rawValue: Commons.CycleBannerDidEndDeceleratingNotification), object: nil)
+    NotificationCenter.default.addObserver(self, selector: #selector(_bannerViewWillBeginDraggingNotification), name: NSNotification.Name(rawValue: Commons.CycleBannerWillBeginDraggingNotification), object: nil)
+    NotificationCenter.default.addObserver(self, selector: #selector(_bannerViewDidEndDeceleratingNotification), name: NSNotification.Name(rawValue: Commons.CycleBannerDidEndDeceleratingNotification), object: nil)
 //    如果是视频方式加载进入的时候刷新
-    NotificationCenter.default.addObserver(self, selector: #selector(RecommendViewController._startBeginRefreshing), name: NSNotification.Name(rawValue: Commons.StartBeginRefreshing), object: nil)
+    NotificationCenter.default.addObserver(self, selector: #selector(_startBeginRefreshing), name: NSNotification.Name(rawValue: Commons.StartBeginRefreshing), object: nil)
 //    监听tabbar点击的通知
-    NotificationCenter.default.addObserver(self, selector: #selector(RecommendViewController._tabbarDidClickNotification), name: NSNotification.Name(rawValue: BBK_TabBar_DidSelectNotification), object: nil)
+    NotificationCenter.default.addObserver(self, selector: #selector(_tabbarDidClickNotification), name: NSNotification.Name(rawValue: BBK_TabBar_DidSelectNotification), object: nil)
     
     _contentTableView.register(RecommendNormalImageTableViewCell.self, forCellReuseIdentifier: Commons.RecommendNormalImageTableViewCellID)
     _contentTableView.register(RecommendLargeImageTableViewCell.self, forCellReuseIdentifier: Commons.RecommendLargeImageTableViewCellID)
