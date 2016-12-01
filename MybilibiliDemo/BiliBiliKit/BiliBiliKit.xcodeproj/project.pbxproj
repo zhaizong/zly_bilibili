@@ -104,6 +104,9 @@
 		2D3CDD4C1DC213A100884948 /* UIView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D3CDD231DC213A100884948 /* UIView+WebCache.m */; };
 		2D3CDD4D1DC213A100884948 /* UIView+WebCacheOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 2D3CDD241DC213A100884948 /* UIView+WebCacheOperation.h */; };
 		2D3CDD4E1DC213A100884948 /* UIView+WebCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D3CDD251DC213A100884948 /* UIView+WebCacheOperation.m */; };
+		2D515A521DEBD57000196EA0 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D515A511DEBD57000196EA0 /* libz.tbd */; };
+		2D515A581DEBD78600196EA0 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D515A571DEBD78600196EA0 /* libsqlite3.tbd */; };
+		2D544A071DE94D21005CB35C /* CGFloat+BBKAddition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D544A061DE94D21005CB35C /* CGFloat+BBKAddition.swift */; };
 		2D61D74B1DB76D8A00217426 /* BBKAlertView.h in Headers */ = {isa = PBXBuildFile; fileRef = 2D61D7491DB76D8A00217426 /* BBKAlertView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2D61D74C1DB76D8A00217426 /* BBKAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D61D74A1DB76D8A00217426 /* BBKAlertView.m */; };
 		2D61D76B1DB8CD0200217426 /* BBKCommons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D61D76A1DB8CD0200217426 /* BBKCommons.swift */; };
@@ -112,6 +115,8 @@
 		2D64196D1DBA17E300E1714D /* UIColor+DYKAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D6419681DBA17E300E1714D /* UIColor+DYKAddition.m */; };
 		2D64196E1DBA17E300E1714D /* UIColor_DYKAddition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D6419691DBA17E300E1714D /* UIColor_DYKAddition.swift */; };
 		2D64196F1DBA17E300E1714D /* UIStoryboard+BiliAddition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D64196A1DBA17E300E1714D /* UIStoryboard+BiliAddition.swift */; };
+		2D8E15201DEC992F006E0BE5 /* BBKForceRotationScreen.h in Headers */ = {isa = PBXBuildFile; fileRef = 2D8E151E1DEC992F006E0BE5 /* BBKForceRotationScreen.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2D8E15211DEC992F006E0BE5 /* BBKForceRotationScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D8E151F1DEC992F006E0BE5 /* BBKForceRotationScreen.m */; };
 		2D9F109A1DE80CC700783ACD /* Constraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9F10781DE80CC700783ACD /* Constraint.swift */; };
 		2D9F109B1DE80CC700783ACD /* ConstraintAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9F10791DE80CC700783ACD /* ConstraintAttributes.swift */; };
 		2D9F109C1DE80CC700783ACD /* ConstraintConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9F107A1DE80CC700783ACD /* ConstraintConfig.swift */; };
@@ -147,6 +152,21 @@
 		2D9F10BA1DE80CC800783ACD /* SnapKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 2D9F10981DE80CC700783ACD /* SnapKit.h */; };
 		2D9F10BB1DE80CC800783ACD /* UILayoutSupport+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9F10991DE80CC700783ACD /* UILayoutSupport+Extensions.swift */; };
 		2DA430701DC87CE6006FEFAC /* BBKCommonStyleCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA4306F1DC87CE6006FEFAC /* BBKCommonStyleCollectionViewLayout.swift */; };
+		2DA453261DEFFD230035544B /* DDXMLElementAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 2DA453161DEFFD230035544B /* DDXMLElementAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2DA453271DEFFD230035544B /* DDXMLElementAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DA453171DEFFD230035544B /* DDXMLElementAdditions.m */; };
+		2DA453281DEFFD230035544B /* NSString+DDXML.h in Headers */ = {isa = PBXBuildFile; fileRef = 2DA453191DEFFD230035544B /* NSString+DDXML.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2DA453291DEFFD230035544B /* NSString+DDXML.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DA4531A1DEFFD230035544B /* NSString+DDXML.m */; };
+		2DA4532A1DEFFD230035544B /* DDXML.h in Headers */ = {isa = PBXBuildFile; fileRef = 2DA4531B1DEFFD230035544B /* DDXML.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2DA4532B1DEFFD230035544B /* DDXML.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA4531C1DEFFD230035544B /* DDXML.swift */; };
+		2DA4532C1DEFFD230035544B /* DDXMLDocument.h in Headers */ = {isa = PBXBuildFile; fileRef = 2DA4531D1DEFFD230035544B /* DDXMLDocument.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2DA4532D1DEFFD230035544B /* DDXMLDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DA4531E1DEFFD230035544B /* DDXMLDocument.m */; };
+		2DA4532E1DEFFD230035544B /* DDXMLElement.h in Headers */ = {isa = PBXBuildFile; fileRef = 2DA4531F1DEFFD230035544B /* DDXMLElement.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2DA4532F1DEFFD230035544B /* DDXMLElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DA453201DEFFD230035544B /* DDXMLElement.m */; };
+		2DA453301DEFFD230035544B /* DDXMLNode.h in Headers */ = {isa = PBXBuildFile; fileRef = 2DA453211DEFFD230035544B /* DDXMLNode.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2DA453311DEFFD230035544B /* DDXMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DA453221DEFFD230035544B /* DDXMLNode.m */; };
+		2DA453321DEFFD230035544B /* KissXML.h in Headers */ = {isa = PBXBuildFile; fileRef = 2DA453231DEFFD230035544B /* KissXML.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2DA453331DEFFD230035544B /* DDXMLPrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = 2DA453251DEFFD230035544B /* DDXMLPrivate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2DA453351DF006E60035544B /* libxml2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DA453341DF006E60035544B /* libxml2.tbd */; };
 		2DA9D3FC1DB6739A005E977E /* BiliBiliKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 2DA9D3FA1DB6739A005E977E /* BiliBiliKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2DBC00711DC8F77F00C93ACC /* UIView+BBKAddition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBC00701DC8F77F00C93ACC /* UIView+BBKAddition.swift */; };
 		2DC5DAF91DBC757000C002DF /* UIView+HSFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC5DAF81DBC757000C002DF /* UIView+HSFrame.swift */; };
@@ -194,9 +214,6 @@
 		2DF51E041DC59C010036FE97 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DF51E031DC59C010036FE97 /* AssetsLibrary.framework */; };
 		2DF51E061DC59C0A0036FE97 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DF51E051DC59C0A0036FE97 /* ImageIO.framework */; };
 		2DF51E081DC59C130036FE97 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DF51E071DC59C130036FE97 /* Accelerate.framework */; };
-		2DF51E0A1DC59C1C0036FE97 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DF51E091DC59C1C0036FE97 /* MobileCoreServices.framework */; };
-		2DF51E0C1DC59C260036FE97 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DF51E0B1DC59C260036FE97 /* libsqlite3.tbd */; };
-		2DF51E0E1DC59C300036FE97 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DF51E0D1DC59C300036FE97 /* libz.tbd */; };
 		2DF51E161DC60D710036FE97 /* BBKRefresh.h in Headers */ = {isa = PBXBuildFile; fileRef = 2DF51E111DC60D710036FE97 /* BBKRefresh.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2DF51E171DC60D710036FE97 /* BBKRefreshHeader.h in Headers */ = {isa = PBXBuildFile; fileRef = 2DF51E121DC60D710036FE97 /* BBKRefreshHeader.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2DF51E181DC60D710036FE97 /* BBKRefreshHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DF51E131DC60D710036FE97 /* BBKRefreshHeader.m */; };
@@ -305,6 +322,9 @@
 		2D3CDD231DC213A100884948 /* UIView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WebCache.m"; sourceTree = "<group>"; };
 		2D3CDD241DC213A100884948 /* UIView+WebCacheOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+WebCacheOperation.h"; sourceTree = "<group>"; };
 		2D3CDD251DC213A100884948 /* UIView+WebCacheOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WebCacheOperation.m"; sourceTree = "<group>"; };
+		2D515A511DEBD57000196EA0 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		2D515A571DEBD78600196EA0 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		2D544A061DE94D21005CB35C /* CGFloat+BBKAddition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGFloat+BBKAddition.swift"; sourceTree = "<group>"; };
 		2D61D7491DB76D8A00217426 /* BBKAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBKAlertView.h; sourceTree = "<group>"; };
 		2D61D74A1DB76D8A00217426 /* BBKAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBKAlertView.m; sourceTree = "<group>"; };
 		2D61D76A1DB8CD0200217426 /* BBKCommons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BBKCommons.swift; sourceTree = "<group>"; };
@@ -313,6 +333,8 @@
 		2D6419681DBA17E300E1714D /* UIColor+DYKAddition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+DYKAddition.m"; sourceTree = "<group>"; };
 		2D6419691DBA17E300E1714D /* UIColor_DYKAddition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColor_DYKAddition.swift; sourceTree = "<group>"; };
 		2D64196A1DBA17E300E1714D /* UIStoryboard+BiliAddition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIStoryboard+BiliAddition.swift"; sourceTree = "<group>"; };
+		2D8E151E1DEC992F006E0BE5 /* BBKForceRotationScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBKForceRotationScreen.h; sourceTree = "<group>"; };
+		2D8E151F1DEC992F006E0BE5 /* BBKForceRotationScreen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBKForceRotationScreen.m; sourceTree = "<group>"; };
 		2D9F10781DE80CC700783ACD /* Constraint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constraint.swift; sourceTree = "<group>"; };
 		2D9F10791DE80CC700783ACD /* ConstraintAttributes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstraintAttributes.swift; sourceTree = "<group>"; };
 		2D9F107A1DE80CC700783ACD /* ConstraintConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstraintConfig.swift; sourceTree = "<group>"; };
@@ -348,6 +370,21 @@
 		2D9F10981DE80CC700783ACD /* SnapKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SnapKit.h; sourceTree = "<group>"; };
 		2D9F10991DE80CC700783ACD /* UILayoutSupport+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILayoutSupport+Extensions.swift"; sourceTree = "<group>"; };
 		2DA4306F1DC87CE6006FEFAC /* BBKCommonStyleCollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BBKCommonStyleCollectionViewLayout.swift; sourceTree = "<group>"; };
+		2DA453161DEFFD230035544B /* DDXMLElementAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDXMLElementAdditions.h; sourceTree = "<group>"; };
+		2DA453171DEFFD230035544B /* DDXMLElementAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDXMLElementAdditions.m; sourceTree = "<group>"; };
+		2DA453191DEFFD230035544B /* NSString+DDXML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+DDXML.h"; sourceTree = "<group>"; };
+		2DA4531A1DEFFD230035544B /* NSString+DDXML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+DDXML.m"; sourceTree = "<group>"; };
+		2DA4531B1DEFFD230035544B /* DDXML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDXML.h; sourceTree = "<group>"; };
+		2DA4531C1DEFFD230035544B /* DDXML.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DDXML.swift; sourceTree = "<group>"; };
+		2DA4531D1DEFFD230035544B /* DDXMLDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDXMLDocument.h; sourceTree = "<group>"; };
+		2DA4531E1DEFFD230035544B /* DDXMLDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDXMLDocument.m; sourceTree = "<group>"; };
+		2DA4531F1DEFFD230035544B /* DDXMLElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDXMLElement.h; sourceTree = "<group>"; };
+		2DA453201DEFFD230035544B /* DDXMLElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDXMLElement.m; sourceTree = "<group>"; };
+		2DA453211DEFFD230035544B /* DDXMLNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDXMLNode.h; sourceTree = "<group>"; };
+		2DA453221DEFFD230035544B /* DDXMLNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDXMLNode.m; sourceTree = "<group>"; };
+		2DA453231DEFFD230035544B /* KissXML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KissXML.h; sourceTree = "<group>"; };
+		2DA453251DEFFD230035544B /* DDXMLPrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDXMLPrivate.h; sourceTree = "<group>"; };
+		2DA453341DF006E60035544B /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
 		2DA9D3F71DB6739A005E977E /* BiliBiliKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BiliBiliKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DA9D3FA1DB6739A005E977E /* BiliBiliKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = BiliBiliKit.h; path = BiliBiliKit/BiliBiliKit.h; sourceTree = "<group>"; };
 		2DA9D3FB1DB6739A005E977E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -397,9 +434,6 @@
 		2DF51E031DC59C010036FE97 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		2DF51E051DC59C0A0036FE97 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		2DF51E071DC59C130036FE97 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
-		2DF51E091DC59C1C0036FE97 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
-		2DF51E0B1DC59C260036FE97 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
-		2DF51E0D1DC59C300036FE97 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		2DF51E111DC60D710036FE97 /* BBKRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBKRefresh.h; sourceTree = "<group>"; };
 		2DF51E121DC60D710036FE97 /* BBKRefreshHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBKRefreshHeader.h; sourceTree = "<group>"; };
 		2DF51E131DC60D710036FE97 /* BBKRefreshHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBKRefreshHeader.m; sourceTree = "<group>"; };
@@ -415,9 +449,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2DF51E0E1DC59C300036FE97 /* libz.tbd in Frameworks */,
-				2DF51E0C1DC59C260036FE97 /* libsqlite3.tbd in Frameworks */,
-				2DF51E0A1DC59C1C0036FE97 /* MobileCoreServices.framework in Frameworks */,
+				2DA453351DF006E60035544B /* libxml2.tbd in Frameworks */,
+				2D515A581DEBD78600196EA0 /* libsqlite3.tbd in Frameworks */,
+				2D515A521DEBD57000196EA0 /* libz.tbd in Frameworks */,
 				2DF51E081DC59C130036FE97 /* Accelerate.framework in Frameworks */,
 				2DF51E061DC59C0A0036FE97 /* ImageIO.framework in Frameworks */,
 				2DF51E041DC59C010036FE97 /* AssetsLibrary.framework in Frameworks */,
@@ -433,6 +467,7 @@
 		2D1B3DE51DC0DA5F00AF4BCF /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				2DA453141DEFFD230035544B /* KissXML */,
 				2DF51DFB1DC59B9B0036FE97 /* YYWebImage */,
 				2D3CDCFB1DC213A100884948 /* SDWebImage */,
 				2D1B3DE61DC0DA5F00AF4BCF /* AFNetworking */,
@@ -571,6 +606,8 @@
 			children = (
 				2D1B3F5A1DC0ECE500AF4BCF /* BBKUtils.swift */,
 				2D1B3F631DC105E700AF4BCF /* BBKHTTPSessionManager.swift */,
+				2D8E151E1DEC992F006E0BE5 /* BBKForceRotationScreen.h */,
+				2D8E151F1DEC992F006E0BE5 /* BBKForceRotationScreen.m */,
 			);
 			name = Utils;
 			path = BiliBiliKit/Utils;
@@ -651,6 +688,7 @@
 				2D64196A1DBA17E300E1714D /* UIStoryboard+BiliAddition.swift */,
 				2D3CDCEC1DC1AAF100884948 /* UIImage+BBKAddition.swift */,
 				2DBC00701DC8F77F00C93ACC /* UIView+BBKAddition.swift */,
+				2D544A061DE94D21005CB35C /* CGFloat+BBKAddition.swift */,
 			);
 			name = Category;
 			path = BiliBiliKit/Category;
@@ -664,6 +702,52 @@
 				2D361AB71DD5E483001E1836 /* BBKRecommendSmallImageCollectionViewLayout.swift */,
 			);
 			path = Layout;
+			sourceTree = "<group>";
+		};
+		2DA453141DEFFD230035544B /* KissXML */ = {
+			isa = PBXGroup;
+			children = (
+				2DA453151DEFFD230035544B /* Additions */,
+				2DA453181DEFFD230035544B /* Categories */,
+				2DA4531B1DEFFD230035544B /* DDXML.h */,
+				2DA4531C1DEFFD230035544B /* DDXML.swift */,
+				2DA4531D1DEFFD230035544B /* DDXMLDocument.h */,
+				2DA4531E1DEFFD230035544B /* DDXMLDocument.m */,
+				2DA4531F1DEFFD230035544B /* DDXMLElement.h */,
+				2DA453201DEFFD230035544B /* DDXMLElement.m */,
+				2DA453211DEFFD230035544B /* DDXMLNode.h */,
+				2DA453221DEFFD230035544B /* DDXMLNode.m */,
+				2DA453231DEFFD230035544B /* KissXML.h */,
+				2DA453241DEFFD230035544B /* Private */,
+			);
+			name = KissXML;
+			path = KissXML/KissXML;
+			sourceTree = "<group>";
+		};
+		2DA453151DEFFD230035544B /* Additions */ = {
+			isa = PBXGroup;
+			children = (
+				2DA453161DEFFD230035544B /* DDXMLElementAdditions.h */,
+				2DA453171DEFFD230035544B /* DDXMLElementAdditions.m */,
+			);
+			path = Additions;
+			sourceTree = "<group>";
+		};
+		2DA453181DEFFD230035544B /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				2DA453191DEFFD230035544B /* NSString+DDXML.h */,
+				2DA4531A1DEFFD230035544B /* NSString+DDXML.m */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		2DA453241DEFFD230035544B /* Private */ = {
+			isa = PBXGroup;
+			children = (
+				2DA453251DEFFD230035544B /* DDXMLPrivate.h */,
+			);
+			path = Private;
 			sourceTree = "<group>";
 		};
 		2DA9D3ED1DB6739A005E977E = {
@@ -795,9 +879,9 @@
 		2DF51DFC1DC59BCC0036FE97 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				2DF51E0D1DC59C300036FE97 /* libz.tbd */,
-				2DF51E0B1DC59C260036FE97 /* libsqlite3.tbd */,
-				2DF51E091DC59C1C0036FE97 /* MobileCoreServices.framework */,
+				2DA453341DF006E60035544B /* libxml2.tbd */,
+				2D515A511DEBD57000196EA0 /* libz.tbd */,
+				2D515A571DEBD78600196EA0 /* libsqlite3.tbd */,
 				2DF51E071DC59C130036FE97 /* Accelerate.framework */,
 				2DF51E051DC59C0A0036FE97 /* ImageIO.framework */,
 				2DF51E031DC59C010036FE97 /* AssetsLibrary.framework */,
@@ -849,17 +933,22 @@
 				2D9F10BA1DE80CC800783ACD /* SnapKit.h in Headers */,
 				2D1B3E8C1DC0DA5F00AF4BCF /* AFURLSessionManager.h in Headers */,
 				2D61D74B1DB76D8A00217426 /* BBKAlertView.h in Headers */,
+				2DA453321DEFFD230035544B /* KissXML.h in Headers */,
 				2D1B3E901DC0DA5F00AF4BCF /* AFImageDownloader.h in Headers */,
 				2D1B3EB01DC0DA5F00AF4BCF /* UIScrollView+MJRefresh.h in Headers */,
 				2D3CDD491DC213A100884948 /* UIImageView+WebCache.h in Headers */,
 				2D3CDD281DC213A100884948 /* MKAnnotationView+WebCache.h in Headers */,
+				2DA4532C1DEFFD230035544B /* DDXMLDocument.h in Headers */,
+				2DA453301DEFFD230035544B /* DDXMLNode.h in Headers */,
 				2D1B3E941DC0DA5F00AF4BCF /* UIActivityIndicatorView+AFNetworking.h in Headers */,
 				2DF51DCB1DC599940036FE97 /* UIImageView+YYWebImage.h in Headers */,
 				2D1B3EA21DC0DA5F00AF4BCF /* MBProgressHUD.h in Headers */,
 				2D1B3EB21DC0DA5F00AF4BCF /* UIView+MJExtension.h in Headers */,
 				2D3CDD471DC213A100884948 /* UIImageView+HighlightedWebCache.h in Headers */,
+				2D8E15201DEC992F006E0BE5 /* BBKForceRotationScreen.h in Headers */,
 				2D1B3E9B1DC0DA5F00AF4BCF /* UIKit+AFNetworking.h in Headers */,
 				2D3CDD301DC213A100884948 /* SDImageCacheConfig.h in Headers */,
+				2DA4532E1DEFFD230035544B /* DDXMLElement.h in Headers */,
 				2D3CDD4D1DC213A100884948 /* UIView+WebCacheOperation.h in Headers */,
 				2DF51DE51DC59ADF0036FE97 /* YYImageCoder.h in Headers */,
 				2D3CDD411DC213A100884948 /* UIImage+GIF.h in Headers */,
@@ -880,6 +969,7 @@
 				2D1B3E841DC0DA5F00AF4BCF /* AFNetworkReachabilityManager.h in Headers */,
 				2DF51DC71DC599940036FE97 /* UIButton+YYWebImage.h in Headers */,
 				2D3CDD2C1DC213A100884948 /* NSImage+WebCache.h in Headers */,
+				2DA4532A1DEFFD230035544B /* DDXML.h in Headers */,
 				2D3CDD431DC213A100884948 /* UIImage+MultiFormat.h in Headers */,
 				2DF51DE11DC59ADF0036FE97 /* YYFrameImage.h in Headers */,
 				2D3CDD4B1DC213A100884948 /* UIView+WebCache.h in Headers */,
@@ -888,11 +978,13 @@
 				2D1B3E861DC0DA5F00AF4BCF /* AFSecurityPolicy.h in Headers */,
 				2D3CDD451DC213A100884948 /* UIImage+WebP.h in Headers */,
 				2D3CDD381DC213A100884948 /* SDWebImageDownloaderOperation.h in Headers */,
+				2DA453331DEFFD230035544B /* DDXMLPrivate.h in Headers */,
 				2DF51E171DC60D710036FE97 /* BBKRefreshHeader.h in Headers */,
 				2D1B3E8A1DC0DA5F00AF4BCF /* AFURLResponseSerialization.h in Headers */,
 				2D1B3E961DC0DA5F00AF4BCF /* UIButton+AFNetworking.h in Headers */,
 				2D1B3EAE1DC0DA5F00AF4BCF /* UIScrollView+MJExtension.h in Headers */,
 				2DF51DCD1DC599940036FE97 /* YYImageCache.h in Headers */,
+				2DA453261DEFFD230035544B /* DDXMLElementAdditions.h in Headers */,
 				2D1B3E9C1DC0DA5F00AF4BCF /* UIProgressView+AFNetworking.h in Headers */,
 				2DF51DC91DC599940036FE97 /* UIImage+YYWebImage.h in Headers */,
 				2DF51DC31DC599940036FE97 /* CALayer+YYWebImage.h in Headers */,
@@ -905,6 +997,7 @@
 				2D3CDD341DC213A100884948 /* SDWebImageDecoder.h in Headers */,
 				2D3CDD3F1DC213A100884948 /* UIButton+WebCache.h in Headers */,
 				2D1B3EA61DC0DA5F00AF4BCF /* MJRefreshBaseView.h in Headers */,
+				2DA453281DEFFD230035544B /* NSString+DDXML.h in Headers */,
 				2DF51DDF1DC59ADF0036FE97 /* YYAnimatedImageView.h in Headers */,
 				2D3CDD2E1DC213A100884948 /* SDImageCache.h in Headers */,
 				2DF51E161DC60D710036FE97 /* BBKRefresh.h in Headers */,
@@ -994,6 +1087,7 @@
 				2D1B3EA91DC0DA5F00AF4BCF /* MJRefreshConst.m in Sources */,
 				2D9F109D1DE80CC700783ACD /* ConstraintConstantTarget.swift in Sources */,
 				2DF51DE01DC59ADF0036FE97 /* YYAnimatedImageView.m in Sources */,
+				2D544A071DE94D21005CB35C /* CGFloat+BBKAddition.swift in Sources */,
 				2D1B3E8F1DC0DA5F00AF4BCF /* AFAutoPurgingImageCache.m in Sources */,
 				2D9F10A81DE80CC700783ACD /* ConstraintMaker.swift in Sources */,
 				2D9F10B01DE80CC800783ACD /* ConstraintPriorityTarget.swift in Sources */,
@@ -1009,7 +1103,9 @@
 				2D3CDD391DC213A100884948 /* SDWebImageDownloaderOperation.m in Sources */,
 				2D9F10A71DE80CC700783ACD /* ConstraintLayoutSupportDSL.swift in Sources */,
 				2D1B3E8D1DC0DA5F00AF4BCF /* AFURLSessionManager.m in Sources */,
+				2DA453311DEFFD230035544B /* DDXMLNode.m in Sources */,
 				2D1B3E891DC0DA5F00AF4BCF /* AFURLRequestSerialization.m in Sources */,
+				2DA4532F1DEFFD230035544B /* DDXMLElement.m in Sources */,
 				2D9F10A61DE80CC700783ACD /* ConstraintLayoutSupport.swift in Sources */,
 				2D9F10AE1DE80CC700783ACD /* ConstraintMultiplierTarget.swift in Sources */,
 				2D9F109C1DE80CC700783ACD /* ConstraintConfig.swift in Sources */,
@@ -1017,6 +1113,9 @@
 				2D9F10AF1DE80CC700783ACD /* ConstraintOffsetTarget.swift in Sources */,
 				2DF51DCA1DC599940036FE97 /* UIImage+YYWebImage.m in Sources */,
 				2D9F10AD1DE80CC700783ACD /* ConstraintMakerRelatable.swift in Sources */,
+				2DA453271DEFFD230035544B /* DDXMLElementAdditions.m in Sources */,
+				2DA4532B1DEFFD230035544B /* DDXML.swift in Sources */,
+				2D8E15211DEC992F006E0BE5 /* BBKForceRotationScreen.m in Sources */,
 				2D361AB81DD5E483001E1836 /* BBKRecommendSmallImageCollectionViewLayout.swift in Sources */,
 				2D3CDD291DC213A100884948 /* MKAnnotationView+WebCache.m in Sources */,
 				2DA430701DC87CE6006FEFAC /* BBKCommonStyleCollectionViewLayout.swift in Sources */,
@@ -1043,6 +1142,7 @@
 				2D1B3E971DC0DA5F00AF4BCF /* UIButton+AFNetworking.m in Sources */,
 				2D361AB41DD4BF5D001E1836 /* BBKRecommendLargeImageCollectionViewLayout.swift in Sources */,
 				2D1B3E9A1DC0DA5F00AF4BCF /* UIImageView+AFNetworking.m in Sources */,
+				2DA4532D1DEFFD230035544B /* DDXMLDocument.m in Sources */,
 				2D1B3E8B1DC0DA5F00AF4BCF /* AFURLResponseSerialization.m in Sources */,
 				2D9F10B51DE80CC800783ACD /* ConstraintViewDSL.swift in Sources */,
 				2D1B3E821DC0DA5F00AF4BCF /* AFHTTPSessionManager.m in Sources */,
@@ -1097,6 +1197,7 @@
 				2D3CDD311DC213A100884948 /* SDImageCacheConfig.m in Sources */,
 				2D1B3EAF1DC0DA5F00AF4BCF /* UIScrollView+MJExtension.m in Sources */,
 				2D3CDCEB1DC19AE000884948 /* BBKCycleBannerView.swift in Sources */,
+				2DA453291DEFFD230035544B /* NSString+DDXML.m in Sources */,
 				2D3CDD4E1DC213A100884948 /* UIView+WebCacheOperation.m in Sources */,
 				2D9F10A11DE80CC700783ACD /* ConstraintInsetTarget.swift in Sources */,
 				2DF51DC41DC599940036FE97 /* CALayer+YYWebImage.m in Sources */,
@@ -1215,6 +1316,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				HEADER_SEARCH_PATHS = "${SDKROOT}/usr/include/libxml2";
 				INFOPLIST_FILE = BiliBiliKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -1236,6 +1338,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				HEADER_SEARCH_PATHS = "${SDKROOT}/usr/include/libxml2";
 				INFOPLIST_FILE = BiliBiliKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";

@@ -11,6 +11,15 @@ import UIKit
 
 extension UIView {
   
+  public class func viewFromXib() -> Any? {
+  
+    return Bundle.main.loadNibNamed(NSStringFromClass(self), owner: nil, options: nil)?.last
+  }
+  
+}
+
+extension UIView {
+  
   public var layerCornerRadius: CGFloat {
     get {
       return layer.cornerRadius
@@ -47,5 +56,7 @@ extension UIView {
     layer.rasterizationScale = UIScreen.main.scale
     layer.shouldRasterize = true
   }
+  
+  
   
 }

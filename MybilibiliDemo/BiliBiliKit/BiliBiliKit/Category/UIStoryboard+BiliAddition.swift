@@ -15,6 +15,11 @@ public extension UIStoryboard {
     return UIStoryboard(name: "Main", bundle: nil)
   }
   
+  public class func videoStoryboard() -> UIStoryboard {
+    
+    return UIStoryboard(name: "Video", bundle: nil)
+  }
+  
   public class func homeStoryboard() -> UIStoryboard {
     
     return UIStoryboard(name: "Home", bundle: nil)

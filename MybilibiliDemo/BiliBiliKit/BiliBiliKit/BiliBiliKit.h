@@ -26,3 +26,6 @@ extern NSString * Swift_LCKLocalizedString(NSString *, NSString *);
 #import <BiliBiliKit/UIImageView+WebCache.h>
 #import <BiliBiliKit/YYWebImage.h>
 #import <BiliBiliKit/BBKRefresh.h>
+#import <BiliBiliKit/DDXML.h>
+
+#import <BiliBiliKit/BBKForceRotationScreen.h>

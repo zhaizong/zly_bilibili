@@ -95,6 +95,13 @@ extension RecommendViewController: UITableViewDataSource, UITableViewDelegate {
     if style == "medium" {
       let cell = tableView.dequeueReusableCell(withIdentifier: Commons.RecommendNormalImageTableViewCellID) as! RecommendNormalImageTableViewCell
       cell.model = model
+      cell.normalImagePushVideoPlayerViewClosure = { [weak self] (selectedType: Int) in
+        if let weakSelf = self {
+//          跳转到视频详情页
+          let vc: ContributeVideoDetailViewController = ContributeVideoDetailViewController.instanceFromStoryboard()
+          weakSelf.parent?.navigationController?.pushViewController(vc, animated: true)
+        }
+      }
       return cell
     } else if style == "large" {
       let cell = tableView.dequeueReusableCell(withIdentifier: Commons.RecommendLargeImageTableViewCellID) as! RecommendLargeImageTableViewCell
@@ -258,7 +265,7 @@ extension RecommendViewController {
     
     UIApplication.shared.isNetworkActivityIndicatorVisible = true
     let setupBannerAndRecommend: () -> Void = {
-      if self._bannerViews.count != 0 && self._recommendContentViews.count != 0 && self._movieDataSources.count != 0 {
+      if self._bannerViews.count != 0 && self._recommendContentViews.count != 0 {
         UIApplication.shared.isNetworkActivityIndicatorVisible = false
         
         self._bannerView.models = self._bannerViews
@@ -276,7 +283,6 @@ extension RecommendViewController {
       if let responseObject = responseObject {
         let dict = responseObject as! [String: Any]
         let datas = dict["data"] as! [[String: Any]]
-        
         weakSelf._bannerViews = datas
         setupBannerAndRecommend()
       }
@@ -299,18 +305,19 @@ extension RecommendViewController {
       UIApplication.shared.isNetworkActivityIndicatorVisible = false
     }
 //    视频链接
-    _movieDataSources.removeAll(keepingCapacity: false)
+    /*_movieDataSources.removeAll(keepingCapacity: false)
     BBKHTTPSessionManager.sharedManager().get(Commons.BangumiContentURL, parameters: nil, progress: nil, success: { [weak self] (task: URLSessionDataTask, responseObject: Any?) in
       guard let weakSelf = self else { return }
       if let responseObject = responseObject {
         let dict = responseObject as! [String: Any]
         let datas = dict["result"] as! [[String: Any]]
+        debugPrint(dict.values)
         weakSelf._movieDataSources = datas
         setupBannerAndRecommend()
       }
     }) { (task: URLSessionDataTask?, error: Error) in
       UIApplication.shared.isNetworkActivityIndicatorVisible = false
-    }
+    }*/
     
   }
   

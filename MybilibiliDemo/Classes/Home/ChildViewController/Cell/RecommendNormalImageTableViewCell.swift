@@ -33,6 +33,8 @@ class RecommendNormalImageTableViewCell: UITableViewCell {
     }
   }
   
+  var normalImagePushVideoPlayerViewClosure: ((_ selectedType: Int) -> Void)?
+  
   fileprivate var _collectionView: UICollectionView!
   
   fileprivate var _type: String
@@ -93,6 +95,20 @@ extension RecommendNormalImageTableViewCell: UICollectionViewDataSource, UIColle
     
     return UICollectionViewCell()
   }
+  
+  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    
+    if _type == "recommend" {
+      normalImagePushVideoPlayerViewClosure?(1)
+    } else if _type == "live" {
+      normalImagePushVideoPlayerViewClosure?(2)
+    } else if _type == "bangumi" {
+      normalImagePushVideoPlayerViewClosure?(3)
+    }
+    
+    collectionView.deselectItem(at: indexPath, animated: false)
+  }
+  
 }
 
 extension RecommendNormalImageTableViewCell {
