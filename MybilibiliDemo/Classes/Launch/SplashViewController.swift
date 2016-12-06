@@ -49,8 +49,8 @@ class SplashViewController: UIViewController, BiliStoryboardViewController {
     super.viewDidAppear(animated)
     
     // TODO: - DMKAccountManager 用户账号管理相关的类 (iOS) 在此处判断是否登陆过
-//    MCDirector.dmk_resetDefaultDirectorAsStranger()
-//    MCDirector.defaultDirector()?.resetManagers()
+    BBCDirector.bbk_resetDefaultDirectorAsStranger()
+    BBCDirector.default()?.resetManagers()
     
     _setupAppearance()
     
@@ -62,6 +62,7 @@ class SplashViewController: UIViewController, BiliStoryboardViewController {
   }
   
   deinit {
+    debugPrint("SplashViewController deinit")
     AFNetworkReachabilityManager.shared().stopMonitoring()
   }
 
@@ -163,7 +164,6 @@ extension SplashViewController {
       let myDispatch_time = DispatchTime.now() + 0.5
       DispatchQueue.main.asyncAfter(deadline: myDispatch_time) {
 //        初始化 tabBarController
-//        AppDelegate.bili_sharedInstance().tabBarController = UIStoryboard.mainStoryboard().instantiateInitialViewController() as! BiliTabBarController
         AppDelegate.bili_sharedInstance().tabBarController = UIStoryboard.mainStoryboard().instantiateInitialViewController() as! BiliTabBarController
         
 //        切换根控制器

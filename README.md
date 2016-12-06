@@ -35,7 +35,7 @@ iOS的主工程为MybilibiliDemo
 - Resources : 国际化文件以及一些资源文件
 - Vendor : 第三方库
 - BiliBiliKit : 项目中公共的UI库
-- bilibilicore : 核心库(暂无)
+- bilibilicore : 核心库
 - Modules : 功能模块(暂无)
 
 ##第三方库(FRAMEWORK)

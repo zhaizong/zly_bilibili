@@ -13,11 +13,15 @@ import UIKit
 
 @objc public enum LiveEntranceIconsViewAreaType: Int {
   case single = 1 // 单机联机 id = 1
+  case otaku = 2 // 御宅文化 id = 2
   case gameOnline = 3 // 网络游戏 id = 3
   case eSports = 4 // 电子竞技 id = 4
+  case video = 7 // 放映厅 id = 7
   case meng = 8 // 萌宅推荐 id = 8
   case painting = 9 // 绘画专区 id = 9
+  case dance = 10 // 唱见舞见 id = 10
   case phone = 11 // 手机直播 id = 11
+  case phoneGame = 12 // 手游直播 id = 12
   case allCategory = 10086 // 全部分类 id = 10086
   case allLive // 全部直播 id = 10087
   case attentionAuthor // 关注主播 id = 10088

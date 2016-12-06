@@ -20,9 +20,6 @@ extern NSString * Swift_LCKLocalizedString(NSString *, NSString *);
 
 #import <BiliBiliKit/BBKAlertView.h>
 #import <BiliBiliKit/UIColor+DYKAddition.h>
-#import <BiliBiliKit/AFNetworking.h>
-#import <BiliBiliKit/UIImageView+AFNetworking.h>
-#import <BiliBiliKit/UIKit+AFNetworking.h>
 #import <BiliBiliKit/UIImageView+WebCache.h>
 #import <BiliBiliKit/YYWebImage.h>
 #import <BiliBiliKit/BBKRefresh.h>

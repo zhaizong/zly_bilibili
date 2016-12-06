@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import bilibilicore
 
 // 基于AFHTTPSessionManager的单例类 BBKHTTPSessionManager.sharedManager()
 // @since 1.0.0

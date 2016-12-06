@@ -19,7 +19,7 @@ class HomeViewController: BiliViewController, BiliStoryboardViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-
+    
     // Do any additional setup after loading the view.
     _setupApperance()
   }
@@ -81,7 +81,6 @@ extension HomeViewController {
   fileprivate func _setupApperance() {
     
     view.backgroundColor = BBK_Main_White_Color
-//    view.backgroundColor = UIColor.red
     automaticallyAdjustsScrollViewInsets = false
     view.autoresizingMask = UIViewAutoresizing(rawValue: UInt(0))
     

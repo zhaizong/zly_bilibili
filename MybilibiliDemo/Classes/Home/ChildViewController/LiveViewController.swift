@@ -38,27 +38,9 @@ class LiveViewController: UIViewController, BiliStoryboardViewController {
     super.viewDidLoad()
 
     // Do any additional setup after loading the view.
-  }
-
-  override func didReceiveMemoryWarning() {
-    super.didReceiveMemoryWarning()
-    // Dispose of any resources that can be recreated.
-  }
-
-  /*
-  // MARK: - Navigation
-
-  // In a storyboard-based application, you will often want to do a little preparation before navigation
-  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    // Get the new view controller using segue.destinationViewController.
-    // Pass the selected object to the new view controller.
-  }
-  */
-  
-  static func instanceFromStoryboard<T>() -> T {
     
-    let vc = UIStoryboard.homeStoryboard().instantiateViewController(withIdentifier: "LiveViewController") as! LiveViewController
-    return vc as! T
+    _setupApperance()
+    _setupDataSource()
   }
   
   override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
@@ -73,6 +55,12 @@ class LiveViewController: UIViewController, BiliStoryboardViewController {
       })
       _liveContentTableView.tableHeaderView = _tableHeaderView
     }
+  }
+  
+  static func instanceFromStoryboard<T>() -> T {
+    
+    let vc = UIStoryboard.homeStoryboard().instantiateViewController(withIdentifier: "LiveViewController") as! LiveViewController
+    return vc as! T
   }
 
 }
@@ -184,7 +172,7 @@ extension LiveViewController {
     
 //    添加下拉刷新控件
     _liveContentTableView.header = BBKRefreshHeader() { (header: BBKRefreshHeader?) in
-      self._loadDataArrFromNetwork()
+      self._setupDataSource()
     }
     
 //    订阅DisplayViewClickOrScrollDidFinshNote通知决定是否刷新
@@ -193,11 +181,11 @@ extension LiveViewController {
     #endif
     
 //    订阅轮播图开始滑动以及结束滑动的通知改变首页内容视图是否可以滑动
-    NotificationCenter.default.addObserver(self, selector: #selector(LiveViewController._bannerViewWillBeginDraggingNotification), name: NSNotification.Name(rawValue: Commons.CycleBannerWillBeginDraggingNotification), object: nil)
-    NotificationCenter.default.addObserver(self, selector: #selector(LiveViewController._bannerViewDidEndDeceleratingNotification), name: NSNotification.Name(rawValue: Commons.CycleBannerDidEndDeceleratingNotification), object: nil)
+    NotificationCenter.default.addObserver(self, selector: #selector(_bannerViewWillBeginDraggingNotification), name: NSNotification.Name(rawValue: Commons.CycleBannerWillBeginDraggingNotification), object: nil)
+    NotificationCenter.default.addObserver(self, selector: #selector(_bannerViewDidEndDeceleratingNotification), name: NSNotification.Name(rawValue: Commons.CycleBannerDidEndDeceleratingNotification), object: nil)
     
 //    监听tabbar点击的通知
-    NotificationCenter.default.addObserver(self, selector: #selector(LiveViewController._bannerViewDidEndDeceleratingNotification), name: NSNotification.Name(rawValue: BBK_TabBar_DidSelectNotification), object: nil)
+    NotificationCenter.default.addObserver(self, selector: #selector(_bannerViewDidEndDeceleratingNotification), name: NSNotification.Name(rawValue: BBK_TabBar_DidSelectNotification), object: nil)
     
     _tableHeaderView = LiveHeaderView.liveHeaderView()
     _tableHeaderView.frame = .zero
@@ -213,7 +201,7 @@ extension LiveViewController {
   }
   
 //  从网络中加载数据
-  fileprivate func _loadDataArrFromNetwork() {
+  fileprivate func _setupDataSource() {
     
     #if false
       if let data = NSData(contentsOfFile: "live_content.json") {
@@ -233,7 +221,11 @@ extension LiveViewController {
       }
     #endif
     
+    _banners.removeAll(keepingCapacity: false)
+    _entranceIcons.removeAll(keepingCapacity: false)
+    _partitions.removeAll(keepingCapacity: false)
     BBKUtils.get(Commons.UrlString, parameters: nil, downloadProgress: nil, successBlock: { [weak self] (task: URLSessionDataTask, responseObject: Any?) in
+      
       guard let weakSelf = self else { return }
       if let responseObject = responseObject {
         let responseDict = responseObject as! [String: Any]
