@@ -19,17 +19,31 @@ class LiveHeaderView: UIView {
 
   // MARK: - Property
   
-  var bannerModels: [[String : Any]]? {
-    didSet {
-      guard let bannerModels = bannerModels, bannerModels.count != 0 else { return }
-      _bannerView.models = bannerModels
-    }
-  }
-  var entranceIconArray: [String]? {
-    didSet {
-      guard let entranceIconArray = entranceIconArray, entranceIconArray.count != 0 else { return }
+//  var bannerModels: [[String : Any]]? {
+//    didSet {
+//      guard let bannerModels = bannerModels, bannerModels.count != 0 else { return }
+//      _bannerView.models = bannerModels
+//    }
+////  }
+//  var entranceIconArray: [String]? {
+//    didSet {
+//      guard let entranceIconArray = entranceIconArray, entranceIconArray.count != 0 else { return }
       // TODO: - 数组类型待定
 //      _bottomView.entranceIconArray = entranceIconArray as! [LiveEntranceIconModel]
+//    }
+//  }
+  
+  var banners: [BBCLiveBanner]? {
+    didSet {
+      guard let banners = banners, banners.count != 0 else { return }
+      _bannerView.newModels = banners
+    }
+  }
+  
+  var entranceIcons: [BBCLiveEntrance]? {
+    didSet {
+      guard let entranceIcons = entranceIcons, entranceIcons.count != 0 else { return }
+      _bottomView.entranceIcons = entranceIcons
     }
   }
   
@@ -59,17 +73,9 @@ class LiveHeaderView: UIView {
   
   override func layoutSubviews() {
     super.layoutSubviews()
-    _bannerView.snp.makeConstraints { (make) in
-      make.width.equalTo(BBK_Screen_Width)
-      make.height.equalTo(120)
-    }
-    _bottomView.snp.makeConstraints { (make) in
-      make.centerY.equalTo(self._bannerView.snp.bottom)
-      make.width.equalTo(BBK_Screen_Width)
-      make.height.equalTo(BBK_Screen_Width * 0.5 + BBK_APP_TabBar_Height + BBK_App_Padding_8)
-    }
-    /*_bannerView.frame = CGRect(origin: .zero, size: CGSize(width: BBK_Screen_Width, height: 120))
-    _bottomView.frame = CGRect(origin: CGPoint(x: 0, y: _bannerView.st_bottom), size: CGSize(width: BBK_Screen_Width, height: BBK_Screen_Width * 0.5 + BBK_APP_TabBar_Height + BBK_App_Padding_8))*/
+    
+    _bannerView.frame = CGRect(origin: .zero, size: CGSize(width: BBK_Screen_Width, height: 120))
+    _bottomView.frame = CGRect(origin: CGPoint(x: 0, y: _bannerView.st_bottom), size: CGSize(width: BBK_Screen_Width, height: BBK_Screen_Width * 0.5 + BBK_APP_TabBar_Height + BBK_App_Padding_8))
     
     viewHeight = _bottomView.st_bottom
   }
@@ -83,7 +89,6 @@ extension LiveHeaderView {
     backgroundColor = BBK_Main_Background_Color
     
     _bannerView = BBKCycleBannerView.initBannerViewWithFrame(.zero, placeholderImage: nil)
-    addSubview(_bannerView)
     _bannerView.bannerViewClosureDidClick = { [weak self] (didSelectIndex: Int) in
       guard let weakSelf = self else { return }
       guard let myDelegate = weakSelf.myDelegate else { return }
@@ -91,8 +96,10 @@ extension LiveHeaderView {
         myDelegate.liveHeaderView(weakSelf, didSelectedBannerIndex: didSelectIndex)
       }
     }
+    addSubview(_bannerView)
     
-    _bottomView = LiveEntranceIconsView.liveEntranceIconsView() { [weak self] (selectedAreaID: LiveEntranceIconsViewAreaType) in
+    _bottomView = LiveEntranceIconsView.liveEntranceIconsView()
+    _bottomView.entranceViewDidSelectedClosure = { [weak self] (selectedAreaID: LiveEntranceIconsViewAreaType) in
       guard let weakSelf = self else { return }
       guard let myDelegate = weakSelf.myDelegate else { return }
       if myDelegate.responds(to: #selector(LiveHeaderViewDelegate.liveHeaderView(_:selectedAreaID:))) {

@@ -38,10 +38,10 @@ class LiveEntranceIconsView: UIView {
   
   // MARK: - Property
   
-  var entranceIconArray: [LiveEntranceIconModel] {
+  fileprivate var entranceIconArray: [LiveEntranceIconModel] {
     didSet {
-      _entranceIconDataSource.removeAll(keepingCapacity: false)
-      _entranceIconDataSource = entranceIconArray
+//      _entranceIconDataSource.removeAll(keepingCapacity: false)
+//      _entranceIconDataSource = entranceIconArray
       
       var model1 = LiveEntranceIconModel()
       var srcModel1 = RealEntranceIconModel()
@@ -57,53 +57,59 @@ class LiveEntranceIconsView: UIView {
       srcModel2.src = "live_partitionEntrance0"
       model2.entrance_icon = srcModel2
       
-      _entranceIconDataSource.append(model1)
-      _entranceIconDataSource.append(model2)
+//      _entranceIconDataSource.append(model1)
+//      _entranceIconDataSource.append(model2)
       
       collectionView.reloadData()
     }
   }
   
+  var entranceIcons: [BBCLiveEntrance]? {
+    didSet {
+      guard let entranceIcons = entranceIcons, entranceIcons.count != 0 else { return }
+      _entranceIcons = entranceIcons
+      collectionView.reloadData()
+    }
+  }
+  
+  var entranceViewDidSelectedClosure: ((_ selectedAreaID: LiveEntranceIconsViewAreaType) -> Void)?
+  
   // 数据源
-  fileprivate lazy var _entranceIconDataSource: [LiveEntranceIconModel] = {
-    let lazilyCreatedDataSource = [LiveEntranceIconModel]()
-    return lazilyCreatedDataSource
-  }()
-  fileprivate var _block: ((_ selectedAreaID: LiveEntranceIconsViewAreaType) -> Void)?
+  fileprivate var _entranceIcons: [BBCLiveEntrance]
   
   // MARK: - IBAction
   
   @IBAction func attentionAuthorButtonDidClick(_ sender: UIButton) {
     
-    _block?(.attentionAuthor)
+    entranceViewDidSelectedClosure?(.attentionAuthor)
   }
   @IBAction func liveCenterButtonDidClick(_ sender: UIButton) {
     
-    _block?(.liveCenter)
+    entranceViewDidSelectedClosure?(.liveCenter)
   }
   @IBAction func searchLiveButtonDidClick(_ sender: UIButton) {
     
-    _block?(.searchLive)
+    entranceViewDidSelectedClosure?(.searchLive)
   }
   
   // MARK: - Lifecycle
   
-  class func liveEntranceIconsView(block: @escaping ((_ selectedAreaID: LiveEntranceIconsViewAreaType) -> Void)) -> LiveEntranceIconsView {
+  class func liveEntranceIconsView() -> LiveEntranceIconsView {
     
-    let view = LiveEntranceIconsView()
-    view._block = block
-    return view
-  }
-  
-  override init(frame: CGRect) {
-    entranceIconArray = []
-    super.init(frame: frame)
-    
-    _setupApperance()
+//    return Bundle.main.loadNibNamed("liveEntranceIconsView", owner: self, options: nil)?.last as! LiveEntranceIconsView!
+    return Bundle.main.loadNibNamed("LiveEntranceIconsView", owner: self, options: nil)?.last as! LiveEntranceIconsView
   }
   
   required init?(coder aDecoder: NSCoder) {
-    fatalError("init(coder:) has not been implemented")
+    entranceIconArray = []
+    _entranceIcons = []
+    super.init(coder: aDecoder)
+  }
+  
+  override func awakeFromNib() {
+    super.awakeFromNib()
+    
+    _setupApperance()
   }
 
 }
@@ -134,22 +140,20 @@ extension LiveEntranceIconsView: UICollectionViewDataSource, UICollectionViewDel
   
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     
-    return _entranceIconDataSource.count
+    return _entranceIcons.count
   }
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Commons.cellID, for: indexPath) as! LiveEntranceIconsCollectionViewCell
-    cell.iconUrl = _entranceIconDataSource[indexPath.item].entrance_icon.src
-    cell.buttonName = _entranceIconDataSource[indexPath.item].name
+    cell.iconUrl = _entranceIcons[indexPath.item].entranceIcon.src
+    cell.buttonName = _entranceIcons[indexPath.item].name
     return cell
   }
   
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     
-    let model = _entranceIconDataSource[indexPath.item]
-    if let temp = Int(model.idStr) {
-      _block?(LiveEntranceIconsViewAreaType(rawValue: temp)!)
-    }
+    let id = Int(_entranceIcons[indexPath.item].idString)!
+    entranceViewDidSelectedClosure?(LiveEntranceIconsViewAreaType(rawValue: id)!)
   }
 }

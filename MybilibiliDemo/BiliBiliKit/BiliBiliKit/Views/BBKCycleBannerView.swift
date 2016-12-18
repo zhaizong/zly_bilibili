@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import bilibilicore
 
 // 无限轮播图控件
 // @since 1.0.0
@@ -87,6 +88,29 @@ public class BBKCycleBannerView: UIView {
     }
   }
   
+//  新的图片url数组, 使用bilibilicore
+  public var newModels: [BBCLiveBanner]? {
+    didSet {
+      guard let newModels = newModels, newModels.count != 0 else { return }
+      _newModels = newModels
+//      停止计时器器
+      _invalidateTimer()
+//      重新计算数据源
+      _totalItemsCount = newModels.count * Commons.ItemGroupCount
+      _mainPageControl.numberOfPages = newModels.count
+//      刷新页面
+      _mainView.reloadData()
+      setNeedsLayout()
+      if newModels.count <= 1 {
+        _mainView.isScrollEnabled = false
+      } else {
+        _mainView.isScrollEnabled = true
+//        开启定时器
+        _setupTimerWithTimeInterval(autoScrollTimeInterval)
+      }
+    }
+  }
+  
   public var autoScrollTimeInterval: TimeInterval // 自动滚动间隔时间, 默认5s
   
   public var bannerViewClosureDidClick: ((_ didselectIndex: Int) -> Void)?
@@ -103,6 +127,7 @@ public class BBKCycleBannerView: UIView {
   fileprivate var _timer: Timer! // 轮播定时器
   
   fileprivate var _models: [[String: Any]]
+  fileprivate var _newModels: [BBCLiveBanner]
   
   /**
    *  初始化方法
@@ -123,6 +148,7 @@ public class BBKCycleBannerView: UIView {
   
   override fileprivate init(frame: CGRect) {
     _models = []
+    _newModels = []
     autoScrollTimeInterval = 5
     _totalItemsCount = 0
     super.init(frame: frame)
@@ -246,16 +272,26 @@ extension BBKCycleBannerView: UICollectionViewDataSource, UICollectionViewDelega
   public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Commons.CycleBannerCollectionViewCellReuseIdentifier, for: indexPath) as! BBKCycleBannerViewCell
-    let itemIndex = indexPath.item % _models.count
     
-    cell.imageURL = _models[itemIndex]["image"] as? String
+    if _newModels.count != 0 {
+      let itemIndex = indexPath.item % _newModels.count
+      cell.imageURL = _newModels[itemIndex].imageUrl
+    } else {
+      let itemIndex = indexPath.item % _models.count
+      
+      cell.imageURL = _models[itemIndex]["image"] as? String
+    }
     
     return cell
   }
   
   public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     
-    bannerViewClosureDidClick?(indexPath.item % _models.count)
+    if _newModels.count != 0 {
+      bannerViewClosureDidClick?(indexPath.item % _newModels.count)
+    } else {
+      bannerViewClosureDidClick?(indexPath.item % _models.count)
+    }
   }
   
   public func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
@@ -269,7 +305,11 @@ extension BBKCycleBannerView: UICollectionViewDataSource, UICollectionViewDelega
   public func scrollViewDidScroll(_ scrollView: UIScrollView) {
     
     _itemIndex = _currentIndex()
-    _mainPageControl.currentPage = _currentIndex() % _models.count
+    if _newModels.count != 0 {
+      _mainPageControl.currentPage = _currentIndex() % _newModels.count
+    } else {
+      _mainPageControl.currentPage = _currentIndex() % _models.count
+    }
   }
   
   public func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {

@@ -4,3 +4,4 @@
 
 #import <bilibilicore/bilibilicore.h>
 #import <BiliBiliKit/BiliBiliKit.h>
+#import <IJKMediaFramework/IJKMediaFramework.h>

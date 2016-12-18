@@ -12,7 +12,6 @@ import UIKit
 // @since 1.0.0
 // @author 赵林洋
 fileprivate struct Commons {
-  static let UrlString = "http://live.bilibili.com/AppIndex/home?_device=android&_hwid=51e96f5f2f54d5f9&_ulv=10000&access_key=563d6046f06289cbdcb472601ce5a761&appkey=c1b107428d337928&build=410000&platform=android&scale=xxhdpi&sign=fbdcfe141853f7e2c84c4d401f6a8758"
 //  轮播图将要开始拖动发出的通知
   static let CycleBannerWillBeginDraggingNotification = "kCycleBannerWillBeginDraggingNotification"
 //  轮播图结束滑动发出的通知
@@ -24,13 +23,14 @@ class LiveViewController: UIViewController, BiliStoryboardViewController {
 
   // MARK: - Property
   
-  fileprivate var _banners: [[String: String]] = [] // 轮播图数据数组
-  fileprivate var _entranceIcons: [[String: Any]] = [] // 入口图片数据数组
-  fileprivate var _partitions: [[String: Any]] = [] // 分区数据数组
+  fileprivate var _banners: [BBCLiveBanner] = [] // 轮播图数据数组
+  fileprivate var _entrances: [BBCLiveEntrance] = [] // 入口图片数据数组
+  fileprivate var _partitions: [BBCLivePartition] = [] // 分区数据数组
+  fileprivate var _liveSources: [[BBCLiveSource]] = []
   
   fileprivate var _lastSelectedTabBarIndex: Int! // 记录上次选中的tabbar索引
-  fileprivate weak var _liveContentTableView: UITableView! // 内容视图
-  fileprivate weak var _tableHeaderView: LiveHeaderView! // 头部视图
+  fileprivate var _liveContentTableView: UITableView! // 内容视图
+  fileprivate var _tableHeaderView: LiveHeaderView! // 头部视图
   
   // MARK: - Lifecycle
   
@@ -41,6 +41,12 @@ class LiveViewController: UIViewController, BiliStoryboardViewController {
     
     _setupApperance()
     _setupDataSource()
+  }
+  
+  override func viewDidLayoutSubviews() {
+    super.viewDidLayoutSubviews()
+    
+    _liveContentTableView.frame = CGRect(origin: .zero, size: view.st_size)
   }
   
   override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
@@ -81,8 +87,15 @@ extension LiveViewController: UITableViewDataSource, UITableViewDelegate {
     
     let cell = tableView.dequeueReusableCell(withIdentifier: Commons.LiveContentTableViewCellID, for: indexPath) as! LiveContentTableViewCell
     
-    let temp1 = _partitions[indexPath.section]
-    cell.lives = temp1["lives"] as? [[String: Any]]
+    cell.setupCellDataSource(_partitions[indexPath.section], liveSources: _liveSources[indexPath.section])
+    
+    cell.liveTableViewCellDidSelectedClosure = { [weak self] (liveSource: BBCLiveSource) in
+      if let weakSelf = self {
+        let vc: LiveDetailViewController = LiveDetailViewController.instanceFromStoryboard()
+        vc.liveSource = liveSource
+        weakSelf.parent?.navigationController?.pushViewController(vc, animated: true)
+      }
+    }
     
     return cell
   }
@@ -99,13 +112,20 @@ extension LiveViewController: UITableViewDataSource, UITableViewDelegate {
   
   func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
     
-//    let temp1 = _partitions[section]
-    return UIView()
+    let view = LiveTableHeaderView(frame: .zero)
+    view.partition = _partitions[section]
+    view.headerViewTouchesClosure = { [weak self] in
+      if let weakSelf = self {
+        debugPrint("点击了\(weakSelf._partitions[section].name)模块")
+      }
+    }
+    return view
   }
   
   func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
     
-    return UIView()
+    let view = LiveTableFooterView(frame: .zero)
+    return view
   }
 }
 
@@ -159,12 +179,12 @@ extension LiveViewController {
     view.autoresizingMask = .init(rawValue: 0)
     
     _liveContentTableView = UITableView(frame: .zero, style: .grouped)
-    _liveContentTableView.register(LiveEntranceIconsCollectionViewCell.self, forCellReuseIdentifier: Commons.LiveContentTableViewCellID)
+    _liveContentTableView.register(LiveContentTableViewCell.self, forCellReuseIdentifier: Commons.LiveContentTableViewCellID)
     _liveContentTableView.backgroundColor = BBK_Main_Background_Color
     _liveContentTableView.separatorStyle = .none
     _liveContentTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 49, right: 0)
     _liveContentTableView.scrollIndicatorInsets = _liveContentTableView.contentInset
-    _liveContentTableView.estimatedRowHeight = 306
+//    _liveContentTableView.estimatedRowHeight = 306
     _liveContentTableView.rowHeight = 306
     _liveContentTableView.dataSource = self
     _liveContentTableView.delegate = self
@@ -188,16 +208,12 @@ extension LiveViewController {
     NotificationCenter.default.addObserver(self, selector: #selector(_bannerViewDidEndDeceleratingNotification), name: NSNotification.Name(rawValue: BBK_TabBar_DidSelectNotification), object: nil)
     
     _tableHeaderView = LiveHeaderView.liveHeaderView()
-    _tableHeaderView.frame = .zero
+    _tableHeaderView.frame = CGRect(origin: .zero, size: CGSize(width: BBK_Screen_Width, height: 364.5))
     _tableHeaderView.myDelegate = self
     _liveContentTableView.tableHeaderView = _tableHeaderView
     
     _tableHeaderView.addObserver(self, forKeyPath: "viewHeight", options: .new, context: nil)
     
-    _tableHeaderView.snp.makeConstraints { (make) in
-      make.width.equalTo(BBK_Screen_Width)
-      make.height.equalTo(364.5)
-    }
   }
   
 //  从网络中加载数据
@@ -221,26 +237,53 @@ extension LiveViewController {
       }
     #endif
     
-    _banners.removeAll(keepingCapacity: false)
-    _entranceIcons.removeAll(keepingCapacity: false)
-    _partitions.removeAll(keepingCapacity: false)
-    BBKUtils.get(Commons.UrlString, parameters: nil, downloadProgress: nil, successBlock: { [weak self] (task: URLSessionDataTask, responseObject: Any?) in
-      
-      guard let weakSelf = self else { return }
-      if let responseObject = responseObject {
-        let responseDict = responseObject as! [String: Any]
-        let dataDict = responseDict["data"] as! [String: Any]
-        weakSelf._banners = dataDict["banner"] as! [[String: String]]
-        weakSelf._entranceIcons = dataDict["entranceIcons"] as! [[String: Any]]
-        weakSelf._partitions = dataDict["partitions"] as! [[String: Any]]
+    let reloadDataSource: () -> Void = {
+      if self._banners.count != 0 && self._entrances.count != 0 && self._partitions.count != 0 && self._liveSources.count != 0 {
         
+        self._tableHeaderView.banners = self._banners
+        self._tableHeaderView.entranceIcons = self._entrances
+        
+        self._liveContentTableView.reloadData()
+        self._liveContentTableView.header.endRefreshing()
       }
-      weakSelf._liveContentTableView.reloadData()
-      weakSelf._liveContentTableView.header.endRefreshing()
-    }) { [weak self] (task: URLSessionDataTask?, error: Error) in
-      guard let weakSelf = self else { return }
-      debugPrint("error: \(error)")
-      weakSelf._liveContentTableView.header.endRefreshing()
     }
+    
+    _banners.removeAll(keepingCapacity: false)
+    _entrances.removeAll(keepingCapacity: false)
+    _partitions.removeAll(keepingCapacity: false)
+    _liveSources.removeAll(keepingCapacity: false)
+//    轮播图
+    BBCLiveBannerManager.default().getLiveBanner(banner: nil, success: { (task: URLSessionDataTask, liveBanners: [BBCLiveBanner]) in
+      self._banners = liveBanners
+      reloadDataSource()
+    }, failure: { (task: URLSessionDataTask, error: Error) in
+      debugPrint(error)
+      self._liveContentTableView.header.endRefreshing()
+    })
+    
+    BBCLiveEntranceManager.default().getLiveEntrance(entrance: { (liveEntrances: [BBCLiveEntrance]) in
+      self._entrances = liveEntrances
+      reloadDataSource()
+    }, failure: { (error: Error) in
+      debugPrint(error)
+      self._liveContentTableView.header.endRefreshing()
+    })
+//    分区
+    BBCLiveManager.default().getLiveWithPartition({ (livePartitions: [BBCLivePartition]) in
+      self._partitions = livePartitions
+      reloadDataSource()
+    }, failure: { (error: Error) in
+      debugPrint(error)
+      self._liveContentTableView.header.endRefreshing()
+    })
+    
+    BBCLiveManager.default().getLiveWithSources({ (liveSources: [[BBCLiveSource]]) in
+      self._liveSources = liveSources
+      reloadDataSource()
+    }, failure: { (error: Error) in
+      debugPrint(error)
+      self._liveContentTableView.header.endRefreshing()
+    })
+    
   }
 }

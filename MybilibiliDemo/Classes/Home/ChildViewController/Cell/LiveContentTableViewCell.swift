@@ -20,25 +20,28 @@ class LiveContentTableViewCell: UITableViewCell {
 
   // MARK: - Property
   
-  var lives: [[String: Any]]? { // 直播数据源
-    didSet {
-      guard let lives = lives, lives.count > 0 else { return }
-      _lives = lives
-//      刷新数据源
-      _collectionView.reloadData()
-    }
-  }
-  
-  var liveTableViewCellClosureDidClick: (() -> Void)?
+  var liveTableViewCellDidSelectedClosure: ((_ liveSource: BBCLiveSource) -> Void)?
   
   fileprivate var _collectionView: UICollectionView!
   
-  fileprivate var _lives: [[String: Any]]
+  fileprivate var _livePartition: BBCLivePartition!
+  fileprivate var _liveSources: [BBCLiveSource]
+  
+  func setupCellDataSource(_ livePartition: BBCLivePartition?, liveSources: [BBCLiveSource]?) {
+    guard let livePartition = livePartition, let liveSources = liveSources, liveSources.count != 0 else { return }
+    _liveSources.removeAll(keepingCapacity: false)
+//    直播分区数据源
+    _livePartition = livePartition
+//    直播数据源
+    _liveSources = liveSources
+//    刷新数据源
+    _collectionView.reloadData()
+  }
   
   // MARK: - Lifecycle
   
   override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
-    _lives = []
+    _liveSources = []
     super.init(style: style, reuseIdentifier: reuseIdentifier)
     
     _setupApperance()
@@ -62,20 +65,19 @@ extension LiveContentTableViewCell: UICollectionViewDataSource, UICollectionView
     guard indexPath.item < 4 else { return UICollectionViewCell() }
     
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Commons.LiveCellCollectionViewCellIdentifier, for: indexPath) as! LiveContentCollectionViewCell
-    
-    let tempDic = _lives[indexPath.item]
-    cell.avatarUrlString = (tempDic["owner"] as! [String: Any])["face"] as? String
-    cell.coverUrlString = (tempDic["cover"] as! [String: Any])["src"] as? String
-    cell.nameString = (tempDic["owner"] as! [String: Any])["name"] as? String
-    cell.viewerString = "\(tempDic["online"] as? Int)"
-    cell.titleString = tempDic["title"] as? String
+
+    cell.avatarUrlString = _livePartition.src
+    cell.coverUrlString = _liveSources[indexPath.item].cover["src"] as? String
+    cell.nameString = _liveSources[indexPath.item].owner["name"] as? String
+    cell.viewerString = "\(_liveSources[indexPath.item].online)"
+    cell.titleString = _liveSources[indexPath.item].titleString
     
     return cell
   }
   
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     
-    
+    liveTableViewCellDidSelectedClosure?(_liveSources[indexPath.item])
   }
 }
 
@@ -83,7 +85,6 @@ extension LiveContentTableViewCell {
   
   fileprivate func _setupApperance() {
     
-    autoresizingMask = .init(rawValue: 0)
     selectionStyle = .none
     backgroundColor = BBK_Main_Background_Color
     
@@ -94,5 +95,17 @@ extension LiveContentTableViewCell {
     layout.itemCount = 4
     _collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
     _collectionView.register(LiveContentCollectionViewCell.self, forCellWithReuseIdentifier: Commons.LiveCellCollectionViewCellIdentifier)
+    _collectionView.scrollsToTop = false
+    _collectionView.isPrefetchingEnabled = true
+    _collectionView.backgroundColor = BBK_Main_Background_Color
+    _collectionView.dataSource = self
+    _collectionView.delegate = self
+    contentView.addSubview(_collectionView)
+    _collectionView.snp.makeConstraints { (make) in
+      make.top.equalTo(contentView.snp.top)
+      make.bottom.equalTo(contentView.snp.bottom)
+      make.leading.equalTo(contentView.snp.leading)
+      make.trailing.equalTo(contentView.snp.trailing)
+    }
   }
 }

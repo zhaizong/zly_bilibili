@@ -12,8 +12,6 @@ import UIKit
 // @since 1.0.0
 // @author 赵林洋
 class HomeViewController: BiliViewController, BiliStoryboardViewController {
-
-  // MARK: - Property
   
   // MARK: - Lifecycle
   
@@ -46,16 +44,6 @@ class HomeViewController: BiliViewController, BiliStoryboardViewController {
   deinit {
     NotificationCenter.default.removeObserver(self)
   }
-
-  /*
-  // MARK: - Navigation
-
-  // In a storyboard-based application, you will often want to do a little preparation before navigation
-  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    // Get the new view controller using segue.destinationViewController.
-    // Pass the selected object to the new view controller.
-  }
-  */
   
   override var shouldAutorotate: Bool {
     return true
