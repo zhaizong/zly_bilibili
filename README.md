@@ -40,4 +40,10 @@ iOS的主工程为MybilibiliDemo
 
 ##第三方库(FRAMEWORK)
 
+>ijkplayer: 一个基于FFmpeg的开源Android/iOS视频播放器
+- API易于集成
+- 编译配置可裁剪，方便控制安装包大小
+- 支持硬件加速解码，更加省电
+- 简单易用，指定拉流URL，自动解码播放
+
 ##FAQ
