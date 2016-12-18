@@ -26,11 +26,12 @@ class LivePlayerView: UIView {
   var videoUrl: URL? {
     didSet {
       guard let videoUrl = videoUrl else { return }
+      
       IJKFFMoviePlayerController.setLogReport(false)
       IJKFFMoviePlayerController.setLogLevel(k_IJK_LOG_SILENT)
       IJKFFMoviePlayerController.checkIfFFmpegVersionMatch(true)
-      let options = IJKFFOptions()
-      _player = IJKFFMoviePlayerController(contentURL: videoUrl, with: options)
+      
+      _player = IJKFFMoviePlayerController(contentURL: videoUrl, with: nil)
       _player.view.frame = bounds
       _player.scalingMode = scaleMode
       _player.shouldAutoplay = true

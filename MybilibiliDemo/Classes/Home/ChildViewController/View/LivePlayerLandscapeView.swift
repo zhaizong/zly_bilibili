@@ -255,10 +255,11 @@ extension LivePlayerLandscapeView {
   fileprivate func _setupGesture() {
     
     let tap = UITapGestureRecognizer(target: self, action: nil)
-    addGestureRecognizer(tap)
     
     let doubleTap = UITapGestureRecognizer(target: self, action: nil)
     doubleTap.numberOfTapsRequired = 2
+    
+    addGestureRecognizer(tap)
     addGestureRecognizer(doubleTap)
     
     tap.require(toFail: doubleTap)

@@ -276,6 +276,7 @@ extension LivePlayerPortraitView {
     
     addGestureRecognizer(tap)
     addGestureRecognizer(doubleTap)
+    
     tap.require(toFail: doubleTap)
     
     let pan = UIPanGestureRecognizer(target: self, action: #selector(_panAction(_:)))
