@@ -16,7 +16,7 @@ class BiliTabBarController: UITabBarController {
 //  fileprivate let kZoneTabIndex     = 1
 //  fileprivate let kFollowTabIndex   = 2
 //  fileprivate let kFindTabIndex     = 3
-//  fileprivate let kMeTabIndex       = 1
+  fileprivate let kMeTabIndex       = 1
   
   // MARK: - Property
   
@@ -24,7 +24,7 @@ class BiliTabBarController: UITabBarController {
 //  fileprivate var _zoneNavigationViewController: UINavigationController!
 //  fileprivate var _followNavigationViewController: UINavigationController!
 //  fileprivate var _findNavigationViewController: UINavigationController!
-//  fileprivate var _meNavigationViewController: UINavigationController!
+  fileprivate var _meNavigationViewController: UINavigationController!
   
   fileprivate var _viewControllerStack: [UIViewController] = [UIViewController]()
   
@@ -35,7 +35,7 @@ class BiliTabBarController: UITabBarController {
 //      _zoneNavigationViewController.popToRootViewController(animated: true)
 //      _followNavigationViewController.popToRootViewController(animated: true)
 //      _findNavigationViewController.popToRootViewController(animated: true)
-//      _meNavigationViewController.popToRootViewController(animated: true)
+      _meNavigationViewController.popToRootViewController(animated: true)
     }
   }
   
@@ -57,13 +57,13 @@ extension BiliTabBarController {
 //    _zoneNavigationViewController = UIStoryboard.zoneStoryboard().instantiateInitialViewController() as! UINavigationController
 //    _followNavigationViewController = UIStoryboard.followStoryboard().instantiateInitialViewController() as! UINavigationController
 //    _findNavigationViewController = UIStoryboard.findStoryboard().instantiateInitialViewController() as! UINavigationController
-//    _meNavigationViewController = UIStoryboard.meStoryboard().instantiateInitialViewController() as! UINavigationController
+    _meNavigationViewController = UIStoryboard.meStoryboard().instantiateInitialViewController() as! UINavigationController
     
     viewControllers = [_homeNavigationViewController,
 //                       _zoneNavigationViewController,
 //                       _followNavigationViewController,
 //                       _findNavigationViewController,
-//                       _meNavigationViewController
+                       _meNavigationViewController
     ]
     
     if let homeTabItem = tabBar.items?[kHomeTabIndex] {
@@ -88,11 +88,11 @@ extension BiliTabBarController {
 //      findTabItem.title = "发现"
 //    }
     
-//    if let meTabItem = tabBar.items?[kMeTabIndex] {
-//      meTabItem.title = "我的"
-//      meTabItem.image = UIImage(named: "home_mine_tab")?.withRenderingMode(.alwaysOriginal)
-//      meTabItem.selectedImage = UIImage(named: "home_mine_tab_s")?.withRenderingMode(.alwaysOriginal)
-//    }
+    if let meTabItem = tabBar.items?[kMeTabIndex] {
+      meTabItem.title = "我的"
+      meTabItem.image = UIImage(named: "home_mine_tab")?.withRenderingMode(.alwaysOriginal)
+      meTabItem.selectedImage = UIImage(named: "home_mine_tab_s")?.withRenderingMode(.alwaysOriginal)
+    }
     
   }
   

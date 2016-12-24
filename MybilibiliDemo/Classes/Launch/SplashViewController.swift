@@ -83,11 +83,9 @@ extension SplashViewController {
       _setupLaunchImage()
     } else {
 //      第一次启动(动画形式加载)
-      weak var weakSelf = self
       let myDispatch_time = DispatchTime.now() + 0.5
       DispatchQueue.main.asyncAfter(deadline: myDispatch_time, execute: {
-        guard let weakSelf = weakSelf else { return }
-        weakSelf._launchWithAnimate()
+        self ._launchWithAnimate()
       })
 //      动画加载之后如果有网要进行网络请求缓存图片, 如果没有网络那么不必开启计数器, 因此计数器要放在网络请求成功之后开启.
       // TODO: - loadLaunchDataWhenAppFirstOpen

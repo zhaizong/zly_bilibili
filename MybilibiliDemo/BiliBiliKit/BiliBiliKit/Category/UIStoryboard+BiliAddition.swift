@@ -39,7 +39,7 @@ public extension UIStoryboard {
     return UIStoryboard(name: "Find", bundle: nil)
   }
   
-  public class func meStoryboard() ->UIStoryboard {
+  public class func meStoryboard() -> UIStoryboard {
     
     return UIStoryboard(name: "Me", bundle: nil)
   }

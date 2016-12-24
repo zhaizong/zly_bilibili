@@ -18,11 +18,12 @@ FOUNDATION_EXPORT const unsigned char BiliBiliKitVersionString[];
 
 extern NSString * Swift_LCKLocalizedString(NSString *, NSString *);
 
-#import <BiliBiliKit/BBKAlertView.h>
-#import <BiliBiliKit/UIColor+DYKAddition.h>
-#import <BiliBiliKit/UIImageView+WebCache.h>
 #import <BiliBiliKit/YYWebImage.h>
 #import <BiliBiliKit/BBKRefresh.h>
 #import <BiliBiliKit/DDXML.h>
+#import <BiliBiliKit/LFLiveKit.h>
 
+#import <BiliBiliKit/BBKAlertView.h>
+#import <BiliBiliKit/UIColor+DYKAddition.h>
+#import <BiliBiliKit/UIImageView+WebCache.h>
 #import <BiliBiliKit/BBKForceRotationScreen.h>

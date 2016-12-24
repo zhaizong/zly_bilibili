@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		2D0935501DD5FBEA0089A7F4 /* LiveEntranceIconsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D09354F1DD5FBEA0089A7F4 /* LiveEntranceIconsCollectionViewCell.swift */; };
 		2D0935521DD5FDCD0089A7F4 /* RecommendHotHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D0935511DD5FDCD0089A7F4 /* RecommendHotHeaderView.swift */; };
+		2D13489E1E0B456E0007882A /* PhoneLiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D13489D1E0B456E0007882A /* PhoneLiveViewController.swift */; };
+		2D1348A31E0B48630007882A /* PhoneLivePreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1348A21E0B48630007882A /* PhoneLivePreview.swift */; };
 		2D1452691E03E49100189671 /* LiveEntranceIconsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D1452681E03E49100189671 /* LiveEntranceIconsView.xib */; };
 		2D1BB5141DE8200B003CDBD0 /* AdjustSpeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1BB5131DE8200B003CDBD0 /* AdjustSpeedView.swift */; };
 		2D32FED41DFB669B004C2340 /* LivePlayerLandscapeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D32FED31DFB669B004C2340 /* LivePlayerLandscapeView.swift */; };
@@ -85,6 +87,8 @@
 		2DE9A7941DEFD79B00159DA4 /* bangumi_detail_page.json in Resources */ = {isa = PBXBuildFile; fileRef = 2DE9A7901DEFD79B00159DA4 /* bangumi_detail_page.json */; };
 		2DE9A7951DEFD79B00159DA4 /* bangumi_detail_reply.json in Resources */ = {isa = PBXBuildFile; fileRef = 2DE9A7911DEFD79B00159DA4 /* bangumi_detail_reply.json */; };
 		2DE9A7961DEFD79B00159DA4 /* bangumi_detail_season.json in Resources */ = {isa = PBXBuildFile; fileRef = 2DE9A7921DEFD79B00159DA4 /* bangumi_detail_season.json */; };
+		2DF4DC481E08EF2400614140 /* Me.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2DF4DC471E08EF2400614140 /* Me.storyboard */; };
+		2DF4DC4D1E08FF4900614140 /* MeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DF4DC4C1E08FF4900614140 /* MeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -121,6 +125,8 @@
 /* Begin PBXFileReference section */
 		2D09354F1DD5FBEA0089A7F4 /* LiveEntranceIconsCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiveEntranceIconsCollectionViewCell.swift; sourceTree = "<group>"; };
 		2D0935511DD5FDCD0089A7F4 /* RecommendHotHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecommendHotHeaderView.swift; sourceTree = "<group>"; };
+		2D13489D1E0B456E0007882A /* PhoneLiveViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneLiveViewController.swift; sourceTree = "<group>"; };
+		2D1348A21E0B48630007882A /* PhoneLivePreview.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneLivePreview.swift; sourceTree = "<group>"; };
 		2D1452681E03E49100189671 /* LiveEntranceIconsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LiveEntranceIconsView.xib; sourceTree = "<group>"; };
 		2D1BB5131DE8200B003CDBD0 /* AdjustSpeedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdjustSpeedView.swift; sourceTree = "<group>"; };
 		2D32FED31DFB669B004C2340 /* LivePlayerLandscapeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LivePlayerLandscapeView.swift; sourceTree = "<group>"; };
@@ -198,6 +204,8 @@
 		2DE9A7901DEFD79B00159DA4 /* bangumi_detail_page.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = bangumi_detail_page.json; sourceTree = "<group>"; };
 		2DE9A7911DEFD79B00159DA4 /* bangumi_detail_reply.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = bangumi_detail_reply.json; sourceTree = "<group>"; };
 		2DE9A7921DEFD79B00159DA4 /* bangumi_detail_season.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = bangumi_detail_season.json; sourceTree = "<group>"; };
+		2DF4DC471E08EF2400614140 /* Me.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Me.storyboard; sourceTree = "<group>"; };
+		2DF4DC4C1E08FF4900614140 /* MeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -235,6 +243,14 @@
 				2DD27C881DD86F320045C21F /* RecommendRegionHeaderView.swift */,
 			);
 			path = RecommendTableHeader;
+			sourceTree = "<group>";
+		};
+		2D1348A11E0B481F0007882A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2D1348A21E0B48630007882A /* PhoneLivePreview.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		2D3CDCE21DC18FB100884948 /* View */ = {
@@ -336,6 +352,7 @@
 			children = (
 				2DA9D3D01DB63C6A005E977E /* Launch */,
 				2D5D48C31DBF6606004760AE /* Home */,
+				2DF4DC4B1E08EFA100614140 /* Me */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -346,6 +363,7 @@
 				2DA689151DB490DF00E87142 /* Main.storyboard */,
 				2D3A436E1DEB36270037E941 /* Video.storyboard */,
 				2D64195D1DB922E700E1714D /* Home.storyboard */,
+				2DF4DC471E08EF2400614140 /* Me.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -518,6 +536,16 @@
 			path = bangumidetailjson;
 			sourceTree = "<group>";
 		};
+		2DF4DC4B1E08EFA100614140 /* Me */ = {
+			isa = PBXGroup;
+			children = (
+				2D1348A11E0B481F0007882A /* View */,
+				2DF4DC4C1E08FF4900614140 /* MeViewController.swift */,
+				2D13489D1E0B456E0007882A /* PhoneLiveViewController.swift */,
+			);
+			path = Me;
+			sourceTree = "<group>";
+		};
 		2DF51DA71DC4ED220036FE97 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -626,6 +654,7 @@
 				2D3A436F1DEB36270037E941 /* Video.storyboard in Resources */,
 				2DE9A7941DEFD79B00159DA4 /* bangumi_detail_page.json in Resources */,
 				2DC1A0611DB4875D006DD13D /* Assets.xcassets in Resources */,
+				2DF4DC481E08EF2400614140 /* Me.storyboard in Resources */,
 				2DA689161DB490DF00E87142 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -658,6 +687,7 @@
 				2DBAAF2D1DD03DB5008635FF /* RecommendNormalImageBangumiStyleCollectionViewCell.swift in Sources */,
 				2DA68A781DB4B72900E87142 /* BiliViewController.swift in Sources */,
 				2D9AA2CD1DF9E8F000E25AB0 /* LivePlayerPortraitView.swift in Sources */,
+				2D1348A31E0B48630007882A /* PhoneLivePreview.swift in Sources */,
 				2DD27C891DD86F320045C21F /* RecommendRegionHeaderView.swift in Sources */,
 				2D6419751DBA1A2800E1714D /* AppDelegate_BiliAddition.swift in Sources */,
 				2D361ABA1DD5E64A001E1836 /* RecommendSmallImageTableViewCollectionViewCell.swift in Sources */,
@@ -667,6 +697,7 @@
 				2D5D48C61DBF664C004760AE /* HomeViewController.swift in Sources */,
 				2D5D48D11DBF959B004760AE /* BangumiViewController.swift in Sources */,
 				2DA9D3D41DB63C6A005E977E /* SplashViewModel.swift in Sources */,
+				2DF4DC4D1E08FF4900614140 /* MeViewController.swift in Sources */,
 				2D5D48CD1DBF9557004760AE /* LiveViewController.swift in Sources */,
 				2D3CDCE51DC18FFC00884948 /* LiveHeaderView.swift in Sources */,
 				2DD27C871DD86DDE0045C21F /* RecommendAVHeaderView.swift in Sources */,
@@ -686,6 +717,7 @@
 				2DE8CB361DF7F43A0062A839 /* LiveTableFooterView.swift in Sources */,
 				2DBAAF1E1DCF7166008635FF /* RecommendNormalImageTableViewCell.swift in Sources */,
 				2D9F10C11DE81B2100783ACD /* VideoPlayerControlView.swift in Sources */,
+				2D13489E1E0B456E0007882A /* PhoneLiveViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
