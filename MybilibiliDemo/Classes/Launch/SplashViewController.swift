@@ -62,7 +62,6 @@ class SplashViewController: UIViewController, BiliStoryboardViewController {
   }
   
   deinit {
-    debugPrint("SplashViewController deinit")
     AFNetworkReachabilityManager.shared().stopMonitoring()
   }
 

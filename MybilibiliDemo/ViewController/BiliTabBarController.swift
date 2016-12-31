@@ -26,10 +26,6 @@ class BiliTabBarController: UITabBarController {
 //  fileprivate var _findNavigationViewController: UINavigationController!
   fileprivate var _meNavigationViewController: UINavigationController!
   
-  fileprivate var _viewControllerStack: [UIViewController] = [UIViewController]()
-  
-  fileprivate weak var _tempNavigationController: UINavigationController?
-  
   override var selectedIndex: Int {
     didSet {
 //      _zoneNavigationViewController.popToRootViewController(animated: true)

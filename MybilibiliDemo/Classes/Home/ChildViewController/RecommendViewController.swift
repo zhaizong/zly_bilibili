@@ -118,6 +118,20 @@ extension RecommendViewController: UITableViewDataSource, UITableViewDelegate {
   
   // MARK: - UITableViewDelegate
   
+  func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+    
+    let model = _recommendContentViews[indexPath.section]
+    let style = model["style"] as! String
+    if style == "medium" {
+      return 300
+    } else if style == "large" {
+      return 100
+    } else if style == "small" {
+      return 110
+    }
+    return 0
+  }
+  
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
     
     let model = _recommendContentViews[indexPath.section]

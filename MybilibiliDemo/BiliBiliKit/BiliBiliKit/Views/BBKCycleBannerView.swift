@@ -9,7 +9,8 @@
 import UIKit
 import bilibilicore
 
-// 无限轮播图控件
+// 无限轮播图控件 N+2个`UIImageView`思路
+
 // @since 1.0.0
 // @author 赵林洋
 fileprivate struct Commons {
@@ -19,7 +20,6 @@ fileprivate struct Commons {
   static let CycleBannerDidEndDeceleratingNotification = "kCycleBannerDidEndDeceleratingNotification"
 //  cellID
   static let CycleBannerCollectionViewCellReuseIdentifier = "BBKCycleBannerViewCellReuseIdentifier"
-  static let ItemGroupCount = 4
 }
 
 internal class BBKCycleBannerViewCell: UICollectionViewCell {
@@ -68,22 +68,26 @@ public class BBKCycleBannerView: UIView {
   // 图片url数组
   public var models: [[String: Any]]? {
     didSet {
-      guard let models = models else { return }
+      guard let models = models, models.count != 0 else { return }
+      _models.removeAll(keepingCapacity: false)
       _models = models
+      _models.insert(models.last!, at: 0)
+      _models.append(models.first!)
 //      停止计时器器
       _invalidateTimer()
 //      重新计算数据源
-      _totalItemsCount = models.count * Commons.ItemGroupCount
+      _totalItemsCount = models.count + 2
       _mainPageControl.numberOfPages = models.count
 //      刷新页面
       _mainView.reloadData()
       setNeedsLayout()
+      
       if models.count <= 1 {
         _mainView.isScrollEnabled = false
       } else {
         _mainView.isScrollEnabled = true
 //        开启定时器
-        _setupTimerWithTimeInterval(autoScrollTimeInterval)
+        _setupTimer(autoScrollTimeInterval)
       }
     }
   }
@@ -92,21 +96,25 @@ public class BBKCycleBannerView: UIView {
   public var newModels: [BBCLiveBanner]? {
     didSet {
       guard let newModels = newModels, newModels.count != 0 else { return }
+      _newModels.removeAll(keepingCapacity: false)
       _newModels = newModels
+      _newModels.insert(newModels.last!, at: 0)
+      _newModels.append(newModels.first!)
 //      停止计时器器
       _invalidateTimer()
 //      重新计算数据源
-      _totalItemsCount = newModels.count * Commons.ItemGroupCount
+      _totalItemsCount = newModels.count + 2
       _mainPageControl.numberOfPages = newModels.count
 //      刷新页面
       _mainView.reloadData()
       setNeedsLayout()
+      
       if newModels.count <= 1 {
         _mainView.isScrollEnabled = false
       } else {
         _mainView.isScrollEnabled = true
 //        开启定时器
-        _setupTimerWithTimeInterval(autoScrollTimeInterval)
+        _setupTimer(autoScrollTimeInterval)
       }
     }
   }
@@ -122,7 +130,7 @@ public class BBKCycleBannerView: UIView {
   
   fileprivate var _totalItemsCount: Int // 总item的数量
   
-  fileprivate var _itemIndex: Int!
+  fileprivate var _currentNumber: Int
   
   fileprivate var _timer: Timer! // 轮播定时器
   
@@ -147,10 +155,11 @@ public class BBKCycleBannerView: UIView {
   }
   
   override fileprivate init(frame: CGRect) {
+    autoScrollTimeInterval = 5
     _models = []
     _newModels = []
-    autoScrollTimeInterval = 5
     _totalItemsCount = 0
+    _currentNumber = 0
     super.init(frame: frame)
     _setupApperance()
   }
@@ -162,16 +171,17 @@ public class BBKCycleBannerView: UIView {
   public override func layoutSubviews() {
     super.layoutSubviews()
     _flowLayout.itemSize = bounds.size
-    _mainView.contentInset = UIEdgeInsets(top: 0,
-                                          left: -((CGFloat(_totalItemsCount) * 0.5 - 1) * BBK_Screen_Width),
-                                          bottom: 0,
-                                          right: -((CGFloat(_totalItemsCount) * 0.5 - 2) * BBK_Screen_Width))
-    if _totalItemsCount > 0 {
-      let targetIndex = CGFloat(_totalItemsCount) * 0.5
-      _mainView.scrollToItem(at: IndexPath(item: Int(targetIndex), section: 0), at: .init(rawValue: 0), animated: false)
-      _mainView.setContentOffset(CGPoint(x: _mainView.contentOffset.x - BBK_Screen_Width, y: 0), animated: true)
-      _itemIndex = Int(targetIndex)
-    }
+//    _mainView.contentInset = UIEdgeInsets(top: 0,
+//                                          left: -((CGFloat(_totalItemsCount) * 0.5 - 1) * BBK_Screen_Width),
+//                                          bottom: 0,
+//                                          right: -((CGFloat(_totalItemsCount) * 0.5 - 2) * BBK_Screen_Width))
+    
+//    if _totalItemsCount > 0 {
+//      let targetIndex = CGFloat(_totalItemsCount) * 0.5
+//      _mainView.scrollToItem(at: IndexPath(row: _currentNumber, section: 0), at: .right, animated: false)
+//      _mainView.setContentOffset(CGPoint(x: _mainView.contentOffset.x - BBK_Screen_Width, y: 0), animated: true)
+//      _itemIndex = Int(targetIndex)
+//    }
     
   }
   
@@ -185,6 +195,7 @@ extension BBKCycleBannerView {
     
     _flowLayout = UICollectionViewFlowLayout()
     _flowLayout.minimumLineSpacing = 0
+    _flowLayout.minimumInteritemSpacing = 0
     _flowLayout.scrollDirection = .horizontal
     
     _mainView = UICollectionView(frame: .zero, collectionViewLayout: _flowLayout)
@@ -203,6 +214,7 @@ extension BBKCycleBannerView {
     _mainPageControl.currentPageIndicatorTintColor = BBK_Main_Color
     _mainPageControl.pageIndicatorTintColor = BBK_Main_White_Color
     _mainPageControl.isUserInteractionEnabled = false
+    _mainPageControl.currentPage = 0
     addSubview(_mainPageControl)
     
     _mainView.snp.makeConstraints { (make) in
@@ -218,54 +230,43 @@ extension BBKCycleBannerView {
     }
   }
   
-  fileprivate func _invalidateTimer() {
+  fileprivate func _setupTimer(_ timeInterval: TimeInterval) {
     
-    guard _timer != nil else { return }
-    _timer.invalidate()
-    _timer = nil
-  }
-  
-  fileprivate func _currentIndex() -> Int {
-    
-    guard _mainView.st_width != 0 || _mainView.st_height != 0 else { return 0 }
-    var index = (_mainView.contentOffset.x + _flowLayout.itemSize.width * 0.5) / _flowLayout.itemSize.width
-    return max(0, Int(index))
-  }
-  
-  fileprivate func _setupTimerWithTimeInterval(_ timeInterval: TimeInterval) {
-    
-    let timer = Timer(timeInterval: timeInterval, target: self, selector: #selector(BBKCycleBannerView._automaticScroll), userInfo: nil, repeats: true)
-    _timer = timer
+    _timer = Timer(timeInterval: timeInterval, target: self, selector: #selector(_automaticScroll), userInfo: nil, repeats: true)
     /**
      *  NSDefaultRunLoopMode 滚动视图的模式无效
      *  UITrackingRunLoopMode 滚动视图的模式才有效
      *  NSRunLoopCommonModes 两者兼容
      */
-    RunLoop.main.add(timer, forMode: .defaultRunLoopMode)
+    RunLoop.main.add(_timer, forMode: .defaultRunLoopMode)
   }
   
   @objc fileprivate func _automaticScroll() {
     
     guard _totalItemsCount != 0 else { return }
     
-    _mainView.contentInset = UIEdgeInsets.zero
-    let currentIndex = _currentIndex()
-    var targetIndex = currentIndex + 1
-    if targetIndex >= _totalItemsCount {
-      targetIndex = Int(CGFloat(_totalItemsCount) * 0.5)
-      _mainView.scrollToItem(at: IndexPath(item: targetIndex - 1, section: 0), at: .init(rawValue: 0), animated: false)
-//      立即调用定时器
-      _timer.fire()
-      return
-    }
-    _mainView.scrollToItem(at: IndexPath(item: targetIndex, section: 0), at: .init(rawValue: 0), animated: true)
+    _currentNumber = _calculateCurrentNumber(_currentNumber + 1, at: _totalItemsCount - 2)
+    _mainPageControl.currentPage = _currentNumber
+    _mainView.scrollToItem(at: IndexPath(row: _currentNumber, section: 0), at: .right, animated: true)
+  }
+  
+  fileprivate func _calculateCurrentNumber(_ valueA: Int, at valueB: Int) -> Int {
+    return (valueA + valueB) % valueB
+  }
+
+  fileprivate func _invalidateTimer() {
+    
+    guard _timer != nil else { return }
+    _timer.invalidate()
+    _timer = nil
   }
 }
 
 extension BBKCycleBannerView: UICollectionViewDataSource, UICollectionViewDelegate {
   
+//  UICollectionViewDataSource
+  
   public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    
     return _totalItemsCount
   }
   
@@ -274,19 +275,17 @@ extension BBKCycleBannerView: UICollectionViewDataSource, UICollectionViewDelega
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Commons.CycleBannerCollectionViewCellReuseIdentifier, for: indexPath) as! BBKCycleBannerViewCell
     
     if _newModels.count != 0 {
-      let itemIndex = indexPath.item % _newModels.count
-      cell.imageURL = _newModels[itemIndex].imageUrl
+      cell.imageURL = _newModels[indexPath.row].imageUrl
     } else {
-      let itemIndex = indexPath.item % _models.count
-      
-      cell.imageURL = _models[itemIndex]["image"] as? String
+      cell.imageURL = _models[indexPath.row]["image"] as? String
     }
     
     return cell
   }
   
+//  UICollectionViewDelegate
+  
   public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    
     if _newModels.count != 0 {
       bannerViewClosureDidClick?(indexPath.item % _newModels.count)
     } else {
@@ -295,39 +294,29 @@ extension BBKCycleBannerView: UICollectionViewDataSource, UICollectionViewDelega
   }
   
   public func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-    
 //    发送开始拖拽的通知
     NotificationCenter.default.post(name: NSNotification.Name(rawValue: Commons.CycleBannerWillBeginDraggingNotification), object: nil)
 //    取消定时器
     _invalidateTimer()
   }
   
-  public func scrollViewDidScroll(_ scrollView: UIScrollView) {
-    
-    _itemIndex = _currentIndex()
-    if _newModels.count != 0 {
-      _mainPageControl.currentPage = _currentIndex() % _newModels.count
-    } else {
-      _mainPageControl.currentPage = _currentIndex() % _models.count
-    }
-  }
-  
   public func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-    
-    let halfTotalItemsCount = _totalItemsCount / 2
-    let padding = _itemIndex % (_totalItemsCount / Commons.ItemGroupCount)
-    let leftInset = CGFloat(halfTotalItemsCount + padding - 1) * BBK_Screen_Width
-    let rightInset = CGFloat(halfTotalItemsCount + padding - 1) * BBK_Screen_Width - (BBK_Screen_Width * CGFloat(padding * 2 + 1))
-//    根据当前索引变换contentInset
-    _mainView.contentInset = UIEdgeInsets(top: 0, left: -leftInset, bottom: 0, right: -rightInset)
-//    结束滑动, 应该默认滚动到中间位置
-    let targetIndex = _totalItemsCount / 2
-    _mainView.scrollToItem(at: IndexPath(item: targetIndex, section: 0), at: .init(rawValue: 0), animated: false)
-    _mainView.setContentOffset(CGPoint(x: _mainView.contentOffset.x - BBK_Screen_Width, y: 0), animated: true)
+    // TODO: - 手动滑动滚动式图_mainPageControl.currentPage还有个小bug
+    let contentOffsetFullScrolledRight = _mainView.frame.size.width * CGFloat(_totalItemsCount - 1)
+    if scrollView.contentOffset.x == contentOffsetFullScrolledRight {
+      let path = IndexPath(row: 1, section: 0)
+      _mainView.scrollToItem(at: path, at: .right, animated: false)
+      _currentNumber = _calculateCurrentNumber(_currentNumber + 1, at: _totalItemsCount - 2)
+    } else if scrollView.contentOffset.x == 0 {
+      let path = IndexPath(row: _totalItemsCount - 2, section: 0)
+      _mainView.scrollToItem(at: path, at: .right, animated: false)
+      _currentNumber = _calculateCurrentNumber(_currentNumber - 1, at: _totalItemsCount - 2)
+    }
+    _mainPageControl.currentPage = _currentNumber
 //    发送结束滚动的通知
     NotificationCenter.default.post(name: NSNotification.Name(rawValue: Commons.CycleBannerDidEndDeceleratingNotification), object: nil)
 //    设置定时器
-    _setupTimerWithTimeInterval(autoScrollTimeInterval)
+    _setupTimer(autoScrollTimeInterval)
   }
   
 }
