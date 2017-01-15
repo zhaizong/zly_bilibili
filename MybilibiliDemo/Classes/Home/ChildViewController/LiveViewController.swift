@@ -43,6 +43,11 @@ class LiveViewController: UIViewController, BiliStoryboardViewController {
     _setupDataSource()
   }
   
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    tabBarController?.tabBar.isHidden = false
+  }
+  
   override func viewDidLayoutSubviews() {
     super.viewDidLayoutSubviews()
     
@@ -93,7 +98,7 @@ extension LiveViewController: UITableViewDataSource, UITableViewDelegate {
       if let weakSelf = self {
         let vc: LiveDetailViewController = LiveDetailViewController.instanceFromStoryboard()
         vc.liveSource = liveSource
-        weakSelf.parent?.navigationController?.pushViewController(vc, animated: true)
+        weakSelf.navigationController?.pushViewController(vc, animated: true)
       }
     }
     

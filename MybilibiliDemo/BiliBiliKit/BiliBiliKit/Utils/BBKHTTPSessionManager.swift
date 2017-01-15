@@ -12,8 +12,19 @@ import bilibilicore
 // 基于AFHTTPSessionManager的单例类 BBKHTTPSessionManager.sharedManager()
 // @since 1.0.0
 // @author 赵林洋
+
+public enum NetworkStatus: UInt {
+  case none
+  case towG
+  case threeG
+  case fourG
+  case wifi
+}
+
 public class BBKHTTPSessionManager: AFHTTPSessionManager {
 
+  // MARK: - Property
+  
   fileprivate static var _sharedManager: BBKHTTPSessionManager?
   
   public class func sharedManager() -> BBKHTTPSessionManager {
@@ -34,6 +45,34 @@ public class BBKHTTPSessionManager: AFHTTPSessionManager {
   
   required public init?(coder aDecoder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
+  }
+  
+}
+
+extension BBKHTTPSessionManager {
+  
+  public class func networkStatus() -> NetworkStatus {
+    let subviews = ((UIApplication.shared.value(forKeyPath: "statusBar") as AnyObject).value(forKeyPath: "foregroundView") as! UIView).subviews
+    var status = NetworkStatus.none
+    for child in subviews {
+      if child.isKind(of: NSClassFromString("UIStatusBarDataNetworkItemView")!) {
+        let networkType = child.value(forKeyPath: "dataNetworkType") as! Int
+        switch networkType {
+        case 0:
+          status = .none
+        case 1:
+          status = .towG
+        case 2:
+          status = .threeG
+        case 3:
+          status = .fourG
+        case 4:
+          status = .wifi
+        default: break
+        }
+      }
+    }
+    return status
   }
   
 }

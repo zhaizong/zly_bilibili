@@ -66,6 +66,7 @@ extension BiliTabBarController {
       homeTabItem.title = "首页"
       homeTabItem.image = UIImage(named: "home_home_tab")?.withRenderingMode(.alwaysOriginal)
       homeTabItem.selectedImage = UIImage(named: "home_home_tab_s")?.withRenderingMode(.alwaysOriginal)
+      homeTabItem.titlePositionAdjustment = UIOffset(horizontal: 0, vertical: -5)
     }
     
 //    if let zoneTabItem = tabBar.items?[kZoneTabIndex] {
@@ -88,6 +89,7 @@ extension BiliTabBarController {
       meTabItem.title = "我的"
       meTabItem.image = UIImage(named: "home_mine_tab")?.withRenderingMode(.alwaysOriginal)
       meTabItem.selectedImage = UIImage(named: "home_mine_tab_s")?.withRenderingMode(.alwaysOriginal)
+      meTabItem.titlePositionAdjustment = UIOffset(horizontal: 0, vertical: -5)
     }
     
   }
@@ -96,7 +98,7 @@ extension BiliTabBarController {
     
     delegate = self
     UITabBar.appearance().tintColor = BBK_Main_Color
-//    UITabBar.appearance().translucent = false
+    UITabBar.appearance().isTranslucent = false
   }
   
 }

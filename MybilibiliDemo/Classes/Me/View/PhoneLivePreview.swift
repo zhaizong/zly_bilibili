@@ -43,10 +43,12 @@ class PhoneLivePreview: UIView {
   fileprivate var _mirrorButton: UIButton
   
   fileprivate lazy var _liveSession: LFLiveSession = {
-    let lazilyLiveSession = LFLiveSession(audioConfiguration: LFLiveAudioConfiguration.default(), videoConfiguration: LFLiveVideoConfiguration.defaultConfiguration(for: .medium3, outputImageOrientation: .portrait))
+    let audioConfiguration = LFLiveAudioConfiguration.default()
+    let videoConfiguration = LFLiveVideoConfiguration.defaultConfiguration(for: .low3, outputImageOrientation: .portrait)
+    let lazilyLiveSession = LFLiveSession(audioConfiguration: audioConfiguration, videoConfiguration: videoConfiguration)
     lazilyLiveSession?.delegate = self
-    lazilyLiveSession?.showDebugInfo = true
     lazilyLiveSession?.preView = self
+    lazilyLiveSession?.showDebugInfo = true
     return lazilyLiveSession!
   }()
   

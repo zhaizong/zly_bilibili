@@ -11,7 +11,8 @@
     "21A277AE25FFC5157FFA61D6D985F3C60BC38E78" : 9223372036854775807,
     "70A8537565E8EBD1B9D364933832E742DD9D1D11" : 9223372036854775807,
     "E28E36D423EC87798E52E2BF482E9F7A1E6479D6" : 9223372036854775807,
-    "C3339B365A7E5D6D5058E70B093D4E7EA5F9D6A9" : 9223372036854775807
+    "C3339B365A7E5D6D5058E70B093D4E7EA5F9D6A9" : 9223372036854775807,
+    "7070BA961BCA286ED2393408B1E3D78393C99B33" : 9223372036854775807
   },
   "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "00A83442-6310-40AE-893C-3174064A0400",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
@@ -22,7 +23,8 @@
     "21A277AE25FFC5157FFA61D6D985F3C60BC38E78" : "zly_bilibili\/MybilibiliDemo\/BiliBiliKit\/BiliBiliKit\/Vendor\/LFLiveKit\/",
     "70A8537565E8EBD1B9D364933832E742DD9D1D11" : "zly_bilibili\/MybilibiliDemo\/BiliBiliKit\/BiliBiliKit\/Vendor\/KissXML\/",
     "E28E36D423EC87798E52E2BF482E9F7A1E6479D6" : "zly_bilibili\/MybilibiliDemo\/BiliBiliKit\/BiliBiliKit\/Vendor\/SDWebImage\/",
-    "C3339B365A7E5D6D5058E70B093D4E7EA5F9D6A9" : "zly_bilibili\/bilibilicore\/external\/YYModel\/"
+    "C3339B365A7E5D6D5058E70B093D4E7EA5F9D6A9" : "zly_bilibili\/bilibilicore\/external\/YYModel\/",
+    "7070BA961BCA286ED2393408B1E3D78393C99B33" : "zly_bilibili\/MybilibiliDemo\/BiliBiliKit\/BiliBiliKit\/Vendor\/Reachability\/"
   },
   "DVTSourceControlWorkspaceBlueprintNameKey" : "MybilibiliDemo",
   "DVTSourceControlWorkspaceBlueprintVersion" : 204,
@@ -52,6 +54,11 @@
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/SnapKit\/SnapKit.git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "3AF18F9C6F5D633BAA0B3F935459E0C777C82047"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/tonymillion\/Reachability.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "7070BA961BCA286ED2393408B1E3D78393C99B33"
     },
     {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/robbiehanson\/KissXML.git",

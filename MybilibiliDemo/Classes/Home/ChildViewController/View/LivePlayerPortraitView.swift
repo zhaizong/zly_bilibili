@@ -350,7 +350,7 @@ extension LivePlayerPortraitView {
     }
     
     _normalPauseButton.snp.makeConstraints { (make) in
-      make.trailing.equalTo(16)
+      make.trailing.equalTo(-16)
       make.width.equalTo(50)
       make.height.equalTo(45)
     }

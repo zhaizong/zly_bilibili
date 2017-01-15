@@ -52,7 +52,10 @@ class SplashViewController: UIViewController, BiliStoryboardViewController {
     BBCDirector.bbk_resetDefaultDirectorAsStranger()
     BBCDirector.default()?.resetManagers()
     
-    _setupAppearance()
+    AppDelegate.bili_sharedInstance().tabBarController = UIStoryboard.mainStoryboard().instantiateInitialViewController() as! BiliTabBarController
+    SceneController.sharedController.replaceSceneWithHomeView()
+    
+//    _setupAppearance()
     
   }
 

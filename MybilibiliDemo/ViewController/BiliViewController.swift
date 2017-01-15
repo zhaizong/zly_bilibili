@@ -20,7 +20,7 @@ fileprivate struct Commons {
   static let ScreenHeight = UIScreen.main.bounds.size.height
   static let NavBarHeight: CGFloat = 64 // 导航条高度
   static let ID = "cell"
-  static let Margin: CGFloat = 20
+  static let Margin: CGFloat = 50
   static let TitleTransformScale: CGFloat = 1.3 // 标题缩放比例
   static let UnderLineH: CGFloat = 2 // 下划线默认高度
 //  重复点击通知
@@ -389,7 +389,8 @@ class BiliViewController: UIViewController {
     }
 //    设置底部的线
     if let _underLine = _underLine {
-      _bottomLine.frame = CGRect(origin: CGPoint(x: 0, y: _underLine.st_bottom - 0.5), size: CGSize(width: _titleScrollView.st_width, height: 0.5))
+      _bottomLine.frame = CGRect(origin: CGPoint(x: 0, y: _underLine.st_bottom - 0.5),
+                                 size: CGSize(width: _titleScrollView.st_width, height: 0.5))
     }
     
   }
@@ -401,11 +402,6 @@ class BiliViewController: UIViewController {
   
   override var preferredStatusBarStyle: UIStatusBarStyle {
     return .default
-  }
-
-  override func didReceiveMemoryWarning() {
-    super.didReceiveMemoryWarning()
-    // Dispose of any resources that can be recreated.
   }
   
 }
@@ -622,7 +618,6 @@ extension BiliViewController {
         if self.isBisectedWidthUnderLineAndTitle == true {
           let count = self.childViewControllers.count
           self._underLine?.st_width = Commons.ScreenWidth / CGFloat(count) - Commons.Margin
-//          self._underLine?.st_left = label.st_left + Commons.Margin
           self._underLine?.st_centerX = label.st_centerX
         } else {
           self._underLine?.st_width = titleBounds.size.width - Commons.Margin
@@ -784,10 +779,6 @@ extension BiliViewController {
     if let _ = _coverView {
       _coverView?.st_width += coverWidth
       _coverView?.st_left += coverTransformX
-      /*_coverView!.snp.remakeConstraints({ (make) in
-        make.width.equalTo(_coverView!.st_width + coverWidth)
-        make.left.equalTo(_coverView!.st_left + coverTransformX)
-      })*/
     }
   }
   
@@ -798,9 +789,8 @@ extension BiliViewController {
   // MARK: - Public Method
   
 //  一次性设置所有标题属性
-  func setupTitleEffect(_ titleScrollViewColor: UIColor, _ normalColor: UIColor, _ selectedColor: UIColor, _ titleFont: UIFont, _ titleHeight: CGFloat) {
-    
-  }
+  /*func setupTitleEffect(_ titleScrollViewColor: UIColor, _ normalColor: UIColor, _ selectedColor: UIColor, _ titleFont: UIFont, _ titleHeight: CGFloat) {
+  }*/
   
 //  一次性设置所有下标属性
   func setupUnderLineEffect(_ _isShowUnderLine: Bool, _ _isDelayScroll: Bool?, _ _underLineH: CGFloat, _ _underLineColor: UIColor) {
@@ -813,11 +803,10 @@ extension BiliViewController {
   }
   
 //  一次性设置所有字体缩放属性
-  func setupTitleScale(_ _isShowTitleScale: Bool, _ _titleScale: CGFloat) {
-    
+  /*func setupTitleScale(_ _isShowTitleScale: Bool, _ _titleScale: CGFloat) {
     isShowTitleScale = _isShowTitleScale
     titleScale = _titleScale
-  }
+  }*/
   
 //  一次性设置所有颜色渐变属性
   func setupTitleGradient(_ _isShowTitleGradient: Bool, _ _titleColorGradientStyle: TitleColorGradientStyle, _ _startR: CGFloat, _ _startG: CGFloat, _ _startB: CGFloat, _ _endR: CGFloat, _ _endG: CGFloat, _ _endB: CGFloat) {
@@ -833,10 +822,8 @@ extension BiliViewController {
   }
   
 //  一次性设置所有遮盖属性
-  func setupCoverEffect(_ _isShowTitleCover: Bool, _ _coverColor: UIColor, _ _coverCornerRadius: CGFloat) {
-    
-    // ignore
-  }
+  /*func setupCoverEffect(_ _isShowTitleCover: Bool, _ _coverColor: UIColor, _ _coverCornerRadius: CGFloat) {
+  }*/
   
 //  刷新标题和整个界面，在调用之前，必须先确定所有的子控制器。
   func refreshDisplay() {

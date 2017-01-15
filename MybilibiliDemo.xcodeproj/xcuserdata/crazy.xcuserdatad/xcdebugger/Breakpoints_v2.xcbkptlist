@@ -41,13 +41,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MybilibiliDemo/Classes/Home/ChildViewController/View/LivePlayerLandscapeView.swift"
-            timestampString = "503766715.617319"
+            filePath = "MybilibiliDemo/Classes/Home/ChildViewController/View/LivePlayerPortraitView.swift"
+            timestampString = "506073990.292682"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "148"
-            endingLineNumber = "148"
-            landmarkName = "_tapAction(_:)"
+            startingLineNumber = "131"
+            endingLineNumber = "131"
+            landmarkName = "_backButtonDidClick(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -58,12 +58,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MybilibiliDemo/Classes/Home/ChildViewController/View/LivePlayerLandscapeView.swift"
-            timestampString = "503766717.67786"
+            timestampString = "506074020.16227"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "158"
-            endingLineNumber = "158"
-            landmarkName = "_doubleTapAction(_:)"
+            startingLineNumber = "122"
+            endingLineNumber = "122"
+            landmarkName = "_portraitButtonDidClick(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -74,13 +74,61 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MybilibiliDemo/Classes/Home/ChildViewController/View/LivePlayerLandscapeView.swift"
-            timestampString = "503766719.429911"
+            timestampString = "506074021.348292"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "165"
-            endingLineNumber = "165"
-            landmarkName = "_panAction(_:)"
+            startingLineNumber = "117"
+            endingLineNumber = "117"
+            landmarkName = "_palyButtonDidClick(_:)"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MybilibiliDemo/Classes/Home/ChildViewController/View/LivePlayerLandscapeView.swift"
+            timestampString = "506074029.327772"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "137"
+            endingLineNumber = "137"
+            landmarkName = "_changePlayStatus()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MybilibiliDemo.LivePlayerLandscapeView.(_changePlayStatus in _8079EF2C6804335415F4C7712058F3C4) () -&gt; ()"
+                  moduleName = "MybilibiliDemo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Crazy/Developer/zly_bilibili/MybilibiliDemo/Classes/Home/ChildViewController/View/LivePlayerLandscapeView.swift"
+                  timestampString = "506153281.538097"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "137"
+                  endingLineNumber = "137"
+                  offsetFromSymbolStart = "12">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "function signature specialization &lt;Arg[0] = Dead&gt; of MybilibiliDemo.LivePlayerLandscapeView.(_palyButtonDidClick in _8079EF2C6804335415F4C7712058F3C4) (__ObjC.UIButton) -&gt; ()"
+                  moduleName = "MybilibiliDemo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Crazy/Developer/zly_bilibili/MybilibiliDemo/Classes/Home/ChildViewController/View/LivePlayerLandscapeView.swift"
+                  timestampString = "506153281.540256"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "137"
+                  endingLineNumber = "137"
+                  offsetFromSymbolStart = "12">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

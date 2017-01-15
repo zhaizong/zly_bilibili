@@ -27,9 +27,4 @@ class SceneController {
     appDelegate.tabBarController.selectedIndex = 0
   }
   
-  /*internal func replaceSceneWithChooseCityView() {
-    
-    
-  }*/
-  
 }

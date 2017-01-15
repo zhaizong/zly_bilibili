@@ -13,6 +13,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
   var window: UIWindow?
   var tabBarController: BiliTabBarController!
+  
+  var _reacha: Reachability!
+  var _preStatus: NetworkStatus = .none
 
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
     // Override point for customization after application launch.
@@ -23,8 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     SceneController.sharedController.replaceSceneWithSplashView()
     
 //    网络监测
-    _networkMonitoring()
-    
+    _checkNetworkStatus()
     return true
   }
 
@@ -55,10 +57,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 extension AppDelegate {
   
-  fileprivate func _networkMonitoring() {
-    
-    let mgr = AFNetworkReachabilityManager.shared()
+  fileprivate func _checkNetworkStatus() {
+    NotificationCenter.default.addObserver(self, selector: #selector(_networkMonitoring), name: NSNotification.Name.reachabilityChanged, object: nil)
+    _reacha = Reachability(hostName: "https://www.baidu.com")
+    _reacha.startNotifier()
+  }
+  
+  @objc fileprivate func _networkMonitoring() {
+    /*let mgr = AFNetworkReachabilityManager.shared()
     mgr.setReachabilityStatusChange { (status: AFNetworkReachabilityStatus) in
+      let currentStatus = BBKHTTPSessionManager.networkStatus()
+      debugPrint(currentStatus)
 //      当网络状态发生改变的时候调用这个block
       switch status {
       case .reachableViaWiFi:
@@ -72,7 +81,36 @@ extension AppDelegate {
       }
     }
 //    开始监控
-    mgr.startMonitoring()
+    mgr.startMonitoring()*/
+    var tips = ""
+    let currentStatus = BBKHTTPSessionManager.networkStatus()
+    if currentStatus == _preStatus {
+      return
+    }
+    _preStatus = currentStatus
+    switch currentStatus {
+    case .none:
+      debugPrint("当前无网络, 请检查您的网络状态")
+      tips = "当前无网络, 请检查您的网络状态"
+    case .towG:
+      debugPrint("切换到了2G网络")
+      tips = "切换到了2G网络"
+    case .threeG:
+      debugPrint("切换到了3G网络")
+      tips = "切换到了3G网络"
+    case .fourG:
+      debugPrint("切换到了4G网络")
+      tips = "切换到了4G网络"
+    case .wifi:
+      debugPrint("wifi")
+      tips = ""
+    }
+    if tips != "" {
+      let alert = UIAlertController(title: "哔哩哔哩", message: tips, preferredStyle: .alert)
+      let cancelAction = UIAlertAction(title: "知道了", style: .cancel, handler: nil)
+      alert.addAction(cancelAction)
+      window?.rootViewController?.present(alert, animated: true, completion: nil)
+    }
   }
   
 }

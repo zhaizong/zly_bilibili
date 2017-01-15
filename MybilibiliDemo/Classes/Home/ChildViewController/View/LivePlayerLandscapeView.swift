@@ -254,9 +254,9 @@ extension LivePlayerLandscapeView {
   
   fileprivate func _setupGesture() {
     
-    let tap = UITapGestureRecognizer(target: self, action: nil)
+    let tap = UITapGestureRecognizer(target: self, action: #selector(_tapAction(_:)))
     
-    let doubleTap = UITapGestureRecognizer(target: self, action: nil)
+    let doubleTap = UITapGestureRecognizer(target: self, action: #selector(_doubleTapAction(_:)))
     doubleTap.numberOfTapsRequired = 2
     
     addGestureRecognizer(tap)
@@ -264,7 +264,7 @@ extension LivePlayerLandscapeView {
     
     tap.require(toFail: doubleTap)
     
-    let pan = UIPanGestureRecognizer(target: self, action: nil)
+    let pan = UIPanGestureRecognizer(target: self, action: #selector(_panAction(_:)))
     addGestureRecognizer(pan)
   }
   

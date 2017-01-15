@@ -63,8 +63,6 @@ class LiveDetailViewController: UIViewController, BiliStoryboardViewController {
     super.viewDidDisappear(animated)
     
     _playerView.shutdown()
-    
-    tabBarController?.tabBar.isHidden = false
   }
   
   deinit {
@@ -95,7 +93,7 @@ extension LiveDetailViewController {
     }
     _playerView.scaleMode = .aspectFit
     view.addSubview(_playerView)
-    _playerView.snp.updateConstraints { (make) in
+    _playerView.snp.makeConstraints { (make) in
       make.top.equalTo(view.snp.top)
       make.leading.equalTo(view.snp.leading)
       make.trailing.equalTo(view.snp.trailing)
@@ -110,11 +108,13 @@ extension LiveDetailViewController {
     }
     _playerView.livePlayerViewFullScreenClosure = { [weak self] in
       guard let weakSelf = self else { return }
-      weakSelf._playerView.snp.updateConstraints({ (make) in
+      weakSelf._playerView.snp.remakeConstraints({ (make) in
+        make.top.equalTo(weakSelf.view.snp.top)
+        make.leading.equalTo(weakSelf.view.snp.leading)
+        make.trailing.equalTo(weakSelf.view.snp.trailing)
         make.height.equalTo(BBK_Screen_Height)
       })
     }
   }
-  
   
 }
