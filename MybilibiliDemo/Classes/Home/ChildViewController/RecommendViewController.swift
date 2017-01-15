@@ -45,7 +45,7 @@ class RecommendViewController: UIViewController, BiliStoryboardViewController {
     return lazilyCreatedLinks
   }()// 视频数组
   
-  fileprivate var _bannerView: BBKCycleBannerView! // 轮播控件
+  fileprivate var _bannerView: BBKBannerView! // 轮播控件
   
   fileprivate var _contentTableView: UITableView! // 内容视图(TableView)
   
@@ -62,7 +62,6 @@ class RecommendViewController: UIViewController, BiliStoryboardViewController {
   }
   
   deinit {
-    debugPrint("deinit")
     NotificationCenter.default.removeObserver(self)
   }
   
@@ -261,12 +260,9 @@ extension RecommendViewController {
     _contentTableView.register(RecommendLargeImageTableViewCell.self, forCellReuseIdentifier: Commons.RecommendLargeImageTableViewCellID)
     _contentTableView.register(RecommendSmallImageTableViewCell.self, forCellReuseIdentifier: Commons.RecommendSmallImageTableViewCellID)
     
-    _bannerView = BBKCycleBannerView.initBannerViewWithFrame(CGRect(origin: .zero, size: CGSize(width: BBK_Screen_Width, height: 120)), placeholderImage: nil)
+    _bannerView = BBKBannerView(frame: CGRect(origin: .zero, size: CGSize(width: BBK_Screen_Width, height: 120)))
+    _bannerView.time = 2
     _contentTableView.tableHeaderView = _bannerView
-    _bannerView.bannerViewClosureDidClick =  { [weak self] (didselectIndex: Int) in
-      guard let _ = self else { return }
-      // TODO: - 轮播图的点击跳转, 以后再做.
-    }
     
 //    添加下拉刷新控件, 后期需进行改进.
     _contentTableView.header = BBKRefreshHeader() { (header: BBKRefreshHeader?) in
@@ -282,7 +278,7 @@ extension RecommendViewController {
       if self._bannerViews.count != 0 && self._recommendContentViews.count != 0 {
         UIApplication.shared.isNetworkActivityIndicatorVisible = false
         
-        self._bannerView.models = self._bannerViews
+        self._bannerView.bannerImages = self._bannerViews
         
         self._contentTableView.reloadData()
         self._contentTableView.header.endRefreshing()

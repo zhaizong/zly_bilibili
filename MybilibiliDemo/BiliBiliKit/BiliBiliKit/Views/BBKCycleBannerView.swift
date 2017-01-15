@@ -82,12 +82,12 @@ public class BBKCycleBannerView: UIView {
       _mainView.reloadData()
       setNeedsLayout()
       
-      if models.count <= 1 {
-        _mainView.isScrollEnabled = false
-      } else {
+      if models.count > 1 {
         _mainView.isScrollEnabled = true
 //        开启定时器
         _setupTimer(autoScrollTimeInterval)
+      } else {
+        _mainView.isScrollEnabled = false
       }
     }
   }
@@ -109,12 +109,12 @@ public class BBKCycleBannerView: UIView {
       _mainView.reloadData()
       setNeedsLayout()
       
-      if newModels.count <= 1 {
-        _mainView.isScrollEnabled = false
-      } else {
+      if newModels.count > 1 {
         _mainView.isScrollEnabled = true
 //        开启定时器
         _setupTimer(autoScrollTimeInterval)
+      } else {
+        _mainView.isScrollEnabled = false
       }
     }
   }
@@ -126,7 +126,6 @@ public class BBKCycleBannerView: UIView {
   fileprivate var _mainView: UICollectionView! // 轮播图View
   fileprivate var _flowLayout: UICollectionViewFlowLayout! // 轮播图布局
   fileprivate var _mainPageControl: UIPageControl! // 页码控件
-  fileprivate var _placeholderImage: UIImage! // 占位图
   
   fileprivate var _totalItemsCount: Int // 总item的数量
   
@@ -150,7 +149,6 @@ public class BBKCycleBannerView: UIView {
   public class func initBannerViewWithFrame(_ frame: CGRect, placeholderImage: UIImage?) -> BBKCycleBannerView {
     
     let bannerView = BBKCycleBannerView(frame: frame)
-    bannerView._placeholderImage = placeholderImage
     return bannerView
   }
   
@@ -171,18 +169,6 @@ public class BBKCycleBannerView: UIView {
   public override func layoutSubviews() {
     super.layoutSubviews()
     _flowLayout.itemSize = bounds.size
-//    _mainView.contentInset = UIEdgeInsets(top: 0,
-//                                          left: -((CGFloat(_totalItemsCount) * 0.5 - 1) * BBK_Screen_Width),
-//                                          bottom: 0,
-//                                          right: -((CGFloat(_totalItemsCount) * 0.5 - 2) * BBK_Screen_Width))
-    
-//    if _totalItemsCount > 0 {
-//      let targetIndex = CGFloat(_totalItemsCount) * 0.5
-//      _mainView.scrollToItem(at: IndexPath(row: _currentNumber, section: 0), at: .right, animated: false)
-//      _mainView.setContentOffset(CGPoint(x: _mainView.contentOffset.x - BBK_Screen_Width, y: 0), animated: true)
-//      _itemIndex = Int(targetIndex)
-//    }
-    
   }
   
 }

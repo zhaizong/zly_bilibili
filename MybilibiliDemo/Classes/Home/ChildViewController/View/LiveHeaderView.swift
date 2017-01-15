@@ -36,7 +36,7 @@ class LiveHeaderView: UIView {
   var banners: [BBCLiveBanner]? {
     didSet {
       guard let banners = banners, banners.count != 0 else { return }
-      _bannerView.newModels = banners
+      _bannerView.bannerImages = banners
     }
   }
   
@@ -51,7 +51,7 @@ class LiveHeaderView: UIView {
   
   weak var myDelegate: LiveHeaderViewDelegate?
   
-  fileprivate var _bannerView: BBKCycleBannerView! // 顶部轮播View
+  fileprivate var _bannerView: BBKBannerView! // 顶部轮播View
   fileprivate var _bottomView: LiveEntranceIconsView! // 底部入口View
   
   // MARK: - Lifecycle
@@ -88,14 +88,16 @@ extension LiveHeaderView {
     
     backgroundColor = BBK_Main_Background_Color
     
-    _bannerView = BBKCycleBannerView.initBannerViewWithFrame(.zero, placeholderImage: nil)
-    _bannerView.bannerViewClosureDidClick = { [weak self] (didSelectIndex: Int) in
-      guard let weakSelf = self else { return }
-      guard let myDelegate = weakSelf.myDelegate else { return }
-      if myDelegate.responds(to: #selector(LiveHeaderViewDelegate.liveHeaderView(_:didSelectedBannerIndex:))) {
-        myDelegate.liveHeaderView(weakSelf, didSelectedBannerIndex: didSelectIndex)
-      }
-    }
+//    _bannerView = BBKCycleBannerView.initBannerViewWithFrame(.zero, placeholderImage: nil)
+//    _bannerView.bannerViewClosureDidClick = { [weak self] (didSelectIndex: Int) in
+//      guard let weakSelf = self else { return }
+//      guard let myDelegate = weakSelf.myDelegate else { return }
+//      if myDelegate.responds(to: #selector(LiveHeaderViewDelegate.liveHeaderView(_:didSelectedBannerIndex:))) {
+//        myDelegate.liveHeaderView(weakSelf, didSelectedBannerIndex: didSelectIndex)
+//      }
+//    }
+    _bannerView = BBKBannerView(frame: .zero)
+    _bannerView.time = 2
     addSubview(_bannerView)
     
     _bottomView = LiveEntranceIconsView.liveEntranceIconsView()

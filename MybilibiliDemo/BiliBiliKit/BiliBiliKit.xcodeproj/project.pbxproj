@@ -481,6 +481,9 @@
 		2D3CDD4C1DC213A100884948 /* UIView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D3CDD231DC213A100884948 /* UIView+WebCache.m */; };
 		2D3CDD4D1DC213A100884948 /* UIView+WebCacheOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 2D3CDD241DC213A100884948 /* UIView+WebCacheOperation.h */; };
 		2D3CDD4E1DC213A100884948 /* UIView+WebCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D3CDD251DC213A100884948 /* UIView+WebCacheOperation.m */; };
+		2D4FC04B1E29EFE2003EDFEB /* Reachability.h in Headers */ = {isa = PBXBuildFile; fileRef = 2D4FC0331E29EFE2003EDFEB /* Reachability.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2D4FC04C1E29EFE2003EDFEB /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D4FC0341E29EFE2003EDFEB /* Reachability.m */; };
+		2D4FC05F1E2A3769003EDFEB /* BBKBannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D4FC05E1E2A3769003EDFEB /* BBKBannerView.swift */; };
 		2D515A521DEBD57000196EA0 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D515A511DEBD57000196EA0 /* libz.tbd */; };
 		2D515A581DEBD78600196EA0 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D515A571DEBD78600196EA0 /* libsqlite3.tbd */; };
 		2D544A071DE94D21005CB35C /* CGFloat+BBKAddition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D544A061DE94D21005CB35C /* CGFloat+BBKAddition.swift */; };
@@ -1092,6 +1095,9 @@
 		2D3CDD231DC213A100884948 /* UIView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WebCache.m"; sourceTree = "<group>"; };
 		2D3CDD241DC213A100884948 /* UIView+WebCacheOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+WebCacheOperation.h"; sourceTree = "<group>"; };
 		2D3CDD251DC213A100884948 /* UIView+WebCacheOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WebCacheOperation.m"; sourceTree = "<group>"; };
+		2D4FC0331E29EFE2003EDFEB /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		2D4FC0341E29EFE2003EDFEB /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		2D4FC05E1E2A3769003EDFEB /* BBKBannerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BBKBannerView.swift; sourceTree = "<group>"; };
 		2D515A511DEBD57000196EA0 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		2D515A571DEBD78600196EA0 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		2D544A061DE94D21005CB35C /* CGFloat+BBKAddition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGFloat+BBKAddition.swift"; sourceTree = "<group>"; };
@@ -1753,6 +1759,7 @@
 		2D1B3DE51DC0DA5F00AF4BCF /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				2D4FC00B1E29EFE2003EDFEB /* Reachability */,
 				2D1348A41E0B4DE40007882A /* LFLiveKit */,
 				2DA453141DEFFD230035544B /* KissXML */,
 				2DF51DFB1DC59B9B0036FE97 /* YYWebImage */,
@@ -1898,6 +1905,15 @@
 			path = SDWebImage/SDWebImage;
 			sourceTree = "<group>";
 		};
+		2D4FC00B1E29EFE2003EDFEB /* Reachability */ = {
+			isa = PBXGroup;
+			children = (
+				2D4FC0331E29EFE2003EDFEB /* Reachability.h */,
+				2D4FC0341E29EFE2003EDFEB /* Reachability.m */,
+			);
+			path = Reachability;
+			sourceTree = "<group>";
+		};
 		2D61D7691DB8CCCA00217426 /* Commons */ = {
 			isa = PBXGroup;
 			children = (
@@ -2033,6 +2049,7 @@
 				2D61D74A1DB76D8A00217426 /* BBKAlertView.m */,
 				2DC5DAFA1DBCCB1200C002DF /* BBKDisplayTitleLabel.swift */,
 				2D3CDCEA1DC19AE000884948 /* BBKCycleBannerView.swift */,
+				2D4FC05E1E2A3769003EDFEB /* BBKBannerView.swift */,
 			);
 			name = Views;
 			path = BiliBiliKit/Views;
@@ -2276,6 +2293,7 @@
 				2D134A6A1E0B4DE50007882A /* LFAudioFrame.h in Headers */,
 				2D134BDB1E0B4DE60007882A /* error.h in Headers */,
 				2D134A5C1E0B4DE50007882A /* LFHardwareVideoEncoder.h in Headers */,
+				2D4FC04B1E29EFE2003EDFEB /* Reachability.h in Headers */,
 				2D134BAA1E0B4DE60007882A /* GPUImageToneCurveFilter.h in Headers */,
 				2D3CDD2A1DC213A100884948 /* NSData+ImageContentType.h in Headers */,
 				2D134B141E0B4DE50007882A /* GPUImageLanczosResamplingFilter.h in Headers */,
@@ -2653,6 +2671,7 @@
 				2D1B3EAB1DC0DA5F00AF4BCF /* MJRefreshFooterView.m in Sources */,
 				2D134BA91E0B4DE60007882A /* GPUImageTiltShiftFilter.m in Sources */,
 				2D134B9D1E0B4DE60007882A /* GPUImageTextureInput.m in Sources */,
+				2D4FC05F1E2A3769003EDFEB /* BBKBannerView.swift in Sources */,
 				2D134B411E0B4DE60007882A /* GPUImageMultiplyBlendFilter.m in Sources */,
 				2D9F10A51DE80CC700783ACD /* ConstraintLayoutGuideDSL.swift in Sources */,
 				2D134B7D1E0B4DE60007882A /* GPUImageShiTomasiFeatureDetectionFilter.m in Sources */,
@@ -2764,6 +2783,7 @@
 				2D134A591E0B4DE50007882A /* LFH264VideoEncoder.mm in Sources */,
 				2D9F10AB1DE80CC700783ACD /* ConstraintMakerFinalizable.swift in Sources */,
 				2D3CDD441DC213A100884948 /* UIImage+MultiFormat.m in Sources */,
+				2D4FC04C1E29EFE2003EDFEB /* Reachability.m in Sources */,
 				2D134BC31E0B4DE60007882A /* GPUImageWeakPixelInclusionFilter.m in Sources */,
 				2D134B651E0B4DE60007882A /* GPUImageRawDataInput.m in Sources */,
 				2D134BE21E0B4DE60007882A /* rtmp.c in Sources */,
